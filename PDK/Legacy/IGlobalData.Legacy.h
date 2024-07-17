@@ -22,7 +22,7 @@ namespace P3D
     * Service for requesting general data not associated with any specific object in the application.
     * \remark Various "time" queries are made relative to either Zulu (UTC) time Local time using the TIMEREF enum.
     **/
-    class IGlobalDataV400 : public IUnknown)
+    class IGlobalDataV400 : public IUnknown
     {
         /**
         * Paused - Is application paused

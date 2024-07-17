@@ -28,7 +28,7 @@ namespace P3D
     //
     //IWeatherStationV430
     //
-    class IWeatherStationV430 : public IUnknown)
+    class IWeatherStationV430 : public IUnknown
     {
     public:
 

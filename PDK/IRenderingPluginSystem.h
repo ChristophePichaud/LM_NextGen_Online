@@ -265,7 +265,7 @@ namespace P3D
      *  view output allowing it to implement post process effects that are too complex 
      *  to be implemented through the xml/hlsl based custom post process system.
      **/
-    class IRenderingPluginV500 : public IUnknown)
+    class IRenderingPluginV500 : public IUnknown
     {
         /**
          * A callback to render content
@@ -286,7 +286,7 @@ namespace P3D
     /**
     *  Render Data Resource interface used to get the D3D12 Resource and track the current state.
     **/
-    class IRenderDataResourceV500 : public IUnknown)
+    class IRenderDataResourceV500 : public IUnknown
     {
         /**
         * Get the D3D12 Resource

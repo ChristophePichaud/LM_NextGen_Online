@@ -28,7 +28,7 @@ namespace P3D
     * This interface can be implemented by a plugin to send and receive custom multiplayer packets.
     * An example on how to use this interface can be found in the CustomPackets PDK sample.
     */
-    class ICustomPacketV530 : public IUnknown)
+    class ICustomPacketV530 : public IUnknown
     {
     public:
 
@@ -250,7 +250,7 @@ namespace P3D
     * This is the interface to the core Prepar3D multiplayer system. An example on how to query
     * for a PDK service can be found in the DLLStart() function of the Camera PDK Sample.
     */
-    class IMultichannelServiceV440 : public IUnknown)
+    class IMultichannelServiceV440 : public IUnknown
     {
     public:
 
@@ -305,7 +305,7 @@ namespace P3D
     * @remarks  When setting a 64-bit value, valid word indexes are [0,2].
     * See also the CigiComponentControl PDK sample.
     **/
-    class IComponentControlV430 : public IUnknown)
+    class IComponentControlV430 : public IUnknown
     {
         /// Signals Prepar3D to queue the current Component Control packet data.
         /// This function should be called once per Component Control packet,
@@ -385,7 +385,7 @@ namespace P3D
     * ICigiServiceV430::RegisterComponentControlCallback() and
     * ICigiServiceV430::UnregisterComponentControlCallback() functions.
     **/
-    class IComponentControlCallbackV430 : public IUnknown)
+    class IComponentControlCallbackV430 : public IUnknown
     {
         /**
         * This function is called once per frame while Prepar3D is an active CIGI host.
@@ -407,7 +407,7 @@ namespace P3D
 
 
     // Interface to a CIGI packet that allows plugins to read, write, and modify packet data.
-    class ICigiPacketV440 : public IUnknown)
+    class ICigiPacketV440 : public IUnknown
     {
         STDMETHOD_(USHORT, GetPacketID)()                           const   abstract;
 
@@ -427,7 +427,7 @@ namespace P3D
     };
 
 
-    class ICigiPacketCallbackV440 : public IUnknown)
+    class ICigiPacketCallbackV440 : public IUnknown
     {
         virtual HRESULT OnCustomSend(const USHORT& uPacketID : public ICigiPacketV440& pPacket) abstract;
 
@@ -441,7 +441,7 @@ namespace P3D
     * This is the interface to the core Prepar3D CIGI plugin. An example on how to query
     * for a PDK service can be found in the DLLStart() function of the Camera PDK Sample.
     */
-    class ICigiServiceV430 : public IUnknown)
+    class ICigiServiceV430 : public IUnknown
     {
     public:
 

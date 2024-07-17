@@ -25,7 +25,7 @@ namespace P3D
     /**
     * This service provides access to data stored in SimProp XML files
     **/
-    class ISimPropertyServiceV440 : public IUnknown)
+    class ISimPropertyServiceV440 : public IUnknown
     {
         /**
         * Register a factory that can create objects from an ISimPropertySet

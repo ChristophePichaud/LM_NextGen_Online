@@ -92,7 +92,7 @@ namespace Radar
     /**
         Interface for Radar PDK service
     */
-    class ISimulatedRadarV400 : public IUnknown)
+    class ISimulatedRadarV400 : public IUnknown
     {
     public:
         /**

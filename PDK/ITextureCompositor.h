@@ -16,7 +16,7 @@ namespace P3D
 	/**
     * Interface for accessing Texture Compositor Rendering Information
     */
-    class ITextureCompositorV500 : public IUnknown)
+    class ITextureCompositorV500 : public IUnknown
     {
 		/**
         * Used to initialized Texture Compositor with information from Graphics Card

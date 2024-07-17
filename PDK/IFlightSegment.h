@@ -5,7 +5,7 @@
 namespace P3D
 {
 
-class IFlightSegmentV453 : public IUnknown)
+class IFlightSegmentV453 : public IUnknown
 {
     STDMETHOD_(GUID, GetGoalInstanceID)() PURE;
     STDMETHOD_(int, GetParameterCount)() PURE;

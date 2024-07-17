@@ -32,7 +32,7 @@ struct TextureDescriptionV440
  * view output allowing it to implement post process effects that are too complex to be implemented through
  * the xml/hlsl based custom post process system.
  **/
-class IRenderingPluginSystemV500 : public IUnknown)
+class IRenderingPluginSystemV500 : public IUnknown
 {
     /**
      * Create a new texture given name, size, and a callback function for each update
@@ -115,7 +115,7 @@ class IRenderingPluginSystemV500 : public IUnknown)
     virtual void SetMultiProjectionEnabled(bool bEnabled) = 0;
 };
 
-class IRenderingPluginSystemV400 : public IUnknown)
+class IRenderingPluginSystemV400 : public IUnknown
 {
     /**
     * Create a new texture given name, size, and a callback function for each update
@@ -321,7 +321,7 @@ class IRenderingPluginSystemV440 : public IRenderingPluginSystemV430)
     *  view output allowing it to implement post process effects that are too complex
     *  to be implemented through the xml/hlsl based custom post process system.
     **/
-class IRenderingPluginV400 : public IUnknown)
+class IRenderingPluginV400 : public IUnknown
 {
     /**
         * A callback to render content
@@ -339,7 +339,7 @@ class IRenderingPluginV400 : public IUnknown)
     virtual void PreRender(IRenderDataV400 * pRenderData) abstract;
 };
 
-class IRenderDataV400 : public IUnknown)
+class IRenderDataV400 : public IUnknown
 {
     /**
     * Get Texture width
@@ -421,7 +421,7 @@ class IRenderDataV400 : public IUnknown)
 };
 
 
-class IRenderDataV500 : public IUnknown)
+class IRenderDataV500 : public IUnknown
 {
     /**
     * Get Texture width

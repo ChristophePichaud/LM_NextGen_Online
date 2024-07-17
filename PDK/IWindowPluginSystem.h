@@ -259,7 +259,7 @@ namespace P3D
             }
     *```
     **/
-    class IMouseRectListenerCallback : public IUnknown)
+    class IMouseRectListenerCallback : public IUnknown
     {
         /**
         * This function is called when a mouse rectangle is clicked.

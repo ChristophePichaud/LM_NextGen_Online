@@ -32,7 +32,7 @@ DEFINE_GUID(IID_IAIBehaviorManager, 0x497e7a52, 0x374c, 0x441f, 0x8b, 0xfc, 0xa1
 * PROFESSIONAL PLUS CAPABILITY *
 IAIBehvaior - Base interface for AI Behaviors
 **********************************************************************************************************/
-class IAIBehavior : public IUnknown)
+class IAIBehavior : public IUnknown
 {
     STDMETHOD_(GUID, GetBehaviorGuid)()                                 const PURE;
 };
@@ -207,7 +207,7 @@ DEFINE_GUID(IID_ISimObjectAIV02, 0x27428180, 0xe4, 0x489a, 0xa1, 0x45, 0x30, 0x9
 /**********************************************************************************************************
 IAIService - Interface for getting AI parameters from this object
 **********************************************************************************************************/
-DECLARE_INTERFACE_ (IAIService : public IUnknown)
+DECLARE_INTERFACE_ (IAIService : public IUnknown
 {
 };
 

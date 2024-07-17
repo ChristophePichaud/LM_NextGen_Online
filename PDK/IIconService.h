@@ -28,7 +28,7 @@ namespace P3D
     /**
     * This service is responsible for the management of Icons.
     **/
-    class IIconServiceV410 : public IUnknown)
+    class IIconServiceV410 : public IUnknown
     {
         /**
         * Returns the number of icon instances.
@@ -69,7 +69,7 @@ namespace P3D
     /**
     * This interface may be used by developers to manipulate icon instances.
     **/
-    class IIconInstanceV410 : public IUnknown)
+    class IIconInstanceV410 : public IUnknown
     {
         /**
         * Returns the position of a given icon instance.

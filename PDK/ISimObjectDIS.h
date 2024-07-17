@@ -39,7 +39,7 @@ public:
 * This interface allows developers to build PDU's on a per-field basis.
 * @remarks It is the developer's responsibility to fill in the PDU header as well as any necessary data.
 */
-class IPduBuilderV440 : public IUnknown)
+class IPduBuilderV440 : public IUnknown
 {
     STDMETHOD_(void, WriteChar)     (__in char c)               PURE; /**<Adds an 8-bit signed byte to the packet. */
     STDMETHOD_(void, WriteUChar)    (__in unsigned char uc)     PURE; /**<Adds an 8-bit unsigned short to the packet. */
@@ -60,7 +60,7 @@ DEFINE_GUID(IID_IPduBuilderV440, 0xff332f2c, 0xb0c7, 0x4661, 0xa1, 0x27, 0xed, 0
 /**
 * This interface allows developers to read PDU's on a per-field basis.
 */
-class IPduReaderV440 : public IUnknown)
+class IPduReaderV440 : public IUnknown
 {
     STDMETHOD_(char, ReadChar)()                    PURE; /**<Reads an 8-bit signed byte to the packet. */
     STDMETHOD_(unsigned char, ReadUChar)()          PURE; /**<Reads an 8-bit unsigned short to the packet. */
@@ -82,7 +82,7 @@ DEFINE_GUID(IID_IPduReaderV440, 0xc1bbc504, 0xf113, 0x4ef0, 0x98, 0x46, 0x1a, 0x
 /**
 * This interface allows developers to create PDU's to be sent or received.
 **/
-class IPduCallbackV440 : public IUnknown)
+class IPduCallbackV440 : public IUnknown
 {
     /**
     * Plugins should implement this function to receive callbacks when Prepar3D is about to send a packet.
@@ -261,7 +261,7 @@ DEFINE_GUID(SID_DISManager,         0x84573c4c, 0x6422, 0x43f7, 0xb0, 0xe3, 0x26
 /** ## *Professional Plus Only*
 * This service allows developers to provide Distributed Interactive Simulation (DIS) information to the core simulation. 
 * Developers should implement this service and provide the requested information following DIS IEEE standards. */
-class IDISServiceV400 : public IUnknown)
+class IDISServiceV400 : public IUnknown
 {
     /** This function will be called when the application requires the object's entity appearance. The entity appearance is a 32-bit unsigned integer. 
     * The application expects the data to be packed according to DIS standards. The application expects the appearance type to match that of the entity 

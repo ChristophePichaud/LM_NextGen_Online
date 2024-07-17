@@ -135,7 +135,7 @@ namespace P3D
     /**
      *  Interface for accessing Virtual Reality Tracked Controller Information
      **/
-    class IVRTrackedControllerV450 : public IUnknown)
+    class IVRTrackedControllerV450 : public IUnknown
     {
         /**
         * Get the Local Transform of the Tracked Controller

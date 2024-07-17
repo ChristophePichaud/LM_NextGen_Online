@@ -21,7 +21,7 @@ namespace P3D
 *   ILibraryObject
 *   Provides data and access on a library object.
 **/
-class ILibraryObjectV400 : public IUnknown)
+class ILibraryObjectV400 : public IUnknown
 {
     /**
     *   @return Returns the Prepar3D unique ID for this object. -1 is an invalid ID.

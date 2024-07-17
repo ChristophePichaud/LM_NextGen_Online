@@ -36,7 +36,7 @@ namespace P3D
     /**
      *  Interface for accessing the Virtual Reality Settings
      **/
-    class IVRInterfaceV450 : public IUnknown)
+    class IVRInterfaceV450 : public IUnknown
     {
         /**
         * Check if Portals are being edited
@@ -110,7 +110,7 @@ namespace P3D
         virtual P3DEyeData& GetEyeData(VREye eye) abstract;
     };
 
-    class IVRSettingsV450 : public IUnknown)
+    class IVRSettingsV450 : public IUnknown
     {
         /**
         * Get the current render mode setting

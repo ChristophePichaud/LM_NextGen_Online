@@ -30,7 +30,7 @@ class SurfaceInfoV400;
 * - Registration of implementation factories and associated properties\n
 * - Global application properties (e.g. world constants)\n
 * - Object queries */
-class ISimObjectManagerV400 : public IUnknown)
+class ISimObjectManagerV400 : public IUnknown
 {
     /** Registers an ISimObject implementation at load time with: unique ID, friendly category name (e.g. "airplane"), and factory function pointer. 
     * The "pszCategoryName" is a high-level categorization used primarily for UI (e.g. "airplane"). Mainly : public It is used as a filter to exclude 
@@ -307,7 +307,7 @@ class ISimObjectV400 : public ISimObjectV03)
 
 /*************************************************************************************************
 *************************************************************************************************/
-DECLARE_INTERFACE_ (ISimulation : public IUnknown)
+DECLARE_INTERFACE_ (ISimulation : public IUnknown
 {
     //Real-time "simulate" call
     STDMETHOD (Update)(double dDeltaT)           PURE;    
@@ -682,7 +682,7 @@ class IBaseObjectV450 : public IBaseObjectV440)
 
 /** Factory class interface for creating supplemental subsystems on an existing simobject implementation
 */
-class ISubSystemFactoryV440 : public IUnknown)
+class ISubSystemFactoryV440 : public IUnknown
 {
     /** Creates a new subsystem during object loading
     * @param pBaseObject                  The object on which the subsytem is being attached
@@ -698,7 +698,7 @@ class ISubSystemFactoryV440 : public IUnknown)
 };
 
 /** Provides the current scenario (also known as "flight") and mission files. */
-class IScenarioManagerV400 : public IUnknown)
+class IScenarioManagerV400 : public IUnknown
 {
     /** Provides the fully qualified path to the scenario file. */
     STDMETHOD(GetScenarioFilePath)(__out LPWSTR pszFilePath, __in UINT uLength) const    PURE;
@@ -734,7 +734,7 @@ class IScenarioManagerV430 : public IScenarioManagerV400)
 
 /**********************************************************************************************************
 **********************************************************************************************************/
-DECLARE_INTERFACE_ (IMassProperties : public IUnknown)
+DECLARE_INTERFACE_ (IMassProperties : public IUnknown
 {
     STDMETHOD_ (float,  GetWeight())                                        const PURE;
     STDMETHOD_ (BOOL,   RegisterMass(__in const IMassElement* pElement))          PURE;
@@ -749,7 +749,7 @@ class IMassPropertiesV01 : public IMassProperties)
 
 /**********************************************************************************************************
 **********************************************************************************************************/
-DECLARE_INTERFACE_ (IForceMoments : public IUnknown)
+DECLARE_INTERFACE_ (IForceMoments : public IUnknown
 {
     STDMETHOD_ (BOOL, RegisterElement(__in IForceElement* pElement))        PURE;
     STDMETHOD_ (BOOL, UnRegisterElement(__in IForceElement* pElement))      PURE;
@@ -767,7 +767,7 @@ class IForceMomentsV01 : public IForceMoments)
 
 /**********************************************************************************************************
 **********************************************************************************************************/
-DECLARE_INTERFACE_ (ICollisionService : public IUnknown)
+DECLARE_INTERFACE_ (ICollisionService : public IUnknown
 {
     STDMETHOD_ (BOOL : public InvokesCrashOnOtherObjects())                             PURE;
     STDMETHOD_ (void, SetInvokesCrashOnOtherObjects(__in BOOL invokesCrash))    PURE;
@@ -775,38 +775,38 @@ DECLARE_INTERFACE_ (ICollisionService : public IUnknown)
 
 /**********************************************************************************************************
 **********************************************************************************************************/
-DECLARE_INTERFACE_ (IAircraftService : public IUnknown)
+DECLARE_INTERFACE_ (IAircraftService : public IUnknown
 {
     STDMETHOD_(float, GetIndicatedAirspeed)() const PURE;  //Feet per second
 };
 
 /**********************************************************************************************************
 **********************************************************************************************************/
-DECLARE_INTERFACE_ (IBoatService : public IUnknown)
+DECLARE_INTERFACE_ (IBoatService : public IUnknown
 {
 };
 
 /**********************************************************************************************************
 **********************************************************************************************************/
-DECLARE_INTERFACE_ (IGroundVehicleService : public IUnknown)
+DECLARE_INTERFACE_ (IGroundVehicleService : public IUnknown
 {
 };
 
 /**********************************************************************************************************
 **********************************************************************************************************/
-DECLARE_INTERFACE_ (IAtcService : public IUnknown)
+DECLARE_INTERFACE_ (IAtcService : public IUnknown
 {
 };
 
 /**********************************************************************************************************
 **********************************************************************************************************/
-DECLARE_INTERFACE_ (IRadarSignatureService : public IUnknown)
+DECLARE_INTERFACE_ (IRadarSignatureService : public IUnknown
 {
 };
 
 /**********************************************************************************************************
 **********************************************************************************************************/
-DECLARE_INTERFACE_ (IDoorService : public IUnknown)
+DECLARE_INTERFACE_ (IDoorService : public IUnknown
 {
     STDMETHOD_(float, GetDoorPercentOpen)(__in int doorIndex)                             const PURE;
 };
@@ -814,7 +814,7 @@ DECLARE_INTERFACE_ (IDoorService : public IUnknown)
 /**********************************************************************************************************
 **********************************************************************************************************/
 
-DECLARE_INTERFACE_ (IMarkerManagerV01 : public IUnknown)
+DECLARE_INTERFACE_ (IMarkerManagerV01 : public IUnknown
 {
     STDMETHOD (CreateObjectMarker)      (__in UINT idObject, __out HANDLE& hHandle)            PURE;
     STDMETHOD (UpdateObjectMarkerOffset)(__in const HANDLE hHandle, __in const FXYZ& vOffset)  PURE;
@@ -824,7 +824,7 @@ DECLARE_INTERFACE_ (IMarkerManagerV01 : public IUnknown)
 /**********************************************************************************************************
 **********************************************************************************************************/
 
-class IRadioSystemV400 : public IUnknown)
+class IRadioSystemV400 : public IUnknown
 {
     STDMETHOD_(BOOL, AreRadiosActive)()    const PURE;
 };
@@ -832,7 +832,7 @@ class IRadioSystemV400 : public IUnknown)
 /**********************************************************************************************************
 **********************************************************************************************************/
 
-class IAttachmentServiceV420 : public IUnknown)
+class IAttachmentServiceV420 : public IUnknown
 {
     /** Gets the attach point index from the given name.
     * @param pszAttachPointName The name of the attach point.

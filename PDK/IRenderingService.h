@@ -457,7 +457,7 @@ class IDynamicLightDataV600 : public IDynamicLightDataV500)
 /**
 * Interface used to set/get material properties
 */
-class IMaterialV600 : public IUnknown)
+class IMaterialV600 : public IUnknown
 {
     /**
     * Gets a material property

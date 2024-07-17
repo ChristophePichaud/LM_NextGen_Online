@@ -142,7 +142,7 @@ DEFINE_GUID(IID_IWeaponsSystemV430, 0x5f323180, 0x87d6, 0x4c7d, 0xb0, 0xb6, 0x21
 
 /** ## *Professional Plus Only*
 * Interface for getting weapon parameters for this object */
-class IWeaponServiceV400 : public IUnknown)
+class IWeaponServiceV400 : public IUnknown
 {
     STDMETHOD(SetIsAttachedToOwner)(BOOL bAttached, UINT uOwnerId, BOOL bJettisoned)        PURE;     /**< Called from weapon system when attached, jettisoned, or fired (0 = invalid id) */
     STDMETHOD_(BOOL : public IsAttachedToOwner)()                                              const PURE;     /**< Is weapon currently attached to parent object */
@@ -192,7 +192,7 @@ DEFINE_GUID(IID_ICountermeasureSystem, 0xb1fe591d, 0xfa0c, 0x469a, 0xaa, 0x72, 0
 * PROFESSIONAL PLUS CAPABILITY *
 ICountermeasureService - Interface for getting countermeasure parameters for this object
 **********************************************************************************************************/
-DECLARE_INTERFACE_ (ICountermeasureService : public IUnknown)
+DECLARE_INTERFACE_ (ICountermeasureService : public IUnknown
 {
     STDMETHOD  (SetIsAttachedToOwner)(BOOL bAttached, UINT uOwnerId)          PURE;     //Called from countermeasure system when attached or fired (0 = invalid id)
     STDMETHOD_ (BOOL : public IsAttachedToOwner)()                              const PURE;     //Is weapon currently attached to parent object
@@ -228,7 +228,7 @@ DEFINE_GUID(IID_IFireControlSystem, 0x96d3952b, 0x2bd3, 0x4fc5, 0xa6, 0xc, 0xb3,
 * PROFESSIONAL PLUS CAPABILITY *
 IGuidanceSystem - Interface for getting guidance parameters for this object
 **********************************************************************************************************/
-DECLARE_INTERFACE_ (IGuidanceSystem : public IUnknown)
+DECLARE_INTERFACE_ (IGuidanceSystem : public IUnknown
 {
     STDMETHOD_(void,   SetTargetObjectID)(UINT targetedObjectID)        PURE;
     STDMETHOD_(UINT,   GetTargetObjectID)()                       const PURE;
@@ -242,7 +242,7 @@ DEFINE_GUID(IID_IGuidanceSystem, 0x9f8a59df, 0x12d1, 0x4051, 0x8c, 0x4a, 0x62, 0
 * PROFESSIONAL PLUS CAPABILITY *
 IPylonService - Interface for getting parameters for a weapon pylon
 **********************************************************************************************************/
-DECLARE_INTERFACE_ (IPylonService : public IUnknown)
+DECLARE_INTERFACE_ (IPylonService : public IUnknown
 {
     STDMETHOD  (SetOwnerId)(__in UINT uOwnerId)                        PURE;     //ID of object in which weapon is attached
     STDMETHOD_ (UINT, GetOwnerId)()                              const PURE;     //ID of object in which weapon is attached

@@ -22,7 +22,7 @@ namespace P3D
     /**
         Interface for ControllableCamera PDK service
     */
-    class IControllableCameraV400 : public IUnknown)
+    class IControllableCameraV400 : public IUnknown
     {
     public:
         /**

@@ -40,7 +40,7 @@ enum VIEW_POINT
  /**
   * This interface represents a single sound instance.
   */
-class ISoundInstanceV440 : public IUnknown)
+class ISoundInstanceV440 : public IUnknown
 {
     /**
     * Retruns S_OK if the sound is playing, S_FALSE if it is not, and E_FAIL upon failure.
@@ -284,7 +284,7 @@ DEFINE_GUID(IID_ISoundInstanceV440, 0x47e57528, 0x6748, 0x415d, 0x87, 0xf, 0x55,
  /**
   * This PDK service provides developers with the ability to create and manipulate sounds at runtime.
   */
-class ISoundServiceV440 : public IUnknown)
+class ISoundServiceV440 : public IUnknown
 {
     /**
     * Creates a reference counted ISoundInstance object. Returns S_OK upon success, E_FAIL otherwise.

@@ -22,7 +22,7 @@ namespace P3D
     /**
     * This service provides access to Prepar3D's voice control system.
     **/
-    class IVoiceControlServiceV420 : public IUnknown)
+    class IVoiceControlServiceV420 : public IUnknown
     {
         /**
         * Enables voice recognition.

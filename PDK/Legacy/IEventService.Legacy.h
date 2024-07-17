@@ -27,7 +27,7 @@ namespace P3D
     /** Service used to register for Prepar3D event callbacks
      *
      */
-    class IEventServiceV400 : public IUnknown)
+    class IEventServiceV400 : public IUnknown
     {
         /**
         *   Register an event callback.

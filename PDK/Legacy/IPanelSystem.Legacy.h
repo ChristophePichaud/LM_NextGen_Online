@@ -26,7 +26,7 @@ namespace P3D
     /**
     *   Parameter list interface used by IPanelSystemV400
     **/
-    class IPanelSystemV400 : public IUnknown)
+    class IPanelSystemV400 : public IUnknown
     {
         /**
         *   Returns if the specified panel window is visible.

@@ -11,7 +11,7 @@ interface IDynamicLightDataV500;
 /**
 * Service for rendering into a view
 */
-class IObjectRendererV400 : public IUnknown)
+class IObjectRendererV400 : public IUnknown
 {
 
     /**
@@ -692,7 +692,7 @@ class IObjectRendererV520 : public IObjectRendererV500)
 /**
 * Interface used to store data needed to create a dynamic light
 */
-class IDynamicLightDataV500 : public IUnknown)
+class IDynamicLightDataV500 : public IUnknown
 {
     /**
     * Sets the type of dynamic light

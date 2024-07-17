@@ -168,7 +168,7 @@ namespace P3D
     /** Custom event interface
      *
      */
-    class IPrepar3DCustomEventV600 : public IUnknown)
+    class IPrepar3DCustomEventV600 : public IUnknown
     {
         virtual const wchar_t* GetEventName() const abstract;
         virtual const GUID& GetEventID() const abstract;

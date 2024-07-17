@@ -27,7 +27,7 @@ namespace P3D
     /**
     *  Service for accessing windows and registering window plugins.
     **/
-    class IWindowPluginSystemV400 : public IUnknown)
+    class IWindowPluginSystemV400 : public IUnknown
     {
         /**
         * Register a callback to be hit when a mouse rectangle is clicked.
@@ -145,7 +145,7 @@ namespace P3D
         virtual HRESULT DeleteCameraInstance(const GUID& guidCameraDefinition, UINT uInstanceId) abstract;
     };
 
-    class ICameraSystemV400 : public IUnknown)
+    class ICameraSystemV400 : public IUnknown
     {
         /**
         * Get the window's camera definition
@@ -983,7 +983,7 @@ namespace P3D
     /**
     * Window writer interface for setting window states
     **/
-    class IWindowV400 : public IUnknown)
+    class IWindowV400 : public IUnknown
     {
         /**
         * Set Docked/Undocked state

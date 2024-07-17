@@ -216,7 +216,7 @@ DEFINE_GUID(SID_GunSystem,      0x7814d5b7, 0x409e, 0x42d9, 0xa1, 0xe6, 0x85, 0x
 
 /** ## *Professional Plus Only*
 * Interface for getting gun parameters for this object */
-DECLARE_INTERFACE_ (IGunV400 : public IUnknown)
+DECLARE_INTERFACE_ (IGunV400 : public IUnknown
 {   
     STDMETHOD_(void,            Simulate(__in double deltaT))               PURE; /**< Called once per step on all guns. Delta time is in seconds */
     STDMETHOD_(HRESULT,         Fire(__in double deltaT))                   PURE; /**< Called once per step on selected guns. Fire() will be repeatedly called while the trigger is engaged. Users can use an HRESULT return type */

@@ -23,7 +23,7 @@ namespace P3D
       * This is the interface to the core Prepar3D multiplayer system. An example on how to query
       * for a PDK service can be found in the DLLStart() function of the Camera PDK Sample.
       */
-    class IMultiplayerServiceV430 : public IUnknown)
+    class IMultiplayerServiceV430 : public IUnknown
     {
     public:
 

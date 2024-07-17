@@ -227,7 +227,7 @@ DEFINE_GUID(SID_EngineSystem ,       0x864e3526, 0x156a, 0x47fc, 0xad, 0x8b, 0xc
 * ISavedEngineSystemState is used during loading and saving the state of the engine system
 * when saving and loading scenarios, as well as when switching aircraft.
 **/
-class ISavedEngineSystemStateV500 : public IUnknown)
+class ISavedEngineSystemStateV500 : public IUnknown
 {
     /** Returns the number of engines on this aircraft.*/
     STDMETHOD_(UINT,  GetNumberOfEngines)()                     const PURE;

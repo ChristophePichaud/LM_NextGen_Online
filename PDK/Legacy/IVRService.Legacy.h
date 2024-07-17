@@ -24,7 +24,7 @@ namespace P3D
      * \{
      */
 
-    class IVRServiceV450 : public IUnknown)
+    class IVRServiceV450 : public IUnknown
     {
         virtual void RegisterCallback(ICallbackV400* pCallback) = 0;
         virtual void UnregisterCallback(ICallbackV400* pCallback) = 0;

@@ -36,7 +36,7 @@ typedef HRESULT (STDMETHODCALLTYPE *PFloatLoadCallback) (__in const void* pID, _
  * string pointer for string data. Returned data should be copied, as core Prepar3D will delete its copy 
  * upon return, and pointers to the data will become invalid.
  */
-class IDataLoadHelperV400 : public IUnknown)
+class IDataLoadHelperV400 : public IUnknown
 {
         
     /** 

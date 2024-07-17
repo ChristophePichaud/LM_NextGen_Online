@@ -14,7 +14,7 @@ namespace P3D
         MissionObjectiveStatus_Count
     };
 
-    class IMissionObjectiveV453 : public IUnknown)
+    class IMissionObjectiveV453 : public IUnknown
     {
         STDMETHOD_(MissionObjectiveStatus, GetStatus)() = 0;
         STDMETHOD_(LPCTSTR, GetText)() = 0;

@@ -19,7 +19,7 @@ interface IPduCallbackV440;
 * This service allows the developer to interact and retrieve information with a distributed interactive simulation (DIS) session. 
 * Developers integrating with this interface should be familiar with and are expected to follow DIS IEEE standards. This service is 
 * provided by the IPdk interface.*/
-class IDISManagerV400 : public IUnknown)
+class IDISManagerV400 : public IUnknown
 {
     /** Returns TRUE if a DIS connection is active, FALSE otherwise. */
     STDMETHOD_(BOOL : public IsConnected)() const PURE;

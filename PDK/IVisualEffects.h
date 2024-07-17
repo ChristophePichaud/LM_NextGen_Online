@@ -114,7 +114,7 @@ namespace P3D
     /// VisualEffectManager service ID
     DEFINE_GUID(SID_VisualEffectManager, 0x5e7300c9, 0x8ec3, 0x4e43, 0xa5, 0x6e, 0x13, 0xb0, 0xb0, 0xf4, 0xc, 0xc0);
 
-    class IVisualEffectCallbackV430 : public IUnknown)
+    class IVisualEffectCallbackV430 : public IUnknown
     {
         /**
         * Called when a visual effect is created.

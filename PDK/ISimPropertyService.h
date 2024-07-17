@@ -51,7 +51,7 @@ namespace P3D
     /**
     * Factory interface implemented by the developer for creating objects from SimProp data
     **/
-    class ISimPropertySetFactoryV440 : public IUnknown)
+    class ISimPropertySetFactoryV440 : public IUnknown
     {
         /**
          * Callback to create an object from an ISimPropertySet

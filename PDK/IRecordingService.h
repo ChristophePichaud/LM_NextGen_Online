@@ -24,7 +24,7 @@ namespace P3D
     /**
      * Service used to enable creation and playback of recordings
      */
-    class IRecordingServiceV510 : public IUnknown)
+    class IRecordingServiceV510 : public IUnknown
     {
         /**
         *   Play back a specified recording
@@ -124,7 +124,7 @@ namespace P3D
     /**
     * Interface used to access data about a recording
     */
-    class IRecordingDataV510 : public IUnknown)
+    class IRecordingDataV510 : public IUnknown
     {
         /** Gets the title of the recording **/
         virtual LPCWSTR GetTitle() const abstract;
@@ -161,7 +161,7 @@ namespace P3D
     /**
     * Interface used to access data about a recording's bookmark
     */
-    class IRecordingBookmarkDataV510 : public IUnknown)
+    class IRecordingBookmarkDataV510 : public IUnknown
     {
         /** Gets the title of the bookmark **/
         virtual LPCWSTR GetTitle() const abstract;

@@ -947,7 +947,7 @@ class IDoorServiceV01 : public IDoorService)
 };
 
 /** Interface for setting/getting fuel levels, such as in the UI */
-class IFuelServiceV400 : public IUnknown)
+class IFuelServiceV400 : public IUnknown
 {
     STDMETHOD_(float, GetWeightPerGallon)()                                                const PURE; /**< Pounds per gallon */
     STDMETHOD_(UINT, GetNumberOfTanks)()                                                   const PURE; /**< Number of tanks with capacity greater than zero. */
@@ -970,7 +970,7 @@ obtained from the PDK ServiceProvider
 
 
 /** General surface queries, not associated with a specific object. This service interface is available from the PDK. */
-class ISurfaceQueryManagerV400 : public IUnknown)
+class ISurfaceQueryManagerV400 : public IUnknown
 {
     /** Provides surface information for a given world-relative position. (X = Longitude in radians, Y = Altitude in feet, Z = Latitude in radians). Returns E_FAIL if query fails. */
     STDMETHOD(QuerySurfaceInformation) (__out SurfaceInfoV400& SurfaceInfo, __in const DXYZ& vWorldPosRadiansFeet)  const PURE;
@@ -981,7 +981,7 @@ class ISurfaceQueryManagerV400 : public IUnknown)
 };
 
 /** Interface that provides waypoint information specifically for the user in a mission. This service interface is available from the PDK. */
-class IWaypointQueryManagerV400 : public IUnknown)
+class IWaypointQueryManagerV400 : public IUnknown
 {
     //  Manager queries
     /** Returns the number of waypoint lists the manager is holding. */
@@ -1013,14 +1013,14 @@ class IWaypointQueryManagerV400 : public IUnknown)
 };
 
 /** This interface is to be implemented on any simulation object that is used for the user's avatar. */
-class IAvatarSimV01 : public IUnknown)
+class IAvatarSimV01 : public IUnknown
 {
     STDMETHOD(OnAttach()) PURE;    /**< Called when the avatar attaches to the user's object being controlled. */
     STDMETHOD(OnDetach()) PURE;    /**< Called when the avatar detaches to the user's object being controlled. */
 };
 
 /** This service can queried for on a simulation object to play pre-defined animations built into the 3-D visual model. For example, a walking animation. */
-class IAnimationControllerV01 : public IUnknown)
+class IAnimationControllerV01 : public IUnknown
 {
     STDMETHOD(Play)(const GUID& guidAnimationID, BOOL bLoop) PURE;    /**< Called to invoke a specified animation. */
     STDMETHOD(TransitionAndPlay)(const GUID& guidCurrentAnimationID, const GUID& guidNextAnimationID, BOOL bLoop, double fBlendDuration) PURE;    /**< Called to transition from one animation to another. */
@@ -1028,7 +1028,7 @@ class IAnimationControllerV01 : public IUnknown)
 
 /** This service allows configuring conditions or constraints in which the avatar can be attached and
 * detached on this object. For example : public Implement this on an airplane to prevent detaching at high speeds. */
-class IAvatarAttachServiceV01 : public IUnknown)
+class IAvatarAttachServiceV01 : public IUnknown
 {
     STDMETHOD_(BOOL, CanAvatarAttach())  const    PURE;    /**< Return if conditions are appropriate for attaching. */
     STDMETHOD_(BOOL, CanAvatarDetach())  const    PURE;    /**< Return if conditions are appropriate for detaching. */
@@ -1057,7 +1057,7 @@ class IMarkerManagerV310 : public IMarkerManagerV01)
 
 /** Interface implemented on a SimObject in order for core Prepar3D to interface with it for the purposes of broadcasting DIS related PDUs.
 * This interface may also be queried by an ISimObject to gather designator related information. */
-class IDesignatorServiceV340 : public IUnknown)
+class IDesignatorServiceV340 : public IUnknown
 {
     STDMETHOD_(UINT, GetDesignatorCount())                                                                       const PURE;    /**< The number of designators */
     STDMETHOD_(BOOL : public IsActive)                   (__in UINT iDesignator)                                         const PURE;    /**< The active state of the given designator */
@@ -1083,7 +1083,7 @@ class IDesignatorServiceV340 : public IUnknown)
 * and terrain at a shorted ray length and a more precise granularity first. If no collision is detected, a higher ray length
 * and less precise terrain based ray trace should be performed.
 * @note Ray tracing is an expensive operation. Ray trace calls should be limited whenever possible. */
-class IRayTraceManagerV340 : public IUnknown)
+class IRayTraceManagerV340 : public IUnknown
 {
     /** Performs a world space based collision ray trace. */
     STDMETHOD(InterrogateWorldRay)(
@@ -1112,7 +1112,7 @@ class IRayTraceManagerV340 : public IUnknown)
 
 /** Interface implemented on a SimObject in order for core Prepar3D to interface with it for the purposes of broadcasting DIS related PDUs.
 * This interface may also be queried by an ISimObject to gather electromagnetic emission related information. */
-class IEmissionsServiceV340 : public IUnknown)
+class IEmissionsServiceV340 : public IUnknown
 {
     // Top Level
     /** The number of emission systems */
@@ -1205,7 +1205,7 @@ class IRadioSystemV540 : public IRadioSystemV400)
 /**
 *   Audio panel interface. Can be queried from IRadioSystem using IID and a unit value of 1 or more.
 **/
-class IAudioPanelV540 : public IUnknown)
+class IAudioPanelV540 : public IUnknown
 {
     /** Returns the panels unit (1 or more). */
     STDMETHOD_(unsigned int, GetUnit)() const PURE;
@@ -1272,7 +1272,7 @@ class IAudioPanelV540 : public IUnknown)
 /**
 *   ADF radio interface. Can be queried from IRadioSystem using IID and a unit value of 1 or 2.
 **/
-class IAdfRadioV540 : public IUnknown)
+class IAdfRadioV540 : public IUnknown
 {
     /** Returns the radios unit (1 or 2). */
     STDMETHOD_(unsigned int, GetUnit)() const PURE;
@@ -1301,7 +1301,7 @@ class IAdfRadioV540 : public IUnknown)
 /**
 *   COM radio interface. Can be queried from IRadioSystem using IID and a unit value of 1 or 2.
 **/
-class IComRadioV540 : public IUnknown)
+class IComRadioV540 : public IUnknown
 {
     /** Returns the radios unit (1 or 2). */
     STDMETHOD_(unsigned int, GetUnit)() const PURE;
@@ -1330,7 +1330,7 @@ class IComRadioV540 : public IUnknown)
 /**
 *   Marker radio interface. Can be queried from IRadioSystem using IID and a unit value of 1.
 **/
-class IMarkerRadioV540 : public IUnknown)
+class IMarkerRadioV540 : public IUnknown
 {
     /** Returns the latitude, longitude and altitude of the inner marker of an approach to a runway : public If the aircraft is within the required proximity, otherwise it will return zeros. */
     STDMETHOD(GetInnerPosition)(DXYZ& vLonAltLat) PURE;
@@ -1343,7 +1343,7 @@ class IMarkerRadioV540 : public IUnknown)
 /**
 *   NAV radio interface. Can be queried from IRadioSystem using IID and a unit value of 1 or 2.
 **/
-class INavRadioV540 : public IUnknown)
+class INavRadioV540 : public IUnknown
 {
     /** Returns the radios unit (1 or 2). */
     STDMETHOD_(unsigned int, GetUnit)() const PURE;
@@ -1380,7 +1380,7 @@ class INavRadioV540 : public IUnknown)
 /**
 *   TACAN radio interface. Can be queried from IRadioSystem using IID and a unit value of 1 or 2.
 **/
-class ITacanRadioV540 : public IUnknown)
+class ITacanRadioV540 : public IUnknown
 {
     /** Returns the radios unit (1 or 2). */
     STDMETHOD_(unsigned int, GetUnit)() const PURE;
@@ -1427,7 +1427,7 @@ class ITacanRadioV540 : public IUnknown)
 /**
 *   Transponder radio interface. Can be queried from IRadioSystem using IID and a unit value of 1.
 **/
-class ITransponderRadioV540 : public IUnknown)
+class ITransponderRadioV540 : public IUnknown
 {
     /** Gets transponder code. */
     STDMETHOD_(unsigned int, GetCode)() PURE;
@@ -1535,7 +1535,7 @@ class IAttachmentServiceV430 : public IAttachmentServiceV420)
 *   IPrecipSimulationV600
 *   This interface can be queried to obtain precipitation accumulation data.
 **/
-class IPrecipSimulationV600 : public IUnknown)
+class IPrecipSimulationV600 : public IUnknown
 {
     /** Returns the current precipitation accumulation scale.
     * @return       Precipitaion scale from 0.0 to 1.0.

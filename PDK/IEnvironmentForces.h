@@ -30,7 +30,7 @@ namespace P3D
     /**
     * The interface used when registering for environment force notifications.
     **/
-    class IEnvironmentForceCallbackV410 : public IUnknown)
+    class IEnvironmentForceCallbackV410 : public IUnknown
     {
         /**
         * This function is called when one or more environment forces are within the given radius of the given object.
@@ -46,7 +46,7 @@ namespace P3D
     /**
     * This service is responsible for the management of environment forces.
     **/
-    class IEnvironmentForceManagerV410 : public IUnknown)
+    class IEnvironmentForceManagerV410 : public IUnknown
     {
         /**
         * Registers a developer defined environment force.
@@ -96,7 +96,7 @@ namespace P3D
     /**
     * This interface may be implemented by developers to register environment forces.
     **/
-    class IEnvironmentForceV400 : public IUnknown)
+    class IEnvironmentForceV400 : public IUnknown
     {
         /**
         * The effective radius of the environment force.

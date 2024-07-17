@@ -56,7 +56,7 @@ namespace P3D
     /**
     * This service provides access to Prepar3D's menu system.
     **/
-    class IMenuServiceV410 : public IUnknown)
+    class IMenuServiceV410 : public IUnknown
     {
 
         /**
@@ -91,7 +91,7 @@ namespace P3D
     /**
     * This interface may be used by developers to manipulate menu items.
     **/
-    class IMenuItemV410 : public IUnknown)
+    class IMenuItemV410 : public IUnknown
     {
         virtual USHORT  GetId() const PURE;
         virtual LPCWSTR GetText() const PURE;

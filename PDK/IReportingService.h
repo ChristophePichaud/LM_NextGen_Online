@@ -44,7 +44,7 @@ namespace P3D
     /** Service used to report information to the user
      *
      */
-    class IReportingServiceV400 : public IUnknown)
+    class IReportingServiceV400 : public IUnknown
     {
         /**
         *   Send message to content error reporting system

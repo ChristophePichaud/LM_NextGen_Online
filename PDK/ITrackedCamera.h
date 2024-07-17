@@ -25,7 +25,7 @@ namespace P3D
         CameraTextureLayoutSideBySide
     };
 
-    class ITrackedCameraV500 : public IUnknown)
+    class ITrackedCameraV500 : public IUnknown
     {
         /**
         * Get the tranform matrix of the mono Tracked Camera
@@ -67,7 +67,7 @@ namespace P3D
 	/**
     * Interface for accessing Stereo Camera Information
     */
-    class IStereoCameraV500 : public IUnknown)
+    class IStereoCameraV500 : public IUnknown
     {
 
         /**

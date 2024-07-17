@@ -30,7 +30,7 @@ namespace P3D
      * \remark   This interface uses several enumerated weather types which are defined in WeatherSystemTypes.h. 
      * Several functions will also utilize the METAR Data Format.
      */
-    class IWeatherSystemV400 : public IUnknown)
+    class IWeatherSystemV400 : public IUnknown
     {
     public:
 

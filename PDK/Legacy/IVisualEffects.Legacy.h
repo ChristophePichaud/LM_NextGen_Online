@@ -24,7 +24,7 @@ namespace P3D
     * \remark  Effects spawned using this interface are defined
     * with a world-based position and are not associated with any other object.
     **/
-    class IVisualEffectManagerV400 : public IUnknown)
+    class IVisualEffectManagerV400 : public IUnknown
     {
         /**
         *  Turn effect on
@@ -232,7 +232,7 @@ namespace P3D
     * This interface allows real-time updates of a rope created through the IVisualEffectManager. Examples of uses
     * would be helicopter hoists or tow plane cable.
     **/
-    class IRopeSimulationV400 : public IUnknown)
+    class IRopeSimulationV400 : public IUnknown
     {
         /**
         * Sets the rope starting offset.  This is ignored if the starting point is fixed (see SetFixed().)

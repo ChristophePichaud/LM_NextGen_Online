@@ -20,7 +20,7 @@ enum GoalResolution
     RESOLVE_FAILED,
 };
 
-class IGoalV453 : public IUnknown)
+class IGoalV453 : public IUnknown
 {
     STDMETHOD(Resolve)(GoalResolution resolution)PURE;
     STDMETHOD_(GoalState, GetState)() PURE;

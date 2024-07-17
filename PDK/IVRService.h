@@ -79,7 +79,7 @@ namespace P3D
        virtual bool GetIsXRCameraActive() = 0;
     };
 
-    class IVarjoPostProcessServiceV610 : public IUnknown)
+    class IVarjoPostProcessServiceV610 : public IUnknown
     {
         virtual void SetShaderFileName(PCWSTR fileName) abstract;
         virtual PCWSTR GetShaderFileName() abstract;
