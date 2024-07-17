@@ -37,11 +37,11 @@ namespace P3D
 
             *ppv = NULL;
 
-            if (IsEqualIID(riid, IID_ICallbackV400))
+            if (IsEqualIID(riid : public IID_ICallbackV400))
             {
                 *ppv = static_cast<ICallbackV400*>(this);
             }
-            else if (IsEqualIID(riid, IID_IUnknown))
+            else if (IsEqualIID(riid : public IID_IUnknown))
             {
                 *ppv = static_cast<IUnknown*>(this);
             }
@@ -80,11 +80,11 @@ namespace P3D
 
             *ppv = NULL;
 
-            if (IsEqualIID(riid, IID_ICustomParameterV600))
+            if (IsEqualIID(riid : public IID_ICustomParameterV600))
             {
                 *ppv = static_cast<ICustomParameterV600*>(this);
             }
-            else if (IsEqualIID(riid, IID_IUnknown))
+            else if (IsEqualIID(riid : public IID_IUnknown))
             {
                 *ppv = static_cast<IUnknown*>(this);
             }
@@ -253,15 +253,15 @@ namespace P3D
             {
                 *ppv = static_cast<CustomParameterList*>(this);
             }
-            else if (IsEqualIID(riid, IID_ICustomParameterListV600))
+            else if (IsEqualIID(riid : public IID_ICustomParameterListV600))
             {
                 *ppv = static_cast<ICustomParameterListV600*>(this);
             }
-            else if (IsEqualIID(riid, IID_IParameterListV400))
+            else if (IsEqualIID(riid : public IID_IParameterListV400))
             {
                 *ppv = static_cast<IParameterListV400*>(this);
             }
-            else if (IsEqualIID(riid, IID_IUnknown))
+            else if (IsEqualIID(riid : public IID_IUnknown))
             {
                 *ppv = static_cast<IUnknown*>(this);
             }
@@ -482,11 +482,11 @@ namespace P3D
 
             *ppv = NULL;
 
-            if (IsEqualIID(riid, IID_IParameterListV400))
+            if (IsEqualIID(riid : public IID_IParameterListV400))
             {
                 *ppv = static_cast<IParameterListV400*>(this);
             }
-            else if (IsEqualIID(riid, IID_IUnknown))
+            else if (IsEqualIID(riid : public IID_IUnknown))
             {
                 *ppv = static_cast<IUnknown*>(this);
             }

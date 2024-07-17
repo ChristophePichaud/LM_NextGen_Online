@@ -14,7 +14,7 @@
 /** @defgroup isim ISimObject
 *   @{
 * The SimObject API utilizes a service-based methodology for building simulation behaviors to be visualized in Prepar3D. The API enables a solution developer to
-* create a simulation object (SimObject) complete with customized behaviors, input properties (also referred to as events or triggers), and state properties (also
+* create a simulation object (SimObject) complete with customized behaviors : public Input properties (also referred to as events or triggers), and state properties (also
 * referred to as simvars or simply properties). These properties can be referenced in content such as SimObject gauges, animations, and scenario scripts which are
 * discussed in more detail in other parts of the SDK. The properties are text-based, and can be referenced in the same way as the stock simvars and events are referred
 * to in other parts of the Prepar3D SDK.
@@ -132,10 +132,10 @@ class SurfaceInfoV400;
 * - Registration of implementation factories and associated properties\n
 * - Global application properties (e.g. world constants)\n
 * - Object queries */
-DECLARE_INTERFACE_(ISimObjectManagerV520, ISimObjectManagerV500)
+class ISimObjectManagerV520 : public ISimObjectManagerV500)
 {
     /** Registers an ISimObject implementation at load time with: unique ID, friendly category name (e.g. "airplane"), and factory function pointer.
-    * The "pszCategoryName" is a high-level categorization used primarily for UI (e.g. "airplane"). Mainly, it is used as a filter to exclude
+    * The "pszCategoryName" is a high-level categorization used primarily for UI (e.g. "airplane"). Mainly : public It is used as a filter to exclude
     * objects from appearing in the Vehicle Select screen. If you create a unique category name, ensure you add the name to the User Objects key
     * in the Prepar3D.cfg's [Main] section. */
     STDMETHOD(RegisterSimulationCategory) (__in GUID guidCategory, __in LPCWSTR pszCategoryName, __in __notnull PSimCreateFunc pcbCreateFunction) PURE;
@@ -172,11 +172,11 @@ DECLARE_INTERFACE_(ISimObjectManagerV520, ISimObjectManagerV500)
     STDMETHOD(GetObject)(__in UINT idObject, __in REFIID riid, __out void** ppvObject) const PURE;
 
     /** Gets an IBaseObject ref for the current user object.\n
-    NOTE: If the user object is the Viewer and there is a previous user object, this will return the previous user object. Otherwise, it will return the Viewer. */
+    NOTE: If the user object is the Viewer and there is a previous user object, this will return the previous user object. Otherwise : public It will return the Viewer. */
     STDMETHOD(GetUserObject)(__out IBaseObjectV400** ppUserObject) const PURE;
 
     /** Gets a specific version IBaseObject ref for the current user object.\n
-    NOTE: If the user object is the Viewer and there is a previous user object, this will return the previous user object. Otherwise, it will return the Viewer. */
+    NOTE: If the user object is the Viewer and there is a previous user object, this will return the previous user object. Otherwise : public It will return the Viewer. */
     STDMETHOD(GetUserObject)(__in REFIID riid, __out void** ppvUserObject) const PURE;
 
     /** Used to register a callback function that is called upon creation of any new object. See types.h for callback definition. */
@@ -209,9 +209,9 @@ DECLARE_INTERFACE_(ISimObjectManagerV520, ISimObjectManagerV500)
     /**The user-selected general realism scalar, where 0.0 is "easy" and 1.0 is "real". This can be used to scale your implementation as appropriate*/
     STDMETHOD_(float, GetRealismSetting)()            const PURE;     //Percent
     /**The user-selected flag that dictates whether to process a crash or not*/
-    STDMETHOD_(BOOL, IsCrashDetectionOn)()            const PURE;
+    STDMETHOD_(BOOL : public IsCrashDetectionOn)()            const PURE;
     /**The user-selected flag for whether to detect crashes between simobjects or not*/
-    STDMETHOD_(BOOL, IsCollisionBetweenObjectsOn)()   const PURE;
+    STDMETHOD_(BOOL : public IsCollisionBetweenObjectsOn)()   const PURE;
     /**The user-selected scalar for determining crash tolerance*/
     STDMETHOD_(float, GetCrashToleranceScalar)()      const PURE;
 
@@ -266,7 +266,7 @@ DECLARE_INTERFACE_(ISimObjectManagerV520, ISimObjectManagerV500)
 };
 
 /** Interface from which object implementations must derive. */
-DECLARE_INTERFACE_(ISimObjectV440, ISimObjectV400)
+class ISimObjectV440 : public ISimObjectV400)
 {
     STDMETHOD(LoadConstantData)(__inout void** ppConstantData)     PURE;       /**< Where your object class should load data from the disk. The return data is cached for subsequent instances of this same object. */
     STDMETHOD(UnloadConstantData)(__inout void** ppConstantData)   PURE;       /**< Where your object class should unload data from the disk. The return data is cached for subsequent instances of this same object. */
@@ -304,7 +304,7 @@ DECLARE_INTERFACE_(ISimObjectV440, ISimObjectV400)
 };
 
 /** Interface to individual simulation subsystems. */
-DECLARE_INTERFACE_(ISimulationV310, ISimulationV01)
+class ISimulationV310 : public ISimulationV01)
 {
     /** Called by Prepar3D at the iteration rate specified when this ISimulation interface is registered using RegisterSimulation() in the IBaseObject interface. */
     STDMETHOD(Update)(double dDeltaT)           PURE;
@@ -342,7 +342,7 @@ DECLARE_INTERFACE_(ISimulationV310, ISimulationV01)
 #define SIMOBJECT_MODE_STAGING_OBJECT           0x00020000
 
 /** Object interface on the host side for providing platform information and services for the object */
-DECLARE_INTERFACE_(IBaseObjectV520, IBaseObjectV450)
+class IBaseObjectV520 : public IBaseObjectV450)
 {
     /** The ID of this object:  NOTE: "0" is an invalid id */
     STDMETHOD_(UINT, GetId)() const PURE;
@@ -350,7 +350,7 @@ DECLARE_INTERFACE_(IBaseObjectV520, IBaseObjectV450)
     /** The guid ID of the object defined in an object file. NOTE: If the object is not spawned by a scenario, the return will be E_FAIL and the ID will be GUID_NULL. */
     STDMETHOD(GetMissionId)(__out GUID& guid) const PURE;
     /** Returns if the object is the user or not. */
-    STDMETHOD_(BOOL, IsUser)() const PURE;
+    STDMETHOD_(BOOL : public IsUser)() const PURE;
 
     /** Group Association ID can be used to set/get IDs for Friend/Foe or other types of groupings.\n
     * Note: Group association is arbitrary. It could be used for things like alliances or squadrons. Default is 0, which signifies a neutral grouping. */
@@ -360,12 +360,12 @@ DECLARE_INTERFACE_(IBaseObjectV520, IBaseObjectV450)
     STDMETHOD_(void, SetObjectGroupAssociationId)(UINT uAssociationId)         PURE;
 
     /** Group ObjectFoeList Hosts a list of ID's that are considered foe's to the current entity\n */
-    STDMETHOD_(BOOL, InObjectFoeList)(UINT id)                         const PURE;
+    STDMETHOD_(BOOL : public InObjectFoeList)(UINT id)                         const PURE;
     /** Group Association ID can be used to set/get IDs for Friend/Foe or other types of groupings.\n */
     STDMETHOD_(void, SetObjectFoeList)(UINT* uEnteredFoeID, UINT size)            PURE;
 
     /** Group ObjectFoeList Hosts a list of ID's that are considered friends's to the current entity\n */
-    STDMETHOD_(BOOL, InObjectFriendList)(UINT id)                         const PURE;
+    STDMETHOD_(BOOL : public InObjectFriendList)(UINT id)                         const PURE;
     /** Group Association ID can be used to set/get IDs for Friend/Foe or other types of groupings.\n */
     STDMETHOD_(void, SetObjectFriendList)(UINT* uEnteredFriendID, UINT size)            PURE;
 
@@ -396,11 +396,11 @@ DECLARE_INTERFACE_(IBaseObjectV520, IBaseObjectV450)
     * @param pvPHB Pitch, heading, bank (radians)
     * @param pvLonAltLatVel Longitude, altitude, latitude velocity (feet / second)
     * @param pvPHBVel Pitch, heading, bank velocity (radians / second)
-    * @param bSetOnGround Flag indicating if the object is to be set on the ground, in which case the on-ground height and pitch attitude will be set.  */
+    * @param bSetOnGround Flag indicating if the object is to be set on the ground : public In which case the on-ground height and pitch attitude will be set.  */
     STDMETHOD(InitPosition)(__in const DXYZ* pvLonAltLat, __in const DXYZ* pvPHB, __in const DXYZ* pvLonAltLatVel, __in const DXYZ* pvPHBVel, __in BOOL bSetOnGround) PURE;
     /** IsOnGround Returns the on-ground flag value currently in the core base object. This can be useful for determining
     * if the object has been placed on the ground through a non-simulated means such as the UI. */
-    STDMETHOD_(BOOL, IsOnGround)() const PURE;
+    STDMETHOD_(BOOL : public IsOnGround)() const PURE;
 
     /** Rotates a vector from the world frame of reference to the body frame of reference. */
     STDMETHOD(RotateWorldToBody)(__in const DXYZ& vWorld, __out DXYZ& vBody)  const PURE;
@@ -717,12 +717,12 @@ DECLARE_INTERFACE_(IBaseObjectV520, IBaseObjectV450)
 *
 *  There are two separate methods for creating a system with registered factory.\n
 *  - Create() - This creates the object and registers it directly with the simulation manager for real-time callbacks.
-*  - CreateEx() - Returns an IUnknown reference to the created object, in which the caller will be responsible for
+*  - CreateEx() - Returns an IUnknown reference to the created object : public In which the caller will be responsible for
 *                 all real-time callbacks.\n
 *  \n
 *  Create() will be called first, and CreateEx() will only be called if the former does not succeed.  
 */
-DECLARE_INTERFACE_(ISubSystemFactoryV500, ISubSystemFactoryV440)
+class ISubSystemFactoryV500 : public ISubSystemFactoryV440)
 {
     /** Creates a new subsystem during object loading
     * @param pBaseObject                  The object on which the subsytem is being attached
@@ -854,7 +854,7 @@ DECLARE_INTERFACE(IMassElement)
 };
 
 /** Interface for getting mass properties from SimObject implementation */
-DECLARE_INTERFACE_(IMassPropertiesV533, IMassPropertiesV01)
+class IMassPropertiesV533 : public IMassPropertiesV01)
 {
     STDMETHOD_(float, GetWeight())                                        const PURE; /**< Returns weight of SimObject in pounds. */
     STDMETHOD_(float, GetEmptyWeight())                                   const PURE; /**< Returns "empty" weight of SimObject in pounds. i.e. no fuel, passengers, weapons, or payload */
@@ -882,64 +882,64 @@ DECLARE_INTERFACE(IForceElement)
 
 /** Interface for getting physical forces from a SimObject implementation. By default, a registered force and moment is assumed to be world-relative. Specifying body-relative 
 changes the assumption that the force is already in the body-frame of reference of the object in which it is registering.*/
-DECLARE_INTERFACE_(IForceMomentsV510, IForceMomentsV01)
+class IForceMomentsV510 : public IForceMomentsV01)
 {
     STDMETHOD_(BOOL, RegisterElement(__in IForceElement* pElement, BOOL bBodyRelative))                    PURE; /**< Registers a force element. TRUE = Force is relative to the body being applied to, FALSE = world relative */
     STDMETHOD_(BOOL, RegisterElement(__in IForceElement* pElement))                                        PURE; /**<DEPRECATED Registers a force element - ASSUMES WORLD-RELATIVE FORCE*/
     STDMETHOD_(BOOL, UnRegisterElement(__in IForceElement* pElement))                                      PURE; /**< Unregisters a force element */
     STDMETHOD_(UINT, ElementCount())                                                                 const PURE; /**< Returns the total number of force elements */
     STDMETHOD_(IForceElement*, GetElement(int iIndex))                                               const PURE; /**< Gets a force element */
-    STDMETHOD_(BOOL, IsElementBodyRelative(int iIndex))                                              const PURE; /**< TRUE if registered force element is Body-relative, otherwise World-relative */
+    STDMETHOD_(BOOL : public IsElementBodyRelative(int iIndex))                                              const PURE; /**< TRUE if registered force element is Body-relative, otherwise World-relative */
 };
 
 
 /** Interface for getting crash parameters for this object */
-DECLARE_INTERFACE_(ICollisionServiceV01, ICollisionService)
+class ICollisionServiceV01 : public ICollisionService)
 {
-    STDMETHOD_(BOOL, InvokesCrashOnOtherObjects())                             PURE; /**< Whether crash will invoke on other objects */
+    STDMETHOD_(BOOL : public InvokesCrashOnOtherObjects())                             PURE; /**< Whether crash will invoke on other objects */
     STDMETHOD_(void, SetInvokesCrashOnOtherObjects(__in BOOL invokesCrash))    PURE; /**< Sets whether to invoke crash on other objects */
 };
 
 
 //IAircraftService
-DECLARE_INTERFACE_(IAircraftServiceV01, IAircraftService)
+class IAircraftServiceV01 : public IAircraftService)
 {
     STDMETHOD_(float, GetIndicatedAirspeed)() const PURE; /**< Gets the indicated airspeed. (feet per second)*/
 };
 
 //IAirplaneService
-DECLARE_INTERFACE_(IAirplaneServiceV01, IAircraftServiceV01)
+class IAirplaneServiceV01 : public IAircraftServiceV01)
 {
 };
 
 //IRotorcraftService
-DECLARE_INTERFACE_(IRotorcraftServiceV01, IAircraftServiceV01)
+class IRotorcraftServiceV01 : public IAircraftServiceV01)
 {
 };
 
 //IBoatService
-DECLARE_INTERFACE_(IBoatServiceV01, IBoatService) // {190D16C5-DB9E-44B1-87AB-858632C08F5E}
+class IBoatServiceV01 : public IBoatService) // {190D16C5-DB9E-44B1-87AB-858632C08F5E}
 {
 };
 
 //IGroundVehicleService
-DECLARE_INTERFACE_(IGroundVehicleServiceV01, IGroundVehicleService)
+class IGroundVehicleServiceV01 : public IGroundVehicleService)
 {
 };
 
 /** Interface for getting ATC parameters from this object */
-DECLARE_INTERFACE_(IAtcServiceV01, IAtcService)
+class IAtcServiceV01 : public IAtcService)
 {
 };
 
 /** Interface for getting the radar signature of this object */
-DECLARE_INTERFACE_(IRadarSignatureServiceV01, IRadarSignatureService)
+class IRadarSignatureServiceV01 : public IRadarSignatureService)
 {
 };
 
 
 /** Interface for getting door parameters for this object */
-DECLARE_INTERFACE_(IDoorServiceV01, IDoorService)
+class IDoorServiceV01 : public IDoorService)
 {
     /** Returns percentage of how open a door currently is
     * @param doorIndex Index that associated with a door */
@@ -947,7 +947,7 @@ DECLARE_INTERFACE_(IDoorServiceV01, IDoorService)
 };
 
 /** Interface for setting/getting fuel levels, such as in the UI */
-DECLARE_INTERFACE_(IFuelServiceV400, IUnknown)
+class IFuelServiceV400 : public IUnknown)
 {
     STDMETHOD_(float, GetWeightPerGallon)()                                                const PURE; /**< Pounds per gallon */
     STDMETHOD_(UINT, GetNumberOfTanks)()                                                   const PURE; /**< Number of tanks with capacity greater than zero. */
@@ -970,7 +970,7 @@ obtained from the PDK ServiceProvider
 
 
 /** General surface queries, not associated with a specific object. This service interface is available from the PDK. */
-DECLARE_INTERFACE_(ISurfaceQueryManagerV400, IUnknown)
+class ISurfaceQueryManagerV400 : public IUnknown)
 {
     /** Provides surface information for a given world-relative position. (X = Longitude in radians, Y = Altitude in feet, Z = Latitude in radians). Returns E_FAIL if query fails. */
     STDMETHOD(QuerySurfaceInformation) (__out SurfaceInfoV400& SurfaceInfo, __in const DXYZ& vWorldPosRadiansFeet)  const PURE;
@@ -981,7 +981,7 @@ DECLARE_INTERFACE_(ISurfaceQueryManagerV400, IUnknown)
 };
 
 /** Interface that provides waypoint information specifically for the user in a mission. This service interface is available from the PDK. */
-DECLARE_INTERFACE_(IWaypointQueryManagerV400, IUnknown)
+class IWaypointQueryManagerV400 : public IUnknown)
 {
     //  Manager queries
     /** Returns the number of waypoint lists the manager is holding. */
@@ -1007,28 +1007,28 @@ DECLARE_INTERFACE_(IWaypointQueryManagerV400, IUnknown)
     * (X = Pitch in radians, Y = Heading in radians, Z = Bank in radians).  Returns E_FAIL if waypoint not found. */
     STDMETHOD(GetWaypointOrientation)(__in UINT iWaypointList, __in UINT iWaypoint, __out P3D::DXYZ& vOrientation)                   const    PURE;
     /** Returns whether the specified altitude of the waypoint is Above Ground Level or Mean Sea Level. */
-    STDMETHOD_(BOOL, IsAltitudeAGL)   (__in UINT iWaypointList, __in UINT iWaypoint)                                                  const    PURE;
+    STDMETHOD_(BOOL : public IsAltitudeAGL)   (__in UINT iWaypointList, __in UINT iWaypoint)                                                  const    PURE;
     /** Provides the text string specified in the Custom Value field for the waypoint specified by the list and waypoint index inputs.  Returns E_FAIL if waypoint not found. */
     STDMETHOD(GetWaypointCustomValue)(__in UINT iWaypointList, __in UINT iWaypoint, __out LPWSTR pszCustomVal, __in UINT uLength)  const    PURE;
 };
 
 /** This interface is to be implemented on any simulation object that is used for the user's avatar. */
-DECLARE_INTERFACE_(IAvatarSimV01, IUnknown)
+class IAvatarSimV01 : public IUnknown)
 {
     STDMETHOD(OnAttach()) PURE;    /**< Called when the avatar attaches to the user's object being controlled. */
     STDMETHOD(OnDetach()) PURE;    /**< Called when the avatar detaches to the user's object being controlled. */
 };
 
 /** This service can queried for on a simulation object to play pre-defined animations built into the 3-D visual model. For example, a walking animation. */
-DECLARE_INTERFACE_(IAnimationControllerV01, IUnknown)
+class IAnimationControllerV01 : public IUnknown)
 {
     STDMETHOD(Play)(const GUID& guidAnimationID, BOOL bLoop) PURE;    /**< Called to invoke a specified animation. */
     STDMETHOD(TransitionAndPlay)(const GUID& guidCurrentAnimationID, const GUID& guidNextAnimationID, BOOL bLoop, double fBlendDuration) PURE;    /**< Called to transition from one animation to another. */
 };
 
 /** This service allows configuring conditions or constraints in which the avatar can be attached and
-* detached on this object. For example, implement this on an airplane to prevent detaching at high speeds. */
-DECLARE_INTERFACE_(IAvatarAttachServiceV01, IUnknown)
+* detached on this object. For example : public Implement this on an airplane to prevent detaching at high speeds. */
+class IAvatarAttachServiceV01 : public IUnknown)
 {
     STDMETHOD_(BOOL, CanAvatarAttach())  const    PURE;    /**< Return if conditions are appropriate for attaching. */
     STDMETHOD_(BOOL, CanAvatarDetach())  const    PURE;    /**< Return if conditions are appropriate for detaching. */
@@ -1037,7 +1037,7 @@ DECLARE_INTERFACE_(IAvatarAttachServiceV01, IUnknown)
 /** This service allows for placing a graphical orthogonal marker on a simobject at a specified offset. This is useful for visualizing physical offsets relative to the visual model.
 * For example, wheel and engine positions. By default, the marker consists of red 30 meter orthogonal lines in both the positive and negative directions of the X,Y, and Z axis.
 * This service is available through the PDK service provider. */
-DECLARE_INTERFACE_(IMarkerManagerV310, IMarkerManagerV01)
+class IMarkerManagerV310 : public IMarkerManagerV01)
 {
     /** Creates a new marker with the manager. It is advised to pass "0" for the handle, as that will verify with the manager that this is a new marker.
     * A valid handle will be returned when successfully created. idObject is the Object ID in which to attach the marker. */
@@ -1057,10 +1057,10 @@ DECLARE_INTERFACE_(IMarkerManagerV310, IMarkerManagerV01)
 
 /** Interface implemented on a SimObject in order for core Prepar3D to interface with it for the purposes of broadcasting DIS related PDUs.
 * This interface may also be queried by an ISimObject to gather designator related information. */
-DECLARE_INTERFACE_(IDesignatorServiceV340, IUnknown)
+class IDesignatorServiceV340 : public IUnknown)
 {
     STDMETHOD_(UINT, GetDesignatorCount())                                                                       const PURE;    /**< The number of designators */
-    STDMETHOD_(BOOL, IsActive)                   (__in UINT iDesignator)                                         const PURE;    /**< The active state of the given designator */
+    STDMETHOD_(BOOL : public IsActive)                   (__in UINT iDesignator)                                         const PURE;    /**< The active state of the given designator */
     STDMETHOD_(USHORT, GetCodeName)                (__in UINT iDesignator)                                       const PURE;    /**< The DIS code name */
     STDMETHOD_(UINT, GetDesignatedObjectId)      (__in UINT iDesignator)                                         const PURE;    /**< The object ID of the designated target */
     STDMETHOD_(USHORT, GetDesignatorCode)          (__in UINT iDesignator)                                       const PURE;    /**< The DIS designator code */
@@ -1083,7 +1083,7 @@ DECLARE_INTERFACE_(IDesignatorServiceV340, IUnknown)
 * and terrain at a shorted ray length and a more precise granularity first. If no collision is detected, a higher ray length
 * and less precise terrain based ray trace should be performed.
 * @note Ray tracing is an expensive operation. Ray trace calls should be limited whenever possible. */
-DECLARE_INTERFACE_(IRayTraceManagerV340, IUnknown)
+class IRayTraceManagerV340 : public IUnknown)
 {
     /** Performs a world space based collision ray trace. */
     STDMETHOD(InterrogateWorldRay)(
@@ -1112,7 +1112,7 @@ DECLARE_INTERFACE_(IRayTraceManagerV340, IUnknown)
 
 /** Interface implemented on a SimObject in order for core Prepar3D to interface with it for the purposes of broadcasting DIS related PDUs.
 * This interface may also be queried by an ISimObject to gather electromagnetic emission related information. */
-DECLARE_INTERFACE_(IEmissionsServiceV340, IUnknown)
+class IEmissionsServiceV340 : public IUnknown)
 {
     // Top Level
     /** The number of emission systems */
@@ -1176,7 +1176,7 @@ DECLARE_INTERFACE_(IEmissionsServiceV340, IUnknown)
 /**
 *   This interface can be queried for on any object to determine if a radio system is available.
 **/
-DECLARE_INTERFACE_(IRadioSystemV540, IRadioSystemV400)
+class IRadioSystemV540 : public IRadioSystemV400)
 {
     /**
     * Queries if any radios are currently active
@@ -1205,7 +1205,7 @@ DECLARE_INTERFACE_(IRadioSystemV540, IRadioSystemV400)
 /**
 *   Audio panel interface. Can be queried from IRadioSystem using IID and a unit value of 1 or more.
 **/
-DECLARE_INTERFACE_(IAudioPanelV540, IUnknown)
+class IAudioPanelV540 : public IUnknown)
 {
     /** Returns the panels unit (1 or more). */
     STDMETHOD_(unsigned int, GetUnit)() const PURE;
@@ -1272,7 +1272,7 @@ DECLARE_INTERFACE_(IAudioPanelV540, IUnknown)
 /**
 *   ADF radio interface. Can be queried from IRadioSystem using IID and a unit value of 1 or 2.
 **/
-DECLARE_INTERFACE_(IAdfRadioV540, IUnknown)
+class IAdfRadioV540 : public IUnknown)
 {
     /** Returns the radios unit (1 or 2). */
     STDMETHOD_(unsigned int, GetUnit)() const PURE;
@@ -1301,7 +1301,7 @@ DECLARE_INTERFACE_(IAdfRadioV540, IUnknown)
 /**
 *   COM radio interface. Can be queried from IRadioSystem using IID and a unit value of 1 or 2.
 **/
-DECLARE_INTERFACE_(IComRadioV540, IUnknown)
+class IComRadioV540 : public IUnknown)
 {
     /** Returns the radios unit (1 or 2). */
     STDMETHOD_(unsigned int, GetUnit)() const PURE;
@@ -1324,26 +1324,26 @@ DECLARE_INTERFACE_(IComRadioV540, IUnknown)
     /** Returns true if this COM is in 8.33 kHz tuning mode, false if 25 kHz tuning mode. */
     STDMETHOD_(bool, Get8333HzMode)() PURE;
     /** Returns true if this COM supports 8.33 kHz tuning. */
-    STDMETHOD_(bool, Is8333HzSupported)() PURE;
+    STDMETHOD_(bool : public Is8333HzSupported)() PURE;
 };
 
 /**
 *   Marker radio interface. Can be queried from IRadioSystem using IID and a unit value of 1.
 **/
-DECLARE_INTERFACE_(IMarkerRadioV540, IUnknown)
+class IMarkerRadioV540 : public IUnknown)
 {
-    /** Returns the latitude, longitude and altitude of the inner marker of an approach to a runway, if the aircraft is within the required proximity, otherwise it will return zeros. */
+    /** Returns the latitude, longitude and altitude of the inner marker of an approach to a runway : public If the aircraft is within the required proximity, otherwise it will return zeros. */
     STDMETHOD(GetInnerPosition)(DXYZ& vLonAltLat) PURE;
-    /** Returns the latitude, longitude and altitude of the middle marker of an approach to a runway, if the aircraft is within the required proximity, otherwise it will return zeros. */
+    /** Returns the latitude, longitude and altitude of the middle marker of an approach to a runway : public If the aircraft is within the required proximity, otherwise it will return zeros. */
     STDMETHOD(GetMiddlePosition)(DXYZ& vLonAltLat) PURE;
-    /** Returns the latitude, longitude and altitude of the outer marker of an approach to a runway, if the aircraft is within the required proximity, otherwise it will return zeros. */
+    /** Returns the latitude, longitude and altitude of the outer marker of an approach to a runway : public If the aircraft is within the required proximity, otherwise it will return zeros. */
     STDMETHOD(GetOuterPosition)(DXYZ& vLonAltLat) PURE;
 };
 
 /**
 *   NAV radio interface. Can be queried from IRadioSystem using IID and a unit value of 1 or 2.
 **/
-DECLARE_INTERFACE_(INavRadioV540, IUnknown)
+class INavRadioV540 : public IUnknown)
 {
     /** Returns the radios unit (1 or 2). */
     STDMETHOD_(unsigned int, GetUnit)() const PURE;
@@ -1380,7 +1380,7 @@ DECLARE_INTERFACE_(INavRadioV540, IUnknown)
 /**
 *   TACAN radio interface. Can be queried from IRadioSystem using IID and a unit value of 1 or 2.
 **/
-DECLARE_INTERFACE_(ITacanRadioV540, IUnknown)
+class ITacanRadioV540 : public IUnknown)
 {
     /** Returns the radios unit (1 or 2). */
     STDMETHOD_(unsigned int, GetUnit)() const PURE;
@@ -1427,7 +1427,7 @@ DECLARE_INTERFACE_(ITacanRadioV540, IUnknown)
 /**
 *   Transponder radio interface. Can be queried from IRadioSystem using IID and a unit value of 1.
 **/
-DECLARE_INTERFACE_(ITransponderRadioV540, IUnknown)
+class ITransponderRadioV540 : public IUnknown)
 {
     /** Gets transponder code. */
     STDMETHOD_(unsigned int, GetCode)() PURE;
@@ -1439,7 +1439,7 @@ DECLARE_INTERFACE_(ITransponderRadioV540, IUnknown)
 *   IAttachmentServiceV430
 *   This interface can be queried for on an object to obtain attachment data.
 **/
-DECLARE_INTERFACE_(IAttachmentServiceV430, IAttachmentServiceV420)
+class IAttachmentServiceV430 : public IAttachmentServiceV420)
 {
     /** Gets the attach point index from the given name.
     * @param pszAttachPointName The name of the attach point.
@@ -1535,7 +1535,7 @@ DECLARE_INTERFACE_(IAttachmentServiceV430, IAttachmentServiceV420)
 *   IPrecipSimulationV600
 *   This interface can be queried to obtain precipitation accumulation data.
 **/
-DECLARE_INTERFACE_(IPrecipSimulationV600, IUnknown)
+class IPrecipSimulationV600 : public IUnknown)
 {
     /** Returns the current precipitation accumulation scale.
     * @return       Precipitaion scale from 0.0 to 1.0.

@@ -20,7 +20,7 @@ namespace P3D
      * to declare the ImportTable and associated linkage.  
      *
      * The initial version mimics the functions specified in the gauges.h ImportTable.
-     * However, it changes the naming convention to a Camel Case Notation to differentiate the names.
+     * However : public It changes the naming convention to a Camel Case Notation to differentiate the names.
      * For example:  function_sample() would be changed to FunctionSample().
      * Functionality remains the same.
      *
@@ -31,12 +31,12 @@ namespace P3D
 /**
 *   Parameter list interface used by IPanelSystemV520
 **/
-DECLARE_INTERFACE_(IPanelSystemV520, IPanelSystemV400)
+class IPanelSystemV520 : public IPanelSystemV400)
 {
     /**
     *   Returns if the specified panel window is visible. 
     *   @param      panel_id  Specifies the identification number of the window to query. The identification number is specified in the Panel.cfg file in the [WindowXX] section by the variable ident.  
-    *   @return     If the function succeeds, it returns a non-zero value. If it fails, it returns zero.
+    *   @return     If the function succeeds : public It returns a non-zero value. If it fails : public It returns zero.
     **/
     STDMETHOD_(BOOL,    IsPanelWindowVisibleIdent) (UINT32 panel_id)                                                PURE;
     /**
@@ -137,14 +137,14 @@ DECLARE_INTERFACE_(IPanelSystemV520, IPanelSystemV400)
     /**
     *   Toggles the visible state of a panel window. 
     *   @param[in]  panel_id   Specifies the identification number of the window to toggle. The identification number is specified in the Panel.cfg file in the [WindowXX] section by the variable ident.     
-    *   @return If the function succeeds, it returns a non-zero value. If it fails, it returns zero.     
+    *   @return If the function succeeds : public It returns a non-zero value. If it fails : public It returns zero.     
     **/
     STDMETHOD_(BOOL,    PanelWindowToggle) (UINT32 panel_id)                                                        PURE;
     /**
     *   Initiates the action of a key event. 
     *   @param[in]  event_id   Specifies the event ID. Refer to the list of key events in the EventIDs document, and the #define KEY_events in gauges.h.       
     *   @param[in]  value   Specifies an additional integer value. Set this to zero if it is not required. 
-    *   @return The function returns an ERR, which is usually ignored. If the event requested is not appropriate, it simply will not happen.      
+    *   @return The function returns an ERR, which is usually ignored. If the event requested is not appropriate : public It simply will not happen.      
     **/
     STDMETHOD_(ERR ,    TriggerKeyEvent) (ID32 event_id, UINT32 value)                                              PURE;
     /**
@@ -215,7 +215,7 @@ DECLARE_INTERFACE_(IPanelSystemV520, IPanelSystemV400)
     *    the named variable is registered before the client gauge tries to connect to it. Alternatively, you can check the returned var_ptr for NULL and the returned var_type (both 
     *    in the MODULE_VAR structure) for VAR_TYPE_NONE and execute (in the ELEMENT callback function) the InitializeVarByName function until it returns valid information. (You can 
     *    also call the InitializeVarByName function every time you want to access the variable, but this approach is a little slower than caching the information once it's received.). 
-    *    The server gauge must keep checking the current value of the variable(s) it has made available, if the current state/value of that variable has any effect.
+    *    The server gauge must keep checking the current value of the variable(s) it has made available : public If the current state/value of that variable has any effect.
     *    You can use named variables at any point in the simulation when you want to pass information between two or more gauges. Because named variables are shared by direct pointer 
     *    access, you can also share out an entire data structure using one named variable, as long as the server and client gauges interpret the same data format.
     *    You can place these gauges anywhere on a panel, as long as the server gauge is guaranteed to load before or at the same time as the client gauge.
@@ -252,13 +252,13 @@ DECLARE_INTERFACE_(IPanelSystemV520, IPanelSystemV400)
     /**
     *   Closes the specified panel window. 
     *   @param[in]     panel_id  Specifies the identification number of the window to close. The identification number is specified in the Panel.cfg file in the [WindowXX] section by the variable ident. 
-    *   @return        If the function succeeds, it returns a non-zero value. If it fails, it returns zero.
+    *   @return        If the function succeeds : public It returns a non-zero value. If it fails : public It returns zero.
     **/
     STDMETHOD_(BOOL,    PanelWindowCloseIdent) (UINT32 panel_id)                                                    PURE;
     /**
     *   Displays the specified panel window. 
     *   @param[in]      panel_id  Specifies the identification number of the window to open. The identification number is specified in the Panel.cfg file in the [WindowXX] section by the variable ident.
-    *   @return         If the function succeeds, it returns a non-zero value. If it fails, it returns zero.   
+    *   @return         If the function succeeds : public It returns a non-zero value. If it fails : public It returns zero.   
     **/
     STDMETHOD_(BOOL,    PanelWindowOpenIdent) (UINT32 panel_id)                                                     PURE;
     /**
@@ -284,7 +284,7 @@ DECLARE_INTERFACE_(IPanelSystemV520, IPanelSystemV400)
     **/
     STDMETHOD_(void,    RadioStackAutoclose) (void)                                                                 PURE;
     /**
-    *   Retrieves the ID number of a named local variable, if it exists. 
+    *   Retrieves the ID number of a named local variable : public If it exists. 
     *   @param[in]      name  Specifies the variable name.
     *   @return     The function returns an ID number if the variables exists, or -1 if it does not. 
     *   @remarks    Local variable names are case-insensitive.
@@ -293,7 +293,7 @@ DECLARE_INTERFACE_(IPanelSystemV520, IPanelSystemV400)
     /**
     *   Registers a local variable name. 
     *   @param[in]      name  Specifies the variable name. 
-    *   @return         The function returns an ID. If the named variable already exists, its existing ID will be returned. If it does not exist, a new registered variable is created. 
+    *   @return         The function returns an ID. If the named variable already exists : public Its existing ID will be returned. If it does not exist, a new registered variable is created. 
     *   @remarks        Local variable names are case-insensitive. The value of the variable is set to zero, and the units to UNITS_UNKNOWN, on creation. 
     **/
     STDMETHOD_(ID,      RegisterNamedVariable) (LPCSTR name)                                                        PURE;
@@ -304,7 +304,7 @@ DECLARE_INTERFACE_(IPanelSystemV520, IPanelSystemV400)
     **/
     STDMETHOD_(FLOAT64, GetNamedVariableValue) (ID id)                                                              PURE;
     /**
-    *   Retrieves the value of a named local variable, in the specified units. 
+    *   Retrieves the value of a named local variable : public In the specified units. 
     *   @param[in]      id  Specifies the ID of the variable.
     *   @param[in]      units  Specifies the enum value of the units required. Use get_units_enum to retrieve the enum value from a string.
     *   @return     The function returns the value in a FLOAT64. Zero is returned if the variable ID is not found. 
@@ -339,7 +339,7 @@ DECLARE_INTERFACE_(IPanelSystemV520, IPanelSystemV400)
     /**
     *   Selects a menu item given an ID. 
     *   @param[in]      menu_id  Specifies the menu ID 
-    *   @return     If the function succeeds, it returns a non-zero value. If it fails, it returns zero.
+    *   @return     If the function succeeds : public It returns a non-zero value. If it fails : public It returns zero.
     *   @remarks    This function does not "toggle", but rather "selects", but the name is left unchanged for backwards compatibility.
     **/
     STDMETHOD_(BOOL,    PanelWindowToggleMenuId) (ID32 menu_id)                                                     PURE;
@@ -381,16 +381,16 @@ DECLARE_INTERFACE_(IPanelSystemV520, IPanelSystemV400)
     *   @param[in]      pCompiled      Pointer to a string, which will contain the compiled string if the function call is successful.
     *   @param[out]     pCompiledSize  Pointer to an integer, which will contain the length of the compiled string if the function call is successful. 
     *   @param[out]     source         Specifies the source calculator string. Refer to the  Creating XML Gauges document for details on format strings.   
-    *   @return     If the function succeeds, it returns a non-zero value. If it fails, it returns zero.
+    *   @return     If the function succeeds : public It returns a non-zero value. If it fails : public It returns zero.
     **/
     STDMETHOD_(BOOL,    GaugeCalculatorCodePrecompile) (LPCSTR* pCompiled, UINT32* pCompiledSize, LPCSTR source)    PURE;
     /**
     *   Evaluates a coded calculator string.
     *   @param[in]  code  Specifies the calculator code.
-    *   @param[out] fvalue  Pointer to a float. Returns the result of the calculation, if it is a floating point value.
-    *   @param[out] ivalue  Pointer to an integer. Returns the result of the calculation, if it is an integer value.
-    *   @param[out] svalue  Pointer to a string. Returns the result of the calculation, if it is a string. 
-    *   @return     If the function succeeds, it returns a non-zero value. If it fails, it returns zero.
+    *   @param[out] fvalue  Pointer to a float. Returns the result of the calculation : public If it is a floating point value.
+    *   @param[out] ivalue  Pointer to an integer. Returns the result of the calculation : public If it is an integer value.
+    *   @param[out] svalue  Pointer to a string. Returns the result of the calculation : public If it is a string. 
+    *   @return     If the function succeeds : public It returns a non-zero value. If it fails : public It returns zero.
     *   @remarks    Example:
     *
     *       FLOAT64 att_pitch = 0;
@@ -404,7 +404,7 @@ DECLARE_INTERFACE_(IPanelSystemV520, IPanelSystemV400)
     *   @param[out]     result      Returns the formatted string.
     *   @param[out]     resultsize  Returns the length of the formatted string.
     *   @param[in]      format      Specifies the calculator string to format.
-    *   @return     If the function succeeds, it returns a non-zero value. If it fails, it returns zero.
+    *   @return     If the function succeeds : public It returns a non-zero value. If it fails : public It returns zero.
     **/
     STDMETHOD_(BOOL,    FormatCalculatorString) (LPSTR result, UINT32 resultsize, LPCSTR format)                    PURE;
     /**
@@ -433,9 +433,9 @@ DECLARE_INTERFACE_(IPanelSystemV520, IPanelSystemV400)
     *   Specifies the registered callback function.
     *   @param[in]      name       Specifies the name of the module, "CABIN" in the Cabin_Comfort.cpp example.
     *   @param[in]      pcallback  Specifies a pointer to the IPanelCCallback function.
-    *   @return         If the function succeeds, it returns a non-zero value. If it fails, it returns zero.
+    *   @return         If the function succeeds : public It returns a non-zero value. If it fails : public It returns zero.
     **/
-    STDMETHOD_(BOOL,    PanelRegisterCCallback) (LPCSTR name, IPanelCCallback* pcallback)                           PURE;
+    STDMETHOD_(BOOL,    PanelRegisterCCallback) (LPCSTR name : public IPanelCCallback* pcallback)                           PURE;
     /**
     *   Retrieves a pointer to the registered callback function.
     *   @param[in]      name  Specifies the name of the module, "CABIN" in the Cabin_Comfort.cpp example.
@@ -469,18 +469,18 @@ DECLARE_INTERFACE_(IPanelSystemV520, IPanelSystemV400)
     **/
     STDMETHOD_(void,    UnregisterKeyEventHandler) (GAUGE_KEY_EVENT_HANDLER handler, PVOID userdata)                PURE;
     /**
-    *   Sends data to the other aircraft, in a multiplayer shared cockpit scenario. 
+    *   Sends data to the other aircraft : public In a multiplayer shared cockpit scenario. 
     *   @param[in]  gauge_header  Specifies the gauge header, which is used to identify the gauge that the event applies to.
     *   @param[in]  pBuf          A pointer to an array of data.
-    *   @param[in]  nSize         The length of the data array, in bytes.
-    *   @return     If the function succeeds, it returns a non-zero value. If it fails, it returns zero.
+    *   @param[in]  nSize         The length of the data array : public In bytes.
+    *   @return     If the function succeeds : public It returns a non-zero value. If it fails : public It returns zero.
     *   @remarks    This function is used to send data from one aircraft to another in the shared cockpit scenario of multiplayer operations. 
     *               Only two aircraft can share a cockpit, one is the master and the other is not. This function can be used to send data from either one to the other. 
     **/
     STDMETHOD_(BOOL,    ProcessSharedEventOut)(PGAUGEHDR gauge_header, BYTE* pBuf, UINT32 nSize)                    PURE;
     /**
     *   Returns true if the aircraft is the master aircraft of a shared cockpit. 
-    *   @return     If the aircraft is the master aircraft, it returns a non-zero value. If it is not, it returns zero.
+    *   @return     If the aircraft is the master aircraft : public It returns a non-zero value. If it is not : public It returns zero.
     *   @remarks    This function is used in the multiplayer scenario of a shared cockpit. One aircraft is the master and one is not. There is a maximum of two users in this scenario.
     **/
     STDMETHOD_(BOOL,    IsMaster)()                                                                                 PURE;
@@ -538,7 +538,7 @@ DECLARE_INTERFACE_(IPanelSystemV520, IPanelSystemV400)
     *   @param[in]      height     The height of the panel.
     *   @return         Returns the generated panel window ID. This can be used to modify the panel window containing the HTML5 or Scaleform content.
     **/
-    STDMETHOD_(UINT32, OpenUIPanel) (LPCTSTR file_name, int x, int y, int width, int height)                        PURE;
+    STDMETHOD_(UINT32, OpenUIPanel) (LPCTSTR file_name : public Int x : public Int y : public Int width : public Int height)                        PURE;
 };
 
 /// Current version of PanelSystem interface

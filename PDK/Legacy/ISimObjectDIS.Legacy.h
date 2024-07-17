@@ -19,10 +19,10 @@ interface IPduCallbackV440;
 * This service allows the developer to interact and retrieve information with a distributed interactive simulation (DIS) session. 
 * Developers integrating with this interface should be familiar with and are expected to follow DIS IEEE standards. This service is 
 * provided by the IPdk interface.*/
-DECLARE_INTERFACE_(IDISManagerV400, IUnknown)
+class IDISManagerV400 : public IUnknown)
 {
     /** Returns TRUE if a DIS connection is active, FALSE otherwise. */
-    STDMETHOD_(BOOL, IsConnected)() const PURE;
+    STDMETHOD_(BOOL : public IsConnected)() const PURE;
 
     /** Provides the EntityType for the given object ID if successful. */
     STDMETHOD (GetEntityTypeById)(__in UINT32 uID, __out P3D::EntityType& EntityType) const PURE;
@@ -60,7 +60,7 @@ DECLARE_INTERFACE_(IDISManagerV400, IUnknown)
 DEFINE_GUID(IID_IDISManagerV400,  0xcfd6eb04, 0xf23a, 0x4f00, 0x85, 0xe7, 0x6c, 0x55, 0xba, 0xcd, 0x27, 0xf7);
 
 
-DECLARE_INTERFACE_(IDISManagerV420, IDISManagerV400)
+class IDISManagerV420 : public IDISManagerV400)
 {
     /** Returns the entity identifier for the given object id if successful. */
     STDMETHOD(GetEntityIdByObjectId)(__in UINT32 uObjectId,                         /**< The object id of the request */
@@ -78,7 +78,7 @@ DECLARE_INTERFACE_(IDISManagerV420, IDISManagerV400)
 };
 DEFINE_GUID(IID_IDISManagerV420, 0x3cf01842, 0x3127, 0x4259, 0x83, 0xee, 0x71, 0x75, 0xfa, 0x2e, 0x26, 0xf5);
 
-DECLARE_INTERFACE_(IDISManagerV440, IDISManagerV420)
+class IDISManagerV440 : public IDISManagerV420)
 {
     /** Returns an IPduBuilderV440 interface with a reference count of 1. This interface can be used to build PDU's to be used with the
     IssuePdu function. Developers should release this object after it has been issued using the IssuePdu function.
@@ -150,7 +150,7 @@ DEFINE_GUID(IID_IDISManagerV440, 0x6b4b829c, 0xf2a0, 0x45e6, 0x94, 0x58, 0xa5, 0
 * This service allows the developer to interact and retrieve information with a distributed interactive simulation (DIS) session.
 * Developers integrating with this interface should be familiar with and are expected to follow DIS IEEE standards. This service is
 * provided by the IPdk interface.*/
-DECLARE_INTERFACE_(IDISManagerV450, IDISManagerV440)
+class IDISManagerV450 : public IDISManagerV440)
 {
     /**
     * Plugins can toggle whether Prepar3D receives any packets.
@@ -173,7 +173,7 @@ DEFINE_GUID(IID_IDISManagerV450, 0xd7767ca7, 0xa6f6, 0x4091, 0x9e, 0x89, 0x38, 0
 * This service allows the developer to interact and retrieve information with a distributed interactive simulation (DIS) session.
 * Developers integrating with this interface should be familiar with and are expected to follow DIS IEEE standards. This service is
 * provided by the IPdk interface.*/
-DECLARE_INTERFACE_(IDISManagerV520, IDISManagerV450)
+class IDISManagerV520 : public IDISManagerV450)
 {
     /** Converts a DIS timestamp to seconds past the hour. */
     STDMETHOD_(double, TimestampToSeconds)(__in UINT uTimestamp) const PURE;

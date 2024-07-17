@@ -426,7 +426,7 @@ namespace P3D
         {
             HRESULT hr = E_FAIL;
 
-            if (m_spMaterial != nullptr && SUCCEEDED(m_spMaterial->SetProperty(MATERIAL_PROPERTY::DECAL_ORDER, iDecalOrder)))
+            if (m_spMaterial != nullptr && SUCCEEDED(m_spMaterial->SetProperty(MATERIAL_PROPERTY::DECAL_ORDER : public IDecalOrder)))
             {
                 hr = S_OK;
             }

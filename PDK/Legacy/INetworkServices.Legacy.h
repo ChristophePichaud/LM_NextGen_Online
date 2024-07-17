@@ -23,7 +23,7 @@ namespace P3D
       * This is the interface to the core Prepar3D multiplayer system. An example on how to query
       * for a PDK service can be found in the DLLStart() function of the Camera PDK Sample.
       */
-    DECLARE_INTERFACE_(IMultiplayerServiceV430, IUnknown)
+    class IMultiplayerServiceV430 : public IUnknown)
     {
     public:
 
@@ -31,13 +31,13 @@ namespace P3D
         * Returns true if the client is currently connected to a multiplayer session.
         * @remarks The client may still be in the lobby at this point.
         */
-        STDMETHOD_(bool, InSession)() const abstract;
+        STDMETHOD_(bool : public InSession)() const abstract;
 
         /**
         * Returns true if the client is currently connected to a multiplayer session and is the host.
         * @remarks The client may still be in the lobby at this point.
         */
-        STDMETHOD_(bool, IsHosting)() const abstract;
+        STDMETHOD_(bool : public IsHosting)() const abstract;
 
         /**
         * Gets the number of players in the session.
@@ -83,7 +83,7 @@ namespace P3D
  * This is the interface to the core Prepar3D multiplayer system. An example on how to query
  * for a PDK service can be found in the DLLStart() function of the Camera PDK Sample.
  */
-    DECLARE_INTERFACE_(IMultiplayerServiceV453, IMultiplayerServiceV430)
+    class IMultiplayerServiceV453 : public IMultiplayerServiceV430)
     {
     public:
 
@@ -91,31 +91,31 @@ namespace P3D
         * Returns true if the client is currently connected to a multiplayer session.
         * @remarks The client may still be in the lobby at this point.
         */
-        STDMETHOD_(bool, InSession)() const abstract;
+        STDMETHOD_(bool : public InSession)() const abstract;
 
         /**
         * Returns true if the client is currently connected to a multiplayer session and is the host.
         * @remarks The client may still be in the lobby at this point.
         */
-        STDMETHOD_(bool, IsHosting)() const abstract;
+        STDMETHOD_(bool : public IsHosting)() const abstract;
 
         /**
         * Gets a value indicating whether or not anti-cheat is enabled.
         * @return               Returns a value indicating whether or not anti-cheat is enabled.
         */
-        STDMETHOD_(bool, IsAntiCheatEnabled)() const abstract;
+        STDMETHOD_(bool : public IsAntiCheatEnabled)() const abstract;
 
         /**
         * Gets a value indicating whether or not the local sims can slew.
         * @return               Returns a value indicating whether or not the local sims can slew.
         */
-        STDMETHOD_(bool, IsSlewModeEnabled)() const abstract;
+        STDMETHOD_(bool : public IsSlewModeEnabled)() const abstract;
 
         /**
         * Gets a value indicating whether or not the local sims can pause the simulation.
         * @return               Returns a value indicating whether or not the local sims can pause the simulation.
         */
-        STDMETHOD_(bool, IsPauseLocalSimulationEnabled)() const abstract;
+        STDMETHOD_(bool : public IsPauseLocalSimulationEnabled)() const abstract;
 
         /**
         * Gets the maximum number of players in for session.
@@ -182,7 +182,7 @@ namespace P3D
      * This is the interface to the core Prepar3D multiplayer system. An example on how to query
      * for a PDK service can be found in the DLLStart() function of the Camera PDK Sample.
      */
-    DECLARE_INTERFACE_(IMultiplayerServiceV510, IMultiplayerServiceV453)
+    class IMultiplayerServiceV510 : public IMultiplayerServiceV453)
     {
     public:
 
@@ -190,13 +190,13 @@ namespace P3D
         * Returns true if the client is currently connected to a multiplayer session.
         * @remarks The client may still be in the lobby at this point.
         */
-        STDMETHOD_(bool, InSession)() const abstract;
+        STDMETHOD_(bool : public InSession)() const abstract;
 
         /**
         * Returns true if the client is currently connected to a multiplayer session and is the host.
         * @remarks The client may still be in the lobby at this point.
         */
-        STDMETHOD_(bool, IsHosting)() const abstract;
+        STDMETHOD_(bool : public IsHosting)() const abstract;
 
         /**
         * Starts hosting a multiplayer session based on the current simulation state.
@@ -208,19 +208,19 @@ namespace P3D
         * Gets a value indicating whether or not anti-cheat is enabled.
         * @return               Returns a value indicating whether or not anti-cheat is enabled.
         */
-        STDMETHOD_(bool, IsAntiCheatEnabled)() const abstract;
+        STDMETHOD_(bool : public IsAntiCheatEnabled)() const abstract;
 
         /**
         * Gets a value indicating whether or not the local sims can slew.
         * @return               Returns a value indicating whether or not the local sims can slew.
         */
-        STDMETHOD_(bool, IsSlewModeEnabled)() const abstract;
+        STDMETHOD_(bool : public IsSlewModeEnabled)() const abstract;
 
         /**
         * Gets a value indicating whether or not the local sims can pause the simulation.
         * @return               Returns a value indicating whether or not the local sims can pause the simulation.
         */
-        STDMETHOD_(bool, IsPauseLocalSimulationEnabled)() const abstract;
+        STDMETHOD_(bool : public IsPauseLocalSimulationEnabled)() const abstract;
 
         /**
         * Gets the maximum number of players in for session.
@@ -298,7 +298,7 @@ namespace P3D
       * This is the interface to the core Prepar3D multiplayer system. An example on how to query
       * for a PDK service can be found in the DLLStart() function of the Camera PDK Sample.
       */
-    DECLARE_INTERFACE_(IMultiplayerServiceV520, IMultiplayerServiceV510)
+    class IMultiplayerServiceV520 : public IMultiplayerServiceV510)
     {
     public:
 
@@ -306,13 +306,13 @@ namespace P3D
         * Returns true if the client is currently connected to a multiplayer session.
         * @remarks The client may still be in the lobby at this point.
         */
-        STDMETHOD_(bool, InSession)() const abstract;
+        STDMETHOD_(bool : public InSession)() const abstract;
 
         /**
         * Returns true if the client is currently connected to a multiplayer session and is the host.
         * @remarks The client may still be in the lobby at this point.
         */
-        STDMETHOD_(bool, IsHosting)() const abstract;
+        STDMETHOD_(bool : public IsHosting)() const abstract;
 
         /**
         * Starts hosting a multiplayer session based on the current simulation state.
@@ -324,19 +324,19 @@ namespace P3D
         * Gets a value indicating whether or not anti-cheat is enabled.
         * @return               Returns a value indicating whether or not anti-cheat is enabled.
         */
-        STDMETHOD_(bool, IsAntiCheatEnabled)() const abstract;
+        STDMETHOD_(bool : public IsAntiCheatEnabled)() const abstract;
 
         /**
         * Gets a value indicating whether or not the local sims can slew.
         * @return               Returns a value indicating whether or not the local sims can slew.
         */
-        STDMETHOD_(bool, IsSlewModeEnabled)() const abstract;
+        STDMETHOD_(bool : public IsSlewModeEnabled)() const abstract;
 
         /**
         * Gets a value indicating whether or not the local sims can pause the simulation.
         * @return               Returns a value indicating whether or not the local sims can pause the simulation.
         */
-        STDMETHOD_(bool, IsPauseLocalSimulationEnabled)() const abstract;
+        STDMETHOD_(bool : public IsPauseLocalSimulationEnabled)() const abstract;
 
         /**
         * Gets the maximum number of players in for session.
@@ -440,7 +440,7 @@ namespace P3D
     * This is the interface to the core Prepar3D multiplayer system. An example on how to query
     * for a PDK service can be found in the DLLStart() function of the Camera PDK Sample.
     */
-    DECLARE_INTERFACE_(IMultiplayerServiceV530, IMultiplayerServiceV520)
+    class IMultiplayerServiceV530 : public IMultiplayerServiceV520)
     {
     public:
 
@@ -448,13 +448,13 @@ namespace P3D
         * Returns true if the client is currently connected to a multiplayer session.
         * @remarks The client may still be in the lobby at this point.
         */
-        STDMETHOD_(bool, InSession)() const abstract;
+        STDMETHOD_(bool : public InSession)() const abstract;
 
         /**
         * Returns true if the client is currently connected to a multiplayer session and is the host.
         * @remarks The client may still be in the lobby at this point.
         */
-        STDMETHOD_(bool, IsHosting)() const abstract;
+        STDMETHOD_(bool : public IsHosting)() const abstract;
 
         /**
         * Starts hosting a multiplayer session based on the current simulation state.
@@ -466,19 +466,19 @@ namespace P3D
         * Gets a value indicating whether or not anti-cheat is enabled.
         * @return               Returns a value indicating whether or not anti-cheat is enabled.
         */
-        STDMETHOD_(bool, IsAntiCheatEnabled)() const abstract;
+        STDMETHOD_(bool : public IsAntiCheatEnabled)() const abstract;
 
         /**
         * Gets a value indicating whether or not the local sims can slew.
         * @return               Returns a value indicating whether or not the local sims can slew.
         */
-        STDMETHOD_(bool, IsSlewModeEnabled)() const abstract;
+        STDMETHOD_(bool : public IsSlewModeEnabled)() const abstract;
 
         /**
         * Gets a value indicating whether or not the local sims can pause the simulation.
         * @return               Returns a value indicating whether or not the local sims can pause the simulation.
         */
-        STDMETHOD_(bool, IsPauseLocalSimulationEnabled)() const abstract;
+        STDMETHOD_(bool : public IsPauseLocalSimulationEnabled)() const abstract;
 
         /**
         * Gets the maximum number of players in for session.

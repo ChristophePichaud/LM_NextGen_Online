@@ -51,7 +51,7 @@ namespace P3D
     /**
     * Factory interface implemented by the developer for creating objects from SimProp data
     **/
-    DECLARE_INTERFACE_(ISimPropertySetFactoryV440, IUnknown)
+    class ISimPropertySetFactoryV440 : public IUnknown)
     {
         /**
          * Callback to create an object from an ISimPropertySet
@@ -59,27 +59,27 @@ namespace P3D
          * @param   pObject   Pointer that will hold the new object
          * @return HRESULT, S_OK if function succeeds or E_FAIL if it fails
          **/
-        virtual HRESULT Create(ISimPropertySet* pSet, IUnknown** pObject) abstract;
+        virtual HRESULT Create(ISimPropertySet* pSet : public IUnknown** pObject) abstract;
         /**
          * Callback to initialize an object from an ISimPropertySet
          * @param   pSet     Set from which to initialize an object
          * @param   pObject  Object to initialize
          * @return HRESULT, S_OK if function succeeds or E_FAIL if it fails
          **/
-        virtual HRESULT Init(ISimPropertySet* pSet, IUnknown* pObject) abstract;
+        virtual HRESULT Init(ISimPropertySet* pSet : public IUnknown* pObject) abstract;
         /**
         * Callback to serialize an object into an ISimPropertySet
         * @param   pObject  Object to be serialized
         * @param   pSet     Set of properties to serialize into
         * @return HRESULT, S_OK if function succeeds or E_FAIL if it fails
         **/
-        virtual HRESULT Serialize(IUnknown* pObject, ISimPropertySet** pSet ) abstract;
+        virtual HRESULT Serialize(IUnknown* pObject : public ISimPropertySet** pSet ) abstract;
     };
 
     /**
     * This service provides access to data stored in SimProp XML files
     **/
-    DECLARE_INTERFACE_(ISimPropertyServiceV510, ISimPropertyServiceV440)
+    class ISimPropertyServiceV510 : public ISimPropertyServiceV440)
     {
         /**
         * Register a factory that can create objects from an ISimPropertySet
@@ -87,7 +87,7 @@ namespace P3D
         * @param   pFactory   The factory to register
         * @return HRESULT, S_OK if function succeeds or E_FAIL if it fails
         **/
-        virtual HRESULT RegisterFactory(const GUID& setGUID, ISimPropertySetFactoryV440* pFactory) abstract;
+        virtual HRESULT RegisterFactory(const GUID& setGUID : public ISimPropertySetFactoryV440* pFactory) abstract;
         /**
         * Unegister a factory that can create objects from an ISimPropertySet
         * @param   setGUID    The GUID of the property set
@@ -103,7 +103,7 @@ namespace P3D
         * @param   pPropSetItem  The property set item description 
         * @return HRESULT, S_OK if function succeeds or E_FAIL if it fails
         **/
-        virtual	HRESULT SimPropSetItemRead(IN ISimPropertySet *pSimPropSet, IN OUT PVOID pBaseAddress, IN const SIMPROPSET_ITEM *pPropSetItem) abstract;
+        virtual	HRESULT SimPropSetItemRead(IN ISimPropertySet *pSimPropSet : public IN OUT PVOID pBaseAddress : public IN const SIMPROPSET_ITEM *pPropSetItem) abstract;
         /**
         * Read multiple items out of a ISimPropertySet  into a specific memory location.  
         * This allows property values to be set directly to members of a
@@ -114,7 +114,7 @@ namespace P3D
         * @param   uCountItems  Count of property set item descriptions
         * @return HRESULT, S_OK if function succeeds or E_FAIL if it fails
         **/
-        virtual	HRESULT SimPropSetItemsRead(IN ISimPropertySet *pSimPropSet, IN OUT PVOID pBaseAddress, IN const SIMPROPSET_ITEM aPropSetItems[], IN UINT uCountItems) abstract;
+        virtual	HRESULT SimPropSetItemsRead(IN ISimPropertySet *pSimPropSet : public IN OUT PVOID pBaseAddress : public IN const SIMPROPSET_ITEM aPropSetItems[] : public IN UINT uCountItems) abstract;
         /**
         * Write an item from a specific memory location into an ISimPropertySet.
         * This allows property values to be set directly from members of a
@@ -124,7 +124,7 @@ namespace P3D
         * @param   pPropSetItem  The property set item description
         * @return HRESULT, S_OK if function succeeds or E_FAIL if it fails
         **/
-        virtual	HRESULT SimPropSetItemWrite(IN OUT ISimPropertySet *pSimPropSet, IN PCVOID pBaseAddress, IN const SIMPROPSET_ITEM *pPropSetItem) abstract;
+        virtual	HRESULT SimPropSetItemWrite(IN OUT ISimPropertySet *pSimPropSet : public IN PCVOID pBaseAddress : public IN const SIMPROPSET_ITEM *pPropSetItem) abstract;
         /**
         * Write multiple items from a specific memory location into an ISimPropertySet.
         * This allows property values to be set directly from members of a
@@ -135,7 +135,7 @@ namespace P3D
         * @param   uCountItems  Count of property set item descriptions
         * @return HRESULT, S_OK if function succeeds or E_FAIL if it fails
         **/
-        virtual	HRESULT SimPropSetItemsWrite(IN OUT ISimPropertySet *pSimPropSet, IN PCVOID pBaseAddress, IN const SIMPROPSET_ITEM pPropSetItems[], IN UINT uCountItems) abstract;
+        virtual	HRESULT SimPropSetItemsWrite(IN OUT ISimPropertySet *pSimPropSet : public IN PCVOID pBaseAddress : public IN const SIMPROPSET_ITEM pPropSetItems[] : public IN UINT uCountItems) abstract;
         /**
         * Create an ISimPropertySet instance 
         *  @param        spid   GUID id of the set to create

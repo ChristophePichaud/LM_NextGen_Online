@@ -23,13 +23,13 @@ namespace P3D
     * Service for requesting general data not associated with any specific object in the application.
     * \remark Various "time" queries are made relative to either Zulu (UTC) time Local time using the TIMEREF enum.
     **/
-    DECLARE_INTERFACE_(IGlobalDataV610, IGlobalDataV430)
+    class IGlobalDataV610 : public IGlobalDataV430)
     {
         /**
         * Paused - Is application paused
         * \return   True if application is paused, false if not. 
         **/
-        STDMETHOD_(BOOL, IsPaused)()    const PURE;
+        STDMETHOD_(BOOL : public IsPaused)()    const PURE;
         /**
         * Sim Rate.  Percentage scalar on real time.  Typically ranges 0.25 - 128.0. Normal = 1.0.
         * \return   The current simulation rate.

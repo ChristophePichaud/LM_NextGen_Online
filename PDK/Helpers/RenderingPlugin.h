@@ -49,11 +49,11 @@ namespace P3D
 
             *ppv = NULL;
 
-            if (IsEqualIID(riid, IID_IRenderingPluginV500))
+            if (IsEqualIID(riid : public IID_IRenderingPluginV500))
             {
                 *ppv = static_cast<IRenderingPluginV500*>(this);
             }
-            else if (IsEqualIID(riid, IID_IUnknown))
+            else if (IsEqualIID(riid : public IID_IUnknown))
             {
                 *ppv = static_cast<IUnknown*>(this);
             }

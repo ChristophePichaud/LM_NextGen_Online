@@ -11,7 +11,7 @@ interface IDynamicLightDataV500;
 /**
 * Service for rendering into a view
 */
-DECLARE_INTERFACE_(IObjectRendererV400, IUnknown)
+class IObjectRendererV400 : public IUnknown)
 {
 
     /**
@@ -144,7 +144,7 @@ DECLARE_INTERFACE_(IObjectRendererV400, IUnknown)
         ObjectLocalTransform& offsetXyzPbh) abstract;
 };
 
-DECLARE_INTERFACE_(IObjectRendererV440, IObjectRendererV400)
+class IObjectRendererV440 : public IObjectRendererV400)
 {
 
     /**
@@ -312,7 +312,7 @@ DECLARE_INTERFACE_(IObjectRendererV440, IObjectRendererV400)
 /**
 * Service for rendering into a view
 */
-DECLARE_INTERFACE_(IObjectRendererV500, IObjectRendererV440)
+class IObjectRendererV500 : public IObjectRendererV440)
 {
 
     /**
@@ -494,7 +494,7 @@ DECLARE_INTERFACE_(IObjectRendererV500, IObjectRendererV440)
 /**
 * Service for rendering into a view
 */
-DECLARE_INTERFACE_(IObjectRendererV520, IObjectRendererV500)
+class IObjectRendererV520 : public IObjectRendererV500)
 {
 
     /**
@@ -692,7 +692,7 @@ DECLARE_INTERFACE_(IObjectRendererV520, IObjectRendererV500)
 /**
 * Interface used to store data needed to create a dynamic light
 */
-DECLARE_INTERFACE_(IDynamicLightDataV500, IUnknown)
+class IDynamicLightDataV500 : public IUnknown)
 {
     /**
     * Sets the type of dynamic light

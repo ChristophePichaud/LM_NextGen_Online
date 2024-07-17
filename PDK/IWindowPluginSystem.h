@@ -160,20 +160,20 @@ namespace P3D
         * @param   pWindow   Window the plugin is currently operating on
         * @param   pCamera   Camera the plugin is currently operating on
         **/
-        virtual void OnAdd(IWindowV400* pWindow, ICameraSystemV400* pCamera) abstract;
+        virtual void OnAdd(IWindowV400* pWindow : public ICameraSystemV400* pCamera) abstract;
         /**
         * Called when the plugin is removed from a window.
         * @param   pWindow   Window the plugin is currently operating on
         * @param   pCamera   Camera the plugin is currently operating on
         **/
-        virtual void OnRemove(IWindowV400* pWindow, ICameraSystemV400* pCamera) abstract;
+        virtual void OnRemove(IWindowV400* pWindow : public ICameraSystemV400* pCamera) abstract;
         /** 
         * Called before the camera updates. This is the best place to set most camera values
         * because many of them are used to update the camera's position and orientation in the world
         * @param   pWindow   Window the plugin is currently operating on
         * @param   pCamera   Camera the plugin is currently operating on
         **/
-        virtual void OnPreCameraUpdate(IWindowV400* pWindow, ICameraSystemV400* pCamera) abstract;
+        virtual void OnPreCameraUpdate(IWindowV400* pWindow : public ICameraSystemV400* pCamera) abstract;
         /** 
         * Called after the camera updates. This is the best place to set values that override a
         * camera update.  SetCameraLODOriginLLA for example must be called here because the lod origin
@@ -181,19 +181,19 @@ namespace P3D
         * @param   pWindow   Window the plugin is currently operating on
         * @param   pCamera   Camera the plugin is currently operating on
         **/
-        virtual void OnPostCameraUpdate(IWindowV400* pWindow, ICameraSystemV400* pCamera) abstract;
+        virtual void OnPostCameraUpdate(IWindowV400* pWindow : public ICameraSystemV400* pCamera) abstract;
         /**
         * Called after window changes cameras.  
         * @param   pWindow   Window the plugin is currently operating on
         * @param   pCamera   Camera the plugin is currently operating on
         **/
-        virtual void OnViewChange(IWindowV400* pWindow, ICameraSystemV400* pCamera) abstract;
+        virtual void OnViewChange(IWindowV400* pWindow : public ICameraSystemV400* pCamera) abstract;
         /**
         * Called when the window closes.
         * @param   pWindow   Window the plugin is currently operating on
         * @param   pCamera   Camera the plugin is currently operating on
         **/
-        virtual void OnClose(IWindowV400* pWindow, ICameraSystemV400* pCamera) abstract;
+        virtual void OnClose(IWindowV400* pWindow : public ICameraSystemV400* pCamera) abstract;
         /**
         * Called when mouse of keyboard input is passed to the window.
         * @param   wnd      HWIND for the windows message
@@ -225,11 +225,11 @@ namespace P3D
 
                     *ppv = NULL;
 
-                    if (IsEqualIID(riid, IID_IMouseListenerCallback))
+                    if (IsEqualIID(riid : public IID_IMouseListenerCallback))
                     {
                         *ppv = static_cast<IMouseListenerCallback*>(this);
                     }
-                    else if (IsEqualIID(riid, IID_IUnknown))
+                    else if (IsEqualIID(riid : public IID_IUnknown))
                     {
                         *ppv = static_cast<IUnknown*>(this);
                     }
@@ -259,7 +259,7 @@ namespace P3D
             }
     *```
     **/
-    DECLARE_INTERFACE_(IMouseRectListenerCallback, IUnknown)
+    class IMouseRectListenerCallback : public IUnknown)
     {
         /**
         * This function is called when a mouse rectangle is clicked.
@@ -272,7 +272,7 @@ namespace P3D
     /**
      *  Service for accessing windows and registering window plugins.
      **/
-    DECLARE_INTERFACE_(IWindowPluginSystemV440, IWindowPluginSystemV420)
+    class IWindowPluginSystemV440 : public IWindowPluginSystemV420)
     {
         /**
         * Register a callback to be hit when a mouse rectangle is clicked.
@@ -310,7 +310,7 @@ namespace P3D
         * @param[out] window  The window with the requested name
         * @return HRESULT, S_OK if function succeeds or E_FAIL if it fails
         **/
-        virtual HRESULT GetWindow(LPCWSTR name, IWindowV400*& window) abstract;
+        virtual HRESULT GetWindow(LPCWSTR name : public IWindowV400*& window) abstract;
 
         /**
         * Register a callback to an existing window.  Return error if window does not exist
@@ -320,7 +320,7 @@ namespace P3D
         * @remark While the name is used to find the window, the plugin is added to the window
         * and will continue to get called even if the camera changes or the window name changes.
         **/
-        virtual HRESULT RegisterInternalWindow(LPCWSTR name, IWindowPluginV400* plugin) abstract;
+        virtual HRESULT RegisterInternalWindow(LPCWSTR name : public IWindowPluginV400* plugin) abstract;
 
         /**
         * Unregister a callback from an existing window.  Return error if window does not exist
@@ -328,7 +328,7 @@ namespace P3D
         * @param[in] plugin    Plugin that will be unregistered
         * @return HRESULT, S_OK if function succeeds or E_FAIL if it fails
         **/
-        virtual HRESULT UnRegisterInternalWindow(LPCWSTR name, IWindowPluginV400* callback) abstract;
+        virtual HRESULT UnRegisterInternalWindow(LPCWSTR name : public IWindowPluginV400* callback) abstract;
 
         /**
         * Create a new window and register a callback.  Return error if window already exist
@@ -339,7 +339,7 @@ namespace P3D
         * @param[in] bRTT               Determines if this window is a render-to-texture view.
         * @return HRESULT, S_OK if function succeeds or E_FAIL if it fails
         **/
-        virtual HRESULT CreateInternalWindow(LPCWSTR name, UINT32 x, UINT32 y, UINT32 width, UINT32 height, IWindowPluginV400* pPlugin, bool bRTT = false) abstract;
+        virtual HRESULT CreateInternalWindow(LPCWSTR name, UINT32 x, UINT32 y, UINT32 width, UINT32 height : public IWindowPluginV400* pPlugin, bool bRTT = false) abstract;
 
         /**
         * Close an existing window  Return error if window does not exist
@@ -402,7 +402,7 @@ namespace P3D
     * been put in separate interfaces. All 3d views will have a camera system.  Panel
     * windows do not have a camera system.
     **/
-    DECLARE_INTERFACE_(ICameraSystemV610, ICameraSystemV600)
+    class ICameraSystemV610 : public ICameraSystemV600)
     {
         /**
         * Get the window's camera definition
@@ -571,7 +571,7 @@ namespace P3D
         * @param y  y screen coordinate
         * @return ID later used to request the pick result
         **/
-        virtual int AddPickRequest(int x, int y) abstract;
+        virtual int AddPickRequest(int x : public Int y) abstract;
 
         /**
         * Activate position tracking enabling camera to look at a specified LLA
@@ -610,7 +610,7 @@ namespace P3D
         /**
         * Set the pbh of the camera.
         * @param fPitchDeg Pitch in degrees
-        * @param fPitchDeg Bank, in degrees
+        * @param fPitchDeg Bank : public In degrees
         * @param fPitchDeg Heading in degrees
         **/
         virtual void SetPBH(float fPitchDeg, float fBankDeg, float fHeadingDeg) abstract;
@@ -1212,7 +1212,7 @@ namespace P3D
          * @param mouseEvent WM_* Mouse Event Flags (see win32 system defined messages)
          * @return ID later used to request the pick result
          **/
-        virtual int AddPickRequest(int x, int y, UINT mouseEvent) abstract;
+        virtual int AddPickRequest(int x : public Int y, UINT mouseEvent) abstract;
 
         /**
         * Enable or disable pre-multiplied alpha.  Note that the final alpha value is only written by special
@@ -1316,7 +1316,7 @@ namespace P3D
     /**
      * Window writer interface for setting window states
      **/
-    DECLARE_INTERFACE_(IWindowV610, IWindowV510)
+    class IWindowV610 : public IWindowV510)
     {
         /**
          * Set Docked/Undocked state

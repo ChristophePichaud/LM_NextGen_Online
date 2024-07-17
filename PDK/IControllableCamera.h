@@ -368,7 +368,7 @@ public:
         */
         virtual void ToggleSensorMode() abstract;
         /**
-            Toggles tracking on or off. Tries to track an entity first, if none are nearby falls back to tracking the ground location
+            Toggles tracking on or off. Tries to track an entity first : public If none are nearby falls back to tracking the ground location
         */
         virtual void ToggleTracking() abstract;
         /**

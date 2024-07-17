@@ -27,7 +27,7 @@ namespace P3D
     /** Service used to register for Prepar3D event callbacks
      *
      */
-    DECLARE_INTERFACE_(IEventServiceV400, IUnknown)
+    class IEventServiceV400 : public IUnknown)
     {
         /**
         *   Register an event callback.
@@ -35,14 +35,14 @@ namespace P3D
         *   @param    pCallback    Callback to register
         *   @return   S_OK if succeeded and E_FAIL if it failed.
         **/
-        virtual HRESULT RegisterCallback(const GUID & eventID, ICallbackV400 * pCallback) abstract;
+        virtual HRESULT RegisterCallback(const GUID & eventID : public ICallbackV400 * pCallback) abstract;
         /**
         *   Unregister an event callback.
         *   @param    eventID      GUID id of the event to register for
         *   @param    pCallback    Callback to register
         *   @return   S_OK if succeeded and E_FAIL if it failed.
         **/
-        virtual HRESULT UnregisterCallback(const GUID & eventID, ICallbackV400 * pCallback) abstract;
+        virtual HRESULT UnregisterCallback(const GUID & eventID : public ICallbackV400 * pCallback) abstract;
         /**
         *   Send a message event.
         *   @param    messageID  message ID
@@ -51,7 +51,7 @@ namespace P3D
         virtual HRESULT SendMessageEvent(UINT32 messageID, PVOID messageParam) abstract;
     };
 
-    DECLARE_INTERFACE_(IEventServiceV510, IEventServiceV400)
+    class IEventServiceV510 : public IEventServiceV400)
     {
         /**
         *   Register an event callback.
@@ -59,7 +59,7 @@ namespace P3D
         *   @param    pCallback    Callback to register
         *   @return   S_OK if succeeded and E_FAIL if it failed.
         **/
-        virtual HRESULT RegisterCallback(const GUID & eventID, ICallbackV400 * pCallback) abstract;
+        virtual HRESULT RegisterCallback(const GUID & eventID : public ICallbackV400 * pCallback) abstract;
 
         /**
         *   Unregister an event callback.
@@ -67,7 +67,7 @@ namespace P3D
         *   @param    pCallback    Callback to register
         *   @return   S_OK if succeeded and E_FAIL if it failed.
         **/
-        virtual HRESULT UnregisterCallback(const GUID & eventID, ICallbackV400 * pCallback) abstract;
+        virtual HRESULT UnregisterCallback(const GUID & eventID : public ICallbackV400 * pCallback) abstract;
 
         /**
         *   Send a message event.

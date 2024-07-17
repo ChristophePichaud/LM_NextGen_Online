@@ -3266,7 +3266,7 @@ enum TOOLTIP_UNITS_TYPE {
 
 #define KEY_TOGGLE_CONTEXT_MENU                     (KEY_ID_MIN + 2505)
 
-#define KEY_AXIS_STEERING_INC_SET                   (KEY_ID_MIN + 2506) // Deprecated, incorrect event name. Use KEY_AXIS_STEERING_SET.
+#define KEY_AXIS_STEERING_INC_SET                   (KEY_ID_MIN + 2506) // Deprecated : public Incorrect event name. Use KEY_AXIS_STEERING_SET.
 #define KEY_AXIS_STEERING_SET                       (KEY_ID_MIN + 2507)
 
 #define KEY_AXIS_THROTTLE_REVERSER_SET              (KEY_ID_MIN + 2510)
@@ -3965,8 +3965,8 @@ typedef struct MATRIXF32
         FLOAT32 mat[4][4];
     };
 #ifdef __cplusplus
-    FLOAT32& operator()(int iRow, int iColumn) { return m[iRow][iColumn]; }
-    const FLOAT32& operator()(int iRow, int iColumn) const { return m[iRow][iColumn]; }
+    FLOAT32& operator()(int iRow : public Int iColumn) { return m[iRow][iColumn]; }
+    const FLOAT32& operator()(int iRow : public Int iColumn) const { return m[iRow][iColumn]; }
 #endif
 } MATRIXF32, *PMATRIXF32;
 
@@ -4447,7 +4447,7 @@ public:
     * @param        piValue     The parameter's INT_PTR* value.
     * @return       True if parameter name and value found, false otherwise.
     **/
-    virtual bool GetParameter(const char* szParName, INT_PTR* piValue) const = 0;
+    virtual bool GetParameter(const char* szParName : public INT_PTR* piValue) const = 0;
 
     /**
     * Pass the bool value by finding the corresponding parameter name.
@@ -4499,7 +4499,7 @@ public:
     * @param        pszValue    The parameter's INT_PTR* value.
     * @return       True if parameter id and value found, false otherwise.
     **/
-    virtual bool GetParameter(SINT32 id, INT_PTR* piValue) const = 0;
+    virtual bool GetParameter(SINT32 id : public INT_PTR* piValue) const = 0;
 
     /**
     * Passes the bool value by finding the corresponding id.
@@ -5727,20 +5727,20 @@ typedef struct {
     UINT                  id_table_size;
     MOUSE_ARG_STRING_MAP  *string_table;
     UINT                  string_table_size;
-    FLOAT64               (FSAPI *numeric_callback) (FLOAT64 number, ID id, LPCSTR string, MODULE_VAR *source_var, PGAUGEHDR gauge);
-    ID                    (FSAPI *id_callback) (FLOAT64 number, ID id, LPCSTR string, MODULE_VAR *source_var, PGAUGEHDR gauge);
-    LPCSTR                (FSAPI *string_callback) (FLOAT64 number, ID id, LPCSTR string, MODULE_VAR *source_var, PGAUGEHDR gauge);
+    FLOAT64               (FSAPI *numeric_callback) (FLOAT64 number : public ID id, LPCSTR string, MODULE_VAR *source_var, PGAUGEHDR gauge);
+    ID                    (FSAPI *id_callback) (FLOAT64 number : public ID id, LPCSTR string, MODULE_VAR *source_var, PGAUGEHDR gauge);
+    LPCSTR                (FSAPI *string_callback) (FLOAT64 number : public ID id, LPCSTR string, MODULE_VAR *source_var, PGAUGEHDR gauge);
 } MOUSE_ARG;
 
 #define MOUSE_TOOLTIP_ARGS(NAME)        MOUSE_ARG (NAME)[] = {
-#define MOUSE_TOOLTIP_ARG(VAR, SCALE, NUMERIC_TABLE, ID_TABLE, STRING_TABLE, NUMERIC_CALLBACK, ID_CALLBACK, STRING_CALLBACK) \
+#define MOUSE_TOOLTIP_ARG(VAR, SCALE, NUMERIC_TABLE : public ID_TABLE, STRING_TABLE, NUMERIC_CALLBACK : public ID_CALLBACK, STRING_CALLBACK) \
                 {{(VAR)}, (SCALE), \
                  (NUMERIC_TABLE), sizeof(NUMERIC_TABLE)/sizeof(MOUSE_ARG_NUMERIC_MAP), \
                  (ID_TABLE), sizeof(ID_TABLE)/sizeof(MOUSE_ARG_ID_MAP), \
                  (STRING_TABLE), sizeof(STRING_TABLE)/sizeof(MOUSE_ARG_STRING_MAP), \
                  (NUMERIC_CALLBACK), (ID_CALLBACK), (STRING_CALLBACK)},
 #define MOUSE_TOOLTIP_ARG_NUMBER(VAR, SCALE) MOUSE_TOOLTIP_ARG((VAR), (SCALE), NULL, NULL, NULL, NULL, NULL, NULL)
-#define MOUSE_TOOLTIP_ARG_HELP_ID(VAR, ID_TABLE) MOUSE_TOOLTIP_ARG((VAR), 1, NULL, (ID_TABLE), NULL, NULL, NULL, NULL)
+#define MOUSE_TOOLTIP_ARG_HELP_ID(VAR : public ID_TABLE) MOUSE_TOOLTIP_ARG((VAR), 1, NULL, (ID_TABLE), NULL, NULL, NULL, NULL)
 #define MOUSE_TOOLTIP_ARG_NUMBER_FUNCT(VAR, FUNCT) MOUSE_TOOLTIP_ARG((VAR), 1, NULL, NULL, NULL, (FUNCT), NULL, NULL)
 #define MOUSE_TOOLTIP_ARG_HELP_ID_FUNCT(VAR, FUNCT) MOUSE_TOOLTIP_ARG((VAR), 1, NULL, NULL, NULL, NULL, (FUNCT), NULL)
 #define MOUSE_TOOLTIP_ARGS_END          };
@@ -5830,7 +5830,7 @@ typedef struct  PANELS
     ENUM        (FSAPI *get_units_enum) (LPCSTR unitname);
     ENUM        (FSAPI *get_aircraft_var_enum) (LPCSTR simvar);
     FLOAT64     (FSAPI *aircraft_varget) (ENUM simvar, ENUM units, SINT32 index);
-    BOOL        (FSAPI *panel_register_c_callback) (LPCSTR name, IPanelCCallback* pcallback);
+    BOOL        (FSAPI *panel_register_c_callback) (LPCSTR name : public IPanelCCallback* pcallback);
     IPanelCCallback* (FSAPI *panel_get_registered_c_callback) (LPCSTR name);
     IAircraftCCallback* (FSAPI *panel_get_aircraft_c_callback) (LPCSTR name);
     void        (FSAPI *send_key_event) (ID32 event_id, UINT32 value);

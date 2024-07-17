@@ -39,7 +39,7 @@ interface ISavedEngineSystemStateV500;
  * IEngineSystem is the primary interface for the core P3D aircraft simulation to get and set data inside
  * the engine system implementation.
  **/
-DECLARE_INTERFACE_(IEngineSystemV500, ISimulationV310)
+class IEngineSystemV500 : public ISimulationV310)
 {
     /**
     * Returns a reference to a saved class holding the current state of the engine system. This is
@@ -227,7 +227,7 @@ DEFINE_GUID(SID_EngineSystem ,       0x864e3526, 0x156a, 0x47fc, 0xad, 0x8b, 0xc
 * ISavedEngineSystemState is used during loading and saving the state of the engine system
 * when saving and loading scenarios, as well as when switching aircraft.
 **/
-DECLARE_INTERFACE_(ISavedEngineSystemStateV500, IUnknown)
+class ISavedEngineSystemStateV500 : public IUnknown)
 {
     /** Returns the number of engines on this aircraft.*/
     STDMETHOD_(UINT,  GetNumberOfEngines)()                     const PURE;

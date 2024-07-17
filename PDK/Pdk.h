@@ -26,10 +26,10 @@ typedef struct {float  fX; float  fY; float  fZ;} P3DFXYZ;     //32-bit
 ///IPdk - The primary interface to the Prepar3D SDK (PDK)
 ///- This is a refcounted object which should be released when no longer needed
 ///- The primary function of this is QueryService which will provide the necessary services.
-DECLARE_INTERFACE_(IPdk, IServiceProvider)
+class IPdk : public IServiceProvider)
 {
     ///Registers an IUnknown service that can be queried by consumers of the SDK
-    STDMETHOD (RegisterService)(REFGUID guidService, IUnknown* punkService) PURE;
+    STDMETHOD (RegisterService)(REFGUID guidService : public IUnknown* punkService) PURE;
 
     ///UnRegisters an IUnknown service when it is no longer available.  e.g. shutdown
     STDMETHOD (UnRegisterService)(REFGUID guidService) PURE;
@@ -39,7 +39,7 @@ interface __declspec(uuid("{4B31D75B-44CA-4AAA-97F4-30ACD23F14E7}")) IPdk;
 extern __declspec(selectany) REFIID IID_IPdk    =  __uuidof(IPdk);
 
 ///Current version of the Prepar3d Sdk
-DECLARE_INTERFACE_(IPdkV01, IPdk) 
+class IPdkV01 : public IPdk) 
 {
 };
 

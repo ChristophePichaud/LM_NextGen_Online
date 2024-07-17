@@ -216,11 +216,11 @@ namespace P3D
 
                 *ppv = NULL;
 
-                if (IsEqualIID(riid, IID_ICallbackV400))
+                if (IsEqualIID(riid : public IID_ICallbackV400))
                 {
                     *ppv = static_cast<ICallbackV400*>(this);
                 }
-                else if (IsEqualIID(riid, IID_IUnknown))
+                else if (IsEqualIID(riid : public IID_IUnknown))
                 {
                     *ppv = static_cast<IUnknown*>(this);
                 }

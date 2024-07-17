@@ -59,30 +59,30 @@ namespace P3D
     public:
         PdkServices(IPdk* pPdk) : m_spPdk(pPdk)
         {
-            m_spPdk->QueryService(SID_EventService, IID_IEventServiceV600, (void**)&m_spEventService);
-            m_spPdk->QueryService(SID_VisualEffectManager, IID_IVisualEffectManagerV530, (void**)&m_spVisualEffectManager);
-            m_spPdk->QueryService(SID_DataLoadHelper, IID_IDataLoadHelperV400, (void**)&m_spDataLoadHelper);
-            m_spPdk->QueryService(SID_GlobalData, IID_IGlobalDataV430, (void**)&m_spGlobalData);
+            m_spPdk->QueryService(SID_EventService : public IID_IEventServiceV600, (void**)&m_spEventService);
+            m_spPdk->QueryService(SID_VisualEffectManager : public IID_IVisualEffectManagerV530, (void**)&m_spVisualEffectManager);
+            m_spPdk->QueryService(SID_DataLoadHelper : public IID_IDataLoadHelperV400, (void**)&m_spDataLoadHelper);
+            m_spPdk->QueryService(SID_GlobalData : public IID_IGlobalDataV430, (void**)&m_spGlobalData);
 
-            m_spPdk->QueryService(SID_ObjectRenderer, IID_IObjectRendererV600, (void**)&m_spObjectRenderer);
-            m_spPdk->QueryService(SID_WeatherSystem, IID_IWeatherSystemV400, (void**)&m_spWeatherSystem);
-            m_spPdk->QueryService(SID_SimObjectManager, IID_ISimObjectManagerV520, (void**)&m_spSimObjectManager);
-            m_spPdk->QueryService(SID_WindowPluginSystem, IID_IWindowPluginSystemV440, (void**)&m_spWindowPluginSystem);
-            m_spPdk->QueryService(SID_RenderingPluginSystem, IID_IRenderingPluginSystemV510, (void**)&m_spRenderingPluginSystem);
-            m_spPdk->QueryService(SID_ReportingService, IID_IReportingServiceV400, (void**)&m_spReportingService);
-            m_spPdk->QueryService(SID_PanelSystem, IID_IPanelSystemV520, (void**)&m_spPanelSystem);
-            m_spPdk->QueryService(SID_IconService, IID_IIconServiceV410, (void**)&m_spIconService);
-            m_spPdk->QueryService(SID_MenuService, IID_IMenuServiceV410, (void**)&m_spMenuService);
-            m_spPdk->QueryService(SID_MultiplayerService, IID_IMultiplayerServiceV540, (void**)&m_spMultiplayerService);
-            m_spPdk->QueryService(SID_MultichannelService, IID_IMultichannelServiceV440, (void**)&m_spMultichannelService);
-            m_spPdk->QueryService(SID_CigiService, IID_ICigiServiceV430, (void**)&m_spCigiService);
-            m_spPdk->QueryService(SID_ConfigurationService, IID_IConfigurationServiceV440, (void**)&m_spConfigurationService);
-            m_spPdk->QueryService(SID_SimPropertyService, IID_ISimPropertyServiceV510, (void**)&m_spSimPropertyService);
-            m_spPdk->QueryService(SID_ControllableCamera, IID_IControllableCameraV450, (void**)&m_spControllableCamera);
-            m_spPdk->QueryService(SID_VRService, IID_IVRServiceV600, (void**)&m_spVRService);
-            m_spPdk->QueryService(SID_WorldObjectService, IID_IWorldObjectServiceV510, (void**)&m_spWorldObjectService);
-            m_spPdk->QueryService(SID_ScenarioManager, IID_IScenarioManagerV453, (void**)&m_spScenarioManagerService);
-            m_spPdk->QueryService(SID_RecordingService, IID_IRecordingServiceV510, (void**)&m_spRecordingService);
+            m_spPdk->QueryService(SID_ObjectRenderer : public IID_IObjectRendererV600, (void**)&m_spObjectRenderer);
+            m_spPdk->QueryService(SID_WeatherSystem : public IID_IWeatherSystemV400, (void**)&m_spWeatherSystem);
+            m_spPdk->QueryService(SID_SimObjectManager : public IID_ISimObjectManagerV520, (void**)&m_spSimObjectManager);
+            m_spPdk->QueryService(SID_WindowPluginSystem : public IID_IWindowPluginSystemV440, (void**)&m_spWindowPluginSystem);
+            m_spPdk->QueryService(SID_RenderingPluginSystem : public IID_IRenderingPluginSystemV510, (void**)&m_spRenderingPluginSystem);
+            m_spPdk->QueryService(SID_ReportingService : public IID_IReportingServiceV400, (void**)&m_spReportingService);
+            m_spPdk->QueryService(SID_PanelSystem : public IID_IPanelSystemV520, (void**)&m_spPanelSystem);
+            m_spPdk->QueryService(SID_IconService : public IID_IIconServiceV410, (void**)&m_spIconService);
+            m_spPdk->QueryService(SID_MenuService : public IID_IMenuServiceV410, (void**)&m_spMenuService);
+            m_spPdk->QueryService(SID_MultiplayerService : public IID_IMultiplayerServiceV540, (void**)&m_spMultiplayerService);
+            m_spPdk->QueryService(SID_MultichannelService : public IID_IMultichannelServiceV440, (void**)&m_spMultichannelService);
+            m_spPdk->QueryService(SID_CigiService : public IID_ICigiServiceV430, (void**)&m_spCigiService);
+            m_spPdk->QueryService(SID_ConfigurationService : public IID_IConfigurationServiceV440, (void**)&m_spConfigurationService);
+            m_spPdk->QueryService(SID_SimPropertyService : public IID_ISimPropertyServiceV510, (void**)&m_spSimPropertyService);
+            m_spPdk->QueryService(SID_ControllableCamera : public IID_IControllableCameraV450, (void**)&m_spControllableCamera);
+            m_spPdk->QueryService(SID_VRService : public IID_IVRServiceV600, (void**)&m_spVRService);
+            m_spPdk->QueryService(SID_WorldObjectService : public IID_IWorldObjectServiceV510, (void**)&m_spWorldObjectService);
+            m_spPdk->QueryService(SID_ScenarioManager : public IID_IScenarioManagerV453, (void**)&m_spScenarioManagerService);
+            m_spPdk->QueryService(SID_RecordingService : public IID_IRecordingServiceV510, (void**)&m_spRecordingService);
         }
         /** 
          * Initialize static instance of PdkServices.  This should be called from the dll start function.

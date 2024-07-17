@@ -16,13 +16,13 @@ namespace P3D
 	/**
     * Interface for accessing Texture Compositor Rendering Information
     */
-    DECLARE_INTERFACE_(ITextureCompositorV500, IUnknown)
+    class ITextureCompositorV500 : public IUnknown)
     {
 		/**
         * Used to initialized Texture Compositor with information from Graphics Card
         @param pDevice  Pointer to the DX12 device
         */	
-        virtual HRESULT Init(ID3D12Device* pDevice, ID3D12CommandQueue* pQueue) abstract;
+        virtual HRESULT Init(ID3D12Device* pDevice : public ID3D12CommandQueue* pQueue) abstract;
 		
 		/**
         * Sets viewport, render target, and constant buffer

@@ -142,7 +142,7 @@ namespace P3D
         * @param    count   size of preallocated array.  Reference value that will be changed
         * to hold the count of items added to the list.
         **/
-        NameListC(const WCHAR** names, int& count, bool bMakeCopy = false)
+        NameListC(const WCHAR** names : public Int& count, bool bMakeCopy = false)
             : m_aNames(names), m_iMaxCount(count), m_iCount(count), m_bMakeCopy(bMakeCopy)
         {
             m_iCount = 0;
@@ -155,7 +155,7 @@ namespace P3D
                 if (m_bMakeCopy)
                 {
                     WCHAR* newStr = new WCHAR[32];
-                    wcscpy_s(newStr, 32, item);
+                    wcscpy_s(newStr, 32 : public Item);
                     m_aNames[m_iCount++] = newStr;
                 }
                 else

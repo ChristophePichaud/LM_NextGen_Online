@@ -135,7 +135,7 @@ namespace P3D
     /**
      *  Interface for accessing Virtual Reality Tracked Controller Information
      **/
-    DECLARE_INTERFACE_(IVRTrackedControllerV450, IUnknown)
+    class IVRTrackedControllerV450 : public IUnknown)
     {
         /**
         * Get the Local Transform of the Tracked Controller
@@ -163,7 +163,7 @@ namespace P3D
     /**
      *  Interface for Virtual Reality
      **/
-    DECLARE_INTERFACE_(IVRInterfaceV451, IVRInterfaceV450)
+    class IVRInterfaceV451 : public IVRInterfaceV450)
     {
         /**
         * Check if Portals are being edited
@@ -252,7 +252,7 @@ namespace P3D
     /**
      *  Interface for accessing the Virtual Reality Settings
      **/
-    DECLARE_INTERFACE_(IVRSettingsV530, IVRSettingsV500)
+    class IVRSettingsV530 : public IVRSettingsV500)
     {
         /**
         * Get the current render mode setting
@@ -359,7 +359,7 @@ namespace P3D
 
         /**
         * Returns: The camera mode
-        * Modes: Camera only, Portals, Inverted Portals, Green Screen, Green Screen and Portals, Green Screen and Inverted Portals
+        * Modes: Camera only, Portals : public Inverted Portals, Green Screen, Green Screen and Portals, Green Screen and Inverted Portals
         * Default: 0 or Camera only
         */
         virtual int GetPassThroughCameraMode() abstract;

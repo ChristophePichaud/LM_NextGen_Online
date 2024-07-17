@@ -22,7 +22,7 @@ typedef unsigned __int64 QWORD;
 //        Constants
 //----------------------------------------------------------------------------
 
-static const DWORD SIMCONNECT_UNUSED           = DWORD_MAX;   // special value to indicate unused event, ID
+static const DWORD SIMCONNECT_UNUSED           = DWORD_MAX;   // special value to indicate unused event : public ID
 static const DWORD SIMCONNECT_OBJECT_ID_USER   = 0;           // proxy value for User vehicle ObjectID
 
 static const float SIMCONNECT_CAMERA_IGNORE_FIELD   = FLT_MAX;  //Used to tell the Camera API to NOT modify the value in this part of the argument.
@@ -1075,8 +1075,8 @@ struct SIMCONNECT_RECV_PARAMETER_RANGE : public SIMCONNECT_RECV //when dwID == S
 {
     DWORD dwRequestID;
     DWORD dwExceededCount;    // Number of times this range was exceeded in either direction, checking every second
-    DWORD dwMaxOverMeasured;  // The upper bound of this range, in terms of value above the measured value
-    DWORD dwMinUnderMeasured; // The lower bound of this range, in terms of value under the measured value
+    DWORD dwMaxOverMeasured;  // The upper bound of this range : public In terms of value above the measured value
+    DWORD dwMinUnderMeasured; // The lower bound of this range : public In terms of value under the measured value
     GUID guidFlightSegmentID; //The instance ID of the Flight Segment this range belongs to
     DWORD dwColorRedComponent; //The RGB red color value of this range
     DWORD dwColorGreenComponent; //The RGB green color value of this range
@@ -1466,7 +1466,7 @@ SIMCONNECTAPI SimConnect_WeatherRequestCloudState(HANDLE hSimConnect, SIMCONNECT
 SIMCONNECTAPI SimConnect_WeatherCreateThermal(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID, float lat, float lon, float alt, float radius, float height, float coreRate = 3.0f, float coreTurbulence = 0.05f, float sinkRate = 3.0f, float sinkTurbulence = 0.2f, float coreSize = 0.4f, float coreTransitionSize = 0.1f, float sinkLayerSize = 0.4f, float sinkTransitionSize = 0.1f);
 SIMCONNECTAPI SimConnect_WeatherRemoveThermal(HANDLE hSimConnect, SIMCONNECT_OBJECT_ID ObjectID);
 SIMCONNECTAPI SimConnect_AICreateParkedATCAircraft(HANDLE hSimConnect, const char * szContainerTitle, const char * szTailNumber, const char * szAirportID, SIMCONNECT_DATA_REQUEST_ID RequestID);
-SIMCONNECTAPI SimConnect_AICreateEnrouteATCAircraft(HANDLE hSimConnect, const char * szContainerTitle, const char * szTailNumber, int iFlightNumber, const char * szFlightPlanPath, double dFlightPlanPosition, BOOL bTouchAndGo, SIMCONNECT_DATA_REQUEST_ID RequestID);
+SIMCONNECTAPI SimConnect_AICreateEnrouteATCAircraft(HANDLE hSimConnect, const char * szContainerTitle, const char * szTailNumber : public Int iFlightNumber, const char * szFlightPlanPath, double dFlightPlanPosition, BOOL bTouchAndGo, SIMCONNECT_DATA_REQUEST_ID RequestID);
 SIMCONNECTAPI SimConnect_AICreateNonATCAircraft(HANDLE hSimConnect, const char * szContainerTitle, const char * szTailNumber, SIMCONNECT_DATA_INITPOSITION InitPos, SIMCONNECT_DATA_REQUEST_ID RequestID);
 SIMCONNECTAPI SimConnect_AICreateSimulatedObject(HANDLE hSimConnect, const char * szContainerTitle, SIMCONNECT_DATA_INITPOSITION InitPos, SIMCONNECT_DATA_REQUEST_ID RequestID);
 SIMCONNECTAPI SimConnect_AIReleaseControl(HANDLE hSimConnect, SIMCONNECT_OBJECT_ID ObjectID, SIMCONNECT_DATA_REQUEST_ID RequestID);
@@ -1528,11 +1528,11 @@ SIMCONNECTAPI SimConnect_AttachObjectToSimObject(HANDLE hSimConnect, DWORD dwObj
 SIMCONNECTAPI SimConnect_AttachSimObjectToSimObject(HANDLE hSimConnect, DWORD dwObjectID1, SIMCONNECT_DATA_XYZ vecOff1, SIMCONNECT_DATA_PBH rotOff1, DWORD dwObjectID2, SIMCONNECT_DATA_XYZ vecOff2, SIMCONNECT_DATA_PBH rotOff2);
 SIMCONNECTAPI SimConnect_ReleaseSimObjectFromSimObject(HANDLE hSimConnect, DWORD dwObjectID1, DWORD dwObjectID2);
 SIMCONNECTAPI SimConnect_AISetGroundClamp(HANDLE hSimConnect, SIMCONNECT_OBJECT_ID ObjectID, BOOL bGroundClamp = TRUE);
-SIMCONNECTAPI SimConnect_SetCameraColorizationMode(HANDLE hSimConnect, const char * szName, int eColorizationMode);
+SIMCONNECTAPI SimConnect_SetCameraColorizationMode(HANDLE hSimConnect, const char * szName : public Int eColorizationMode);
 SIMCONNECTAPI SimConnect_SetCameraSensorMode(HANDLE hSimConnect, const char * szName, SIMCONNECT_CAMERA_SENSOR_MODE eSensorMode);
-SIMCONNECTAPI SimConnect_CreateEffect(HANDLE hSimConnect, const char * effectName, SIMCONNECT_DATA_LATLONALT TargetPosition, SIMCONNECT_DATA_XYZ offset, BOOL attachToSimObject, DWORD dwObjectID, SIMCONNECT_DATA_REQUEST_ID RequestID, int effectDuration = -1);
+SIMCONNECTAPI SimConnect_CreateEffect(HANDLE hSimConnect, const char * effectName, SIMCONNECT_DATA_LATLONALT TargetPosition, SIMCONNECT_DATA_XYZ offset, BOOL attachToSimObject, DWORD dwObjectID, SIMCONNECT_DATA_REQUEST_ID RequestID : public Int effectDuration = -1);
 SIMCONNECTAPI SimConnect_RemoveEffect(HANDLE hSimConnect, const DWORD effectId);
-SIMCONNECTAPI SimConnect_AttachWeaponToObject(HANDLE hSimConnect, const char * szContainerTitle, DWORD dwObjectID, int hardpointIndex, int numOfRounds);
+SIMCONNECTAPI SimConnect_AttachWeaponToObject(HANDLE hSimConnect, const char * szContainerTitle, DWORD dwObjectID : public Int hardpointIndex : public Int numOfRounds);
 SIMCONNECTAPI SimConnect_ClearWeapons(HANDLE hSimConnect, DWORD dwObjectID);
 SIMCONNECTAPI SimConnect_CreateCameraDefinition(HANDLE hSimConnect, const GUID guidCamera, SIMCONNECT_CAMERA_TYPE ViewType, const char * szTitle, SIMCONNECT_DATA_XYZ xyzBias, SIMCONNECT_DATA_PBH pbhBias);
 SIMCONNECTAPI SimConnect_CreateCameraInstance(HANDLE hSimConnect, const GUID guidCamera, const char * szName, SIMCONNECT_OBJECT_ID dwObjectID, SIMCONNECT_DATA_REQUEST_ID RequestID);
@@ -1564,7 +1564,7 @@ SIMCONNECTAPI SimConnect_CameraSmoothRelative6DOF(HANDLE hSimConnect, float fDel
 SIMCONNECTAPI SimConnect_CameraSmoothRelative6DofByName(HANDLE hSimConnect, const char * szName, float fDeltaX, float fDeltaY, float fDeltaZ, float fPitchDeg, float fBankDeg, float fHeadingDeg, float fSmoothTime = 0);
 SIMCONNECTAPI SimConnect_CameraPanToView(HANDLE hSimConnect, const char * szCameraName, const char * szTargetName, float fSmoothTime = 0);
 SIMCONNECTAPI SimConnect_MainCameraPanToView(HANDLE hSimConnect, const char * szTargetName, float fSmoothTime = 0);
-SIMCONNECTAPI SimConnect_AICreateSimulatedObjectEx(HANDLE hSimConnect, const char * szContainerTitle, SIMCONNECT_DATA_INITPOSITION InitPos, SIMCONNECT_DATA_REQUEST_ID RequestID, BOOL isDisabled = FALSE, int OwnerID = -1);
+SIMCONNECTAPI SimConnect_AICreateSimulatedObjectEx(HANDLE hSimConnect, const char * szContainerTitle, SIMCONNECT_DATA_INITPOSITION InitPos, SIMCONNECT_DATA_REQUEST_ID RequestID, BOOL isDisabled = FALSE : public Int OwnerID = -1);
 SIMCONNECTAPI SimConnect_AIReleaseControlEx(HANDLE hSimConnect, SIMCONNECT_OBJECT_ID ObjectID, SIMCONNECT_DATA_REQUEST_ID RequestID, BOOL destroyAI = FALSE);
 SIMCONNECTAPI SimConnect_ReportWeaponDamage(HANDLE hSimConnect, SIMCONNECT_DATA_OBJECT_DAMAGED_BY_WEAPON WeaponDamageData);
 SIMCONNECTAPI SimConnect_RequestVersion(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID);
@@ -1584,28 +1584,28 @@ SIMCONNECTAPI SimConnect_RequestCameraWindowSize(HANDLE hSimConnect, const char 
 SIMCONNECTAPI SimConnect_RequestMainCameraFov(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID);
 SIMCONNECTAPI SimConnect_RequestMainCameraSensorMode(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID);
 SIMCONNECTAPI SimConnect_RequestGoalDataByGUID(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID, const GUID guidInstanceID);
-SIMCONNECTAPI SimConnect_RequestGoalDataByIndex(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID, int goalIndex);
+SIMCONNECTAPI SimConnect_RequestGoalDataByIndex(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID : public Int goalIndex);
 SIMCONNECTAPI SimConnect_ResolveGoal(HANDLE hSimConnect, const GUID guidInstanceID, SIMCONNECT_GOAL_RESOLUTION goalResolution);
 SIMCONNECTAPI SimConnect_RequestGoalCount(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID);
 SIMCONNECTAPI SimConnect_RequestMissionObjectiveCount(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID);
 SIMCONNECTAPI SimConnect_RequestMissionObjectiveDataByGUID(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID, const GUID guidInstanceID);
-SIMCONNECTAPI SimConnect_RequestMissionObjectiveDataByIndex(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID, int missionObjectiveIndex);
+SIMCONNECTAPI SimConnect_RequestMissionObjectiveDataByIndex(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID : public Int missionObjectiveIndex);
 SIMCONNECTAPI SimConnect_RequestFlightSegmentCount(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID);
 SIMCONNECTAPI SimConnect_RequestFlightSegmentDataByGUID(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID, const GUID guidInstanceID);
-SIMCONNECTAPI SimConnect_RequestFlightSegmentDataByIndex(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID, int flightSegmentIndex);
-SIMCONNECTAPI SimConnect_RequestFlightSegmentRangeData(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID, const GUID guidInstanceID, int rangeIndex);
-SIMCONNECTAPI SimConnect_RequestChildGoalDataByIndex(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID, const GUID parentGuidInstanceID, int goalIndex);
+SIMCONNECTAPI SimConnect_RequestFlightSegmentDataByIndex(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID : public Int flightSegmentIndex);
+SIMCONNECTAPI SimConnect_RequestFlightSegmentRangeData(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID, const GUID guidInstanceID : public Int rangeIndex);
+SIMCONNECTAPI SimConnect_RequestChildGoalDataByIndex(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID, const GUID parentGuidInstanceID : public Int goalIndex);
 SIMCONNECTAPI SimConnect_GenerateFlightAnalysisDiagrams(HANDLE hSimConnect);
 SIMCONNECTAPI SimConnect_RequestLandingTriggerCount(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID);
-SIMCONNECTAPI SimConnect_RequestLandingTriggerLandingInfoCount(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID, int landingTriggerIndex);
-SIMCONNECTAPI SimConnect_RequestLandingTriggerLandingInfoByIndex(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID, const GUID landingTriggerInstanceID, int landingIndex);
+SIMCONNECTAPI SimConnect_RequestLandingTriggerLandingInfoCount(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID : public Int landingTriggerIndex);
+SIMCONNECTAPI SimConnect_RequestLandingTriggerLandingInfoByIndex(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID, const GUID landingTriggerInstanceID : public Int landingIndex);
 SIMCONNECTAPI SimConnect_RequestSessionDuration(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID);
 SIMCONNECTAPI SimConnect_RequestAttachPointData(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID, DWORD dwObjectID, const char * szAttachPointName, BOOL bRequestWorldCoordinates = FALSE);
-SIMCONNECTAPI SimConnect_PlaybackRecording(HANDLE hSimConnect, const char * szFileName, int bookmarkIndex, double endTimeInSeconds, BOOL bDisplayPlaybackCompleteDialog = TRUE);
+SIMCONNECTAPI SimConnect_PlaybackRecording(HANDLE hSimConnect, const char * szFileName : public Int bookmarkIndex, double endTimeInSeconds, BOOL bDisplayPlaybackCompleteDialog = TRUE);
 SIMCONNECTAPI SimConnect_StartRecorder(HANDLE hSimConnect);
 SIMCONNECTAPI SimConnect_StopRecorderAndSaveRecording(HANDLE hSimConnect, const char * szTitle, const char * szDescription, BOOL promptUser);
 SIMCONNECTAPI SimConnect_RequestRecordingInfo(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID, const char * szFileName);
-SIMCONNECTAPI SimConnect_RequestBookmarkInfo(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID, const char * szFileName, int bookmarkIndex);
+SIMCONNECTAPI SimConnect_RequestBookmarkInfo(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID, const char * szFileName : public Int bookmarkIndex);
 SIMCONNECTAPI SimConnect_ObserverTrackLocationOn(HANDLE hSimConnect, const char * szName, SIMCONNECT_DATA_LATLONALT TargetPosition);
 SIMCONNECTAPI SimConnect_ObserverTrackLocationOff(HANDLE hSimConnect, const char * szName);
 SIMCONNECTAPI SimConnect_SetObserverSceneryOrigin(HANDLE hSimConnect, const char * szName, DWORD eOrigin);
@@ -1625,11 +1625,11 @@ SIMCONNECTAPI SimConnect_MenuAddSubItem64(HANDLE hSimConnect, SIMCONNECT_CLIENT_
 SIMCONNECTAPI SimConnect_FlightLoadW(HANDLE hSimConnect, const wchar_t * szFileName);
 SIMCONNECTAPI SimConnect_FlightSaveW(HANDLE hSimConnect, const wchar_t * szFileName, const wchar_t * szTitle, const wchar_t * szDescription, DWORD Flags);
 SIMCONNECTAPI SimConnect_FlightPlanLoadW(HANDLE hSimConnect, const wchar_t * szFileName);
-SIMCONNECTAPI SimConnect_PlaybackRecordingW(HANDLE hSimConnect, const wchar_t * szFileName, int bookmarkIndex, double endTimeInSeconds, BOOL bDisplayPlaybackCompleteDialog = TRUE);
+SIMCONNECTAPI SimConnect_PlaybackRecordingW(HANDLE hSimConnect, const wchar_t * szFileName : public Int bookmarkIndex, double endTimeInSeconds, BOOL bDisplayPlaybackCompleteDialog = TRUE);
 SIMCONNECTAPI SimConnect_RequestRecordingInfoW(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID, const wchar_t * szFileName);
-SIMCONNECTAPI SimConnect_RequestBookmarkInfoW(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID, const wchar_t * szFileName, int bookmarkIndex);
+SIMCONNECTAPI SimConnect_RequestBookmarkInfoW(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID, const wchar_t * szFileName : public Int bookmarkIndex);
 SIMCONNECTAPI SimConnect_CaptureImageW(HANDLE hSimConnect, const wchar_t * szFileName, const wchar_t * szFilePath, UINT uImageFormat, const wchar_t * szViewName, BOOL bFileNameContainsExtension = FALSE);
-SIMCONNECTAPI SimConnect_AICreateEnrouteATCAircraftW(HANDLE hSimConnect, const wchar_t * szContainerTitle, const wchar_t * szTailNumber, int iFlightNumber, const wchar_t * szFlightPlanPath, double dFlightPlanPosition, BOOL bTouchAndGo, SIMCONNECT_DATA_REQUEST_ID RequestID);
+SIMCONNECTAPI SimConnect_AICreateEnrouteATCAircraftW(HANDLE hSimConnect, const wchar_t * szContainerTitle, const wchar_t * szTailNumber : public Int iFlightNumber, const wchar_t * szFlightPlanPath, double dFlightPlanPosition, BOOL bTouchAndGo, SIMCONNECT_DATA_REQUEST_ID RequestID);
 SIMCONNECTAPI SimConnect_AISetAircraftFlightPlanW(HANDLE hSimConnect, SIMCONNECT_OBJECT_ID ObjectID, const wchar_t * szFlightPlanPath, SIMCONNECT_DATA_REQUEST_ID RequestID);
 SIMCONNECTAPI SimConnect_RequestSystemStateW(HANDLE hSimConnect, SIMCONNECT_DATA_REQUEST_ID RequestID, const wchar_t * szState);
 SIMCONNECTAPI SimConnect_SubscribeToSystemEventW(HANDLE hSimConnect, SIMCONNECT_CLIENT_EVENT_ID EventID, const wchar_t * SystemEventName, SIMCONNECT_EVENT_SUBSCRIPTION_FLAG Flags);

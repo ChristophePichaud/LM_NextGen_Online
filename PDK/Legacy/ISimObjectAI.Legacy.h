@@ -18,10 +18,10 @@ interface IAIBehavior;
 * PROFESSIONAL PLUS CAPABILITY *
 IAIBehvaiorManager - Interface for this object's AIBehaviorManager
 **********************************************************************************************************/
-DECLARE_INTERFACE_(IAIBehaviorManager, IServiceProvider)
+class IAIBehaviorManager : public IServiceProvider)
 {
     STDMETHOD (ActivateBehavior)(__in const GUID& BehaviorGuid, BOOL bActivate)              PURE;
-    STDMETHOD_(BOOL, IsBehaviorActive)(__in const GUID& BehaviorGuid)              const     PURE;
+    STDMETHOD_(BOOL : public IsBehaviorActive)(__in const GUID& BehaviorGuid)              const     PURE;
     STDMETHOD_(UINT, GetNumberOfBehaviors)()                                       const     PURE;
     STDMETHOD (GetBehavior)(__in UINT uIndex,  __out IAIBehavior** ppBehavior)     const     PURE;
 };
@@ -32,7 +32,7 @@ DEFINE_GUID(IID_IAIBehaviorManager, 0x497e7a52, 0x374c, 0x441f, 0x8b, 0xfc, 0xa1
 * PROFESSIONAL PLUS CAPABILITY *
 IAIBehvaior - Base interface for AI Behaviors
 **********************************************************************************************************/
-DECLARE_INTERFACE_(IAIBehavior, IUnknown)
+class IAIBehavior : public IUnknown)
 {
     STDMETHOD_(GUID, GetBehaviorGuid)()                                 const PURE;
 };
@@ -44,7 +44,7 @@ DEFINE_GUID(IID_IAIBehavior, 0xfc2a58c4, 0x9689, 0x4b47, 0xab, 0xd3, 0x81, 0x6b,
 * PROFESSIONAL PLUS CAPABILITY *
 IAIBehvaiorWingmanFormation - Interface for the Wingman Formation AI Behavior
 **********************************************************************************************************/
-DECLARE_INTERFACE_(IAIBehaviorWingmanFormation, IAIBehavior)
+class IAIBehaviorWingmanFormation : public IAIBehavior)
 {
     STDMETHOD_(void, SetLeaderObjectID)(int objectID)                         PURE;
     STDMETHOD_(int,  GetLeaderObjectID)()                               const PURE;
@@ -62,7 +62,7 @@ DEFINE_GUID(IID_IAIBehaviorWingmanFormation, 0xdec98242, 0xe935, 0x474e, 0xa1, 0
 IAIBehvaiorPursue - Interface for the Pursue AI Behavior
 **********************************************************************************************************/
 
-DECLARE_INTERFACE_(IAIBehaviorPursue, IAIBehavior)
+class IAIBehaviorPursue : public IAIBehavior)
 {
     STDMETHOD_(void,  SetInvestigateRadius)(float radiusFeet)             PURE;     //Feet
     STDMETHOD_(float, GetInvestigateRadius)()                       const PURE;     //Feet
@@ -79,7 +79,7 @@ DECLARE_INTERFACE_(IAIBehaviorPursue, IAIBehavior)
 
 DEFINE_GUID(IID_IAIBehaviorPursue, 0x5e3a0e93, 0xf1ed, 0x49bd, 0xbf, 0xa, 0x43, 0x91, 0x54, 0x83, 0x9e, 0x73);
 
-DECLARE_INTERFACE_(IAIBehaviorPursueV01, IAIBehaviorPursue)
+class IAIBehaviorPursueV01 : public IAIBehaviorPursue)
 {
     STDMETHOD_(GUID, GetBehaviorGuid)()                            const PURE; /**< Gets the Guid ID of a pursue behavior */
     STDMETHOD_(void, SetInvestigateRadius)(float radiusFeet)             PURE; /**< Sets the how far an object will investigate from its current location (in feet) */
@@ -101,7 +101,7 @@ DEFINE_GUID(IID_IAIBehaviorPursueV01, 0xaf34d0eb, 0xb222, 0x4452, 0xa7, 0x55, 0x
 * PROFESSIONAL PLUS CAPABILITY *
 IAIBehaviorCombatAirPatrol - Interface for the Combat-Air-Patrol AI Behavior
 **********************************************************************************************************/
-DECLARE_INTERFACE_(IAIBehaviorCombatAirPatrol, IAIBehavior)
+class IAIBehaviorCombatAirPatrol : public IAIBehavior)
 {
     STDMETHOD_(void,  SetPatrolObjectID)(int objectID)                    PURE;
     STDMETHOD_(int,   GetPatrolObjectID)()                          const PURE;
@@ -119,7 +119,7 @@ DEFINE_GUID(IID_IAIBehaviorCombatAirPatrol, 0x8ce02584, 0x1a9, 0x4c90, 0xa8, 0xd
 * PROFESSIONAL PLUS CAPABILITY *
 IAIBehaviorCloseAirSupport - Interface for the Close-Air-Support AI Behavior
 **********************************************************************************************************/
-DECLARE_INTERFACE_(IAIBehaviorCloseAirSupport, IAIBehavior)
+class IAIBehaviorCloseAirSupport : public IAIBehavior)
 {
     STDMETHOD_(void,  SetSupportObjectID)(int objectID)                   PURE;
     STDMETHOD_(int,   GetSupportObjectID)()                         const PURE;
@@ -134,7 +134,7 @@ DEFINE_GUID(IID_IAIBehaviorCloseAirSupport, 0x407d3566, 0xd53c, 0x4310, 0xb0, 0x
 * PROFESSIONAL PLUS CAPABILITY *
 IAIBehvaiorSearchTrack - Interface for the Search and Track AI Behavior
 **********************************************************************************************************/
-DECLARE_INTERFACE_(IAIBehaviorSearchTrack, IAIBehavior)
+class IAIBehaviorSearchTrack : public IAIBehavior)
 {
     STDMETHOD_(void,  SetSearchRadius)(float radiusFeet)                  PURE;     //Feet
     STDMETHOD_(float, GetSearchRadius)()                            const PURE;     //Feet
@@ -155,7 +155,7 @@ DEFINE_GUID(IID_IAIBehaviorSearchTrack, 0x4f3ad17d, 0x4263, 0x4100, 0x9f, 0x5c, 
 /**********************************************************************************************************
 ISimObjectAI - Interface for getting AI parameters from this object
 **********************************************************************************************************/
-DECLARE_INTERFACE_(ISimObjectAI, IServiceProvider)
+class ISimObjectAI : public IServiceProvider)
 {
     STDMETHOD (UpdateSimulationFrame)(__in double dDeltaT)          PURE;
     STDMETHOD_(UNITMODE, GetPilotMode)() const                      PURE;
@@ -173,7 +173,7 @@ DECLARE_INTERFACE_(ISimObjectAI, IServiceProvider)
 
 DEFINE_GUID(IID_ISimObjectAI, 0xff38f8b4, 0x79d4, 0x4a6b, 0x85, 0xb1, 0x5f, 0x15, 0xe1, 0x4, 0x76, 0x1f);
 
-DECLARE_INTERFACE_(ISimObjectAIV01, ISimObjectAI)
+class ISimObjectAIV01 : public ISimObjectAI)
 {
     //Identical to ISimObjectAI
 };
@@ -182,7 +182,7 @@ DEFINE_GUID(IID_ISimObjectAIV01, 0xdda0d059, 0xf991, 0x47d8, 0x9f, 0xa, 0xfa, 0x
 
 /** The ISimObjectAI interface is an interface on the AI "pilot" implementation for a simobject. A custom AI can be implemented
 * on simobjects created using the ISimObject SDK. The interface may be accessed by systems such as the Traffic Manager or ATC. */
-DECLARE_INTERFACE_(ISimObjectAIV02, ISimObjectAIV01)
+class ISimObjectAIV02 : public ISimObjectAIV01)
 {
     STDMETHOD(UpdateSimulationFrame)(__in double dDeltaT)          PURE;  /**< To be called from the simulation loop to keep the low level AI controllers in sync with the simulation */
     STDMETHOD_(UNITMODE, GetPilotMode)() const                      PURE; /**< Returns the current mode of the AI */
@@ -207,7 +207,7 @@ DEFINE_GUID(IID_ISimObjectAIV02, 0x27428180, 0xe4, 0x489a, 0xa1, 0x45, 0x30, 0x9
 /**********************************************************************************************************
 IAIService - Interface for getting AI parameters from this object
 **********************************************************************************************************/
-DECLARE_INTERFACE_ (IAIService, IUnknown)
+DECLARE_INTERFACE_ (IAIService : public IUnknown)
 {
 };
 
@@ -220,7 +220,7 @@ DEFINE_GUID(IID_IAIService, 0xd95eef22, 0x61ce, 0x463a, 0xaa, 0x71, 0x5, 0x4b, 0
 /*********************************************************************************************************
 IAircraftAIService - Interface for getting AI parameters from this object
 **********************************************************************************************************/
-DECLARE_INTERFACE_ (IAircraftAIServiceV01, IAIService)
+DECLARE_INTERFACE_ (IAircraftAIServiceV01 : public IAIService)
 {
     STDMETHOD_(float,  GetIndicatedAirspeed)()              const PURE;  //FPS
     STDMETHOD_(float,  GetTrueAirspeed)()                   const PURE;  //FPS    
@@ -280,7 +280,7 @@ DEFINE_GUID(IID_IAircraftAIServiceV01, 0x164cbb43, 0xd52b, 0x4018, 0xb2, 0x3, 0x
 /**********************************************************************************************************
 IAirplaneAIService - Interface for getting AI parameters from this object
 **********************************************************************************************************/
-DECLARE_INTERFACE_ (IAirplaneAIServiceV01, IAircraftAIServiceV01)
+DECLARE_INTERFACE_ (IAirplaneAIServiceV01 : public IAircraftAIServiceV01)
 {
     //Airplane Specific
     STDMETHOD_(float,  GetStallSpeedDirty)()                const PURE;  //FPS
@@ -322,7 +322,7 @@ DECLARE_INTERFACE_ (IAirplaneAIServiceV01, IAircraftAIServiceV01)
 DEFINE_GUID(IID_IAirplaneAIServiceV01,  0x4c30551e, 0xde5a, 0x4989, 0xb6, 0x2d, 0xf4, 0x6d, 0x38, 0xe6, 0x44, 0xde); 
 
 /** Because this interface derives from the IAircraftAIService, this interface may also be used for features related to AI monitoring, such as the User Tips feature. */
-DECLARE_INTERFACE_ (IHelicopterAIServiceV01, IAircraftAIServiceV01)
+DECLARE_INTERFACE_ (IHelicopterAIServiceV01 : public IAircraftAIServiceV01)
 {
 };
 
@@ -331,7 +331,7 @@ DEFINE_GUID(IID_IHelicopterAIServiceV01,  0xcb17b92d, 0xa4e, 0x4b62, 0x8c, 0xbb,
 /**********************************************************************************************************
 IGroundVehicleAIService - Interface for getting AI parameters from this object
 **********************************************************************************************************/
-DECLARE_INTERFACE_ (IGroundVehicleAIService, IAIService)
+DECLARE_INTERFACE_ (IGroundVehicleAIService : public IAIService)
 {
 };
 

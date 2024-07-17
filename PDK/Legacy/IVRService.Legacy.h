@@ -24,7 +24,7 @@ namespace P3D
      * \{
      */
 
-    DECLARE_INTERFACE_(IVRServiceV450, IUnknown)
+    class IVRServiceV450 : public IUnknown)
     {
         virtual void RegisterCallback(ICallbackV400* pCallback) = 0;
         virtual void UnregisterCallback(ICallbackV400* pCallback) = 0;
@@ -41,7 +41,7 @@ namespace P3D
 
         /**
         * Enables Virtual Reality with the indicated HMD Device
-        * @note, If Virtual Reality is already enabled this function does nothing
+        * @note : public If Virtual Reality is already enabled this function does nothing
         * @param[in] eInterface          Enum for the HMD Device
         */
         virtual void EnableVR(HMD_INTERFACES eInterface) = 0;
@@ -52,7 +52,7 @@ namespace P3D
         virtual void DisableVR() = 0;
     };
 
-    DECLARE_INTERFACE_(IVRServiceV452, IVRServiceV450)
+    class IVRServiceV452 : public IVRServiceV450)
     {
        virtual void RegisterCallback(ICallbackV400 * pCallback) abstract;
        virtual void UnregisterCallback(ICallbackV400 * pCallback) abstract;
@@ -71,7 +71,7 @@ namespace P3D
 
        /**
        * Enables Virtual Reality with the indicated HMD Device
-       * @note, If Virtual Reality is already enabled this function does nothing
+       * @note : public If Virtual Reality is already enabled this function does nothing
        * @param[in] eInterface          Enum for the HMD Device
        */
        virtual void EnableVR(HMD_INTERFACES eInterface) = 0;

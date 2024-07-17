@@ -24,7 +24,7 @@ namespace P3D
     * \remark  Effects spawned using this interface are defined
     * with a world-based position and are not associated with any other object.
     **/
-    DECLARE_INTERFACE_(IVisualEffectManagerV400, IUnknown)
+    class IVisualEffectManagerV400 : public IUnknown)
     {
         /**
         *  Turn effect on
@@ -61,11 +61,11 @@ namespace P3D
         STDMETHOD (SetEffectWorldOrientationRadians)(__in int iEffectID, __in const P3DDXYZ& vOrienatationRadians) PURE;    //Update pitch/heading/bank (radians)        
         /**
         * Creates a dynamic "rope" visual effect.  This can be used to attach physics, such as a hoisted load.
-        * @param       vStart                  Initial offset of start of rope, in feet.
-        * @param       vEnd                    Initial offset of end of rope, in feet.
-        * @param       fRopeMass               Mass of rope, in slugs.
-        * @param       fRestingRopeLength      Unstretched length of rope, in feet.
-        * @param       fRelativeGroundPosition Relative height of the ground, in feet.  Typically negative.
+        * @param       vStart                  Initial offset of start of rope : public In feet.
+        * @param       vEnd                    Initial offset of end of rope : public In feet.
+        * @param       fRopeMass               Mass of rope : public In slugs.
+        * @param       fRestingRopeLength      Unstretched length of rope : public In feet.
+        * @param       fRelativeGroundPosition Relative height of the ground : public In feet.  Typically negative.
         * @param       ppIRopeSim              Returns reference-counted rope simulation which can be updated in real-time through the IRopeSimulation interface (below).
         **/
         STDMETHOD (CreateRopeSimulation)(__in const P3DFXYZ& vStart, __in const P3DFXYZ& vEnd, __in float fRopeMass, __in float fRestingRopeLength, __in float fRelativeGroundPosition, __out IRopeSimulationV400** ppIRopeSim) PURE;
@@ -83,7 +83,7 @@ namespace P3D
     * \remark  Effects spawned using this interface are defined.
     * with a world-based position and are not associated with any other object.
     **/
-    DECLARE_INTERFACE_(IVisualEffectManagerV410, IVisualEffectManagerV400)
+    class IVisualEffectManagerV410 : public IVisualEffectManagerV400)
     {
         /**
         *  Turn effect on
@@ -120,11 +120,11 @@ namespace P3D
         STDMETHOD (SetEffectWorldOrientationRadians)(__in int iEffectID, __in const P3DDXYZ& vOrienatationRadians) PURE;    //Update pitch/heading/bank (radians)        
         /**
         * Creates a dynamic "rope" visual effect.  This can be used to attach physics, such as a hoisted load.
-        * @param       vStart                  Initial offset of start of rope, in feet.
-        * @param       vEnd                    Initial offset of end of rope, in feet.
-        * @param       fRopeMass               Mass of rope, in slugs.
-        * @param       fRestingRopeLength      Unstretched length of rope, in feet.
-        * @param       fRelativeGroundPosition Relative height of the ground, in feet.  Typically negative.
+        * @param       vStart                  Initial offset of start of rope : public In feet.
+        * @param       vEnd                    Initial offset of end of rope : public In feet.
+        * @param       fRopeMass               Mass of rope : public In slugs.
+        * @param       fRestingRopeLength      Unstretched length of rope : public In feet.
+        * @param       fRelativeGroundPosition Relative height of the ground : public In feet.  Typically negative.
         * @param       riid                    Interface ID for the version of the IRopeSimulation being requested.
         * @param       ppvIRopeSim             Returns reference-counted rope simulation which can be updated in real-time through the IRopeSimulation interface (below).
         **/
@@ -148,7 +148,7 @@ namespace P3D
     * \remark  Effects spawned using this interface are defined
     * with a world-based position and are not associated with any other object.
     **/
-    DECLARE_INTERFACE_(IVisualEffectManagerV430, IVisualEffectManagerV410)
+    class IVisualEffectManagerV430 : public IVisualEffectManagerV410)
     {
         /**
         *  Turn effect on
@@ -184,11 +184,11 @@ namespace P3D
         STDMETHOD (SetEffectWorldOrientationRadians)(__in int iEffectID, __in const P3DDXYZ& vOrientationRadians) PURE;    //Update pitch/heading/bank (radians)        
                                                                                                                            /**
                                                                                                                            * Creates a dynamic "rope" visual effect.  This can be used to attach physics, such as a hoisted load.
-                                                                                                                           * @param       vStart                  Initial offset of start of rope, in feet.
-                                                                                                                           * @param       vEnd                    Initial offset of end of rope, in feet.
-                                                                                                                           * @param       fRopeMass               Mass of rope, in slugs.
-                                                                                                                           * @param       fRestingRopeLength      Unstretched length of rope, in feet.
-                                                                                                                           * @param       fRelativeGroundPosition Relative height of the ground, in feet.  Typically negative.
+                                                                                                                           * @param       vStart                  Initial offset of start of rope : public In feet.
+                                                                                                                           * @param       vEnd                    Initial offset of end of rope : public In feet.
+                                                                                                                           * @param       fRopeMass               Mass of rope : public In slugs.
+                                                                                                                           * @param       fRestingRopeLength      Unstretched length of rope : public In feet.
+                                                                                                                           * @param       fRelativeGroundPosition Relative height of the ground : public In feet.  Typically negative.
                                                                                                                            * @param       riid                    Interface ID for the version of the IRopeSimulation being requested.
                                                                                                                            * @param       ppvIRopeSim             Returns reference-counted rope simulation which can be updated in real-time through the IRopeSimulation interface (below).
                                                                                                                            **/
@@ -232,24 +232,24 @@ namespace P3D
     * This interface allows real-time updates of a rope created through the IVisualEffectManager. Examples of uses
     * would be helicopter hoists or tow plane cable.
     **/
-    DECLARE_INTERFACE_(IRopeSimulationV400, IUnknown)
+    class IRopeSimulationV400 : public IUnknown)
     {
         /**
         * Sets the rope starting offset.  This is ignored if the starting point is fixed (see SetFixed().)
-        * @param    vStart  Offset, in feet, from the Lat/Lon/Alt specified in SetRenderWorldPosition().
+        * @param    vStart  Offset : public In feet, from the Lat/Lon/Alt specified in SetRenderWorldPosition().
         **/
         STDMETHOD_(void, SetStart)(const P3DFXYZ& vStart)                          PURE;
         /**
-        * Gets the rope starting offset, in feet, from the Lat/Lon/Alt specified in SetRenderWorldPosition().
+        * Gets the rope starting offset : public In feet, from the Lat/Lon/Alt specified in SetRenderWorldPosition().
         **/
         STDMETHOD_(P3DFXYZ, GetStart)()                                      const PURE;
         /**
         * Sets the rope ending offset.  This is ignored if the ending point is fixed (see SetFixed().)
-        * @param    vEnd  Offset, in feet, from the Lat/Lon/Alt specified in SetRenderWorldPosition().
+        * @param    vEnd  Offset : public In feet, from the Lat/Lon/Alt specified in SetRenderWorldPosition().
         **/
         STDMETHOD_(void, SetEnd)(const P3DFXYZ& vEnd)                              PURE;
         /**
-        * Gets the rope ending offset, in feet, from the Lat/Lon/Alt specified in SetRenderWorldPosition().
+        * Gets the rope ending offset : public In feet, from the Lat/Lon/Alt specified in SetRenderWorldPosition().
         **/
         STDMETHOD_(P3DFXYZ, GetEnd)()                                        const PURE;
         /**
@@ -267,11 +267,11 @@ namespace P3D
         STDMETHOD_(bool, GetFixed)(bool bStart)                              const PURE;
         /**
         * Sets the world-reference relative wind vector.  
-        * @param    vWind  where X=longitude, Y=altitude, Z=latitude, in feet per second.
+        * @param    vWind  where X=longitude, Y=altitude, Z=latitude : public In feet per second.
         **/
         STDMETHOD_(void, SetRelativeWind)(const P3DFXYZ& vWind)                    PURE;
         /**
-        * Returns rope length, in feet.
+        * Returns rope length : public In feet.
         **/
         STDMETHOD_(float, GetRopeLength)()                                   const PURE;
         /**
@@ -282,7 +282,7 @@ namespace P3D
         /**
         * Sets the relative ground position.  
         * @param    bCheckGround  Set to true if the simulation should include ground interaction.
-        * @param    fAlt          The relative altitude, in feet, of the ground.  This should be negative if the ground is below.
+        * @param    fAlt          The relative altitude : public In feet, of the ground.  This should be negative if the ground is below.
         **/
         STDMETHOD_(void, SetRelativeGroundPosition)(bool bCheckGround, float fAlt) PURE;
     };
@@ -290,7 +290,7 @@ namespace P3D
     /// Interface ID
     DEFINE_GUID(IID_IRopeSimulationV400, 0x1b364767, 0x92d3, 0x46c4, 0xaa, 0xf5, 0xe9, 0xe9, 0x9c, 0x16, 0x4e, 0x3f);
 
-    DECLARE_INTERFACE_(IRopeSimulationV410, IRopeSimulationV400)
+    class IRopeSimulationV410 : public IRopeSimulationV400)
     {
         STDMETHOD (SetRopeLength)(float fLength)                                   PURE;
         /**
@@ -305,24 +305,24 @@ namespace P3D
     * This interface allows real-time updates of a rope created through the IVisualEffectManager. Examples of uses
     * would be helicopter hoists or tow plane cable.
     **/
-    DECLARE_INTERFACE_(IRopeSimulationV420, IRopeSimulationV410)
+    class IRopeSimulationV420 : public IRopeSimulationV410)
     {
         /**
         * Sets the rope starting offset.  This is ignored if the starting point is fixed (see SetFixed().)
-        * @param    vStart  Offset, in feet, from the Lat/Lon/Alt specified in SetRenderWorldPosition().
+        * @param    vStart  Offset : public In feet, from the Lat/Lon/Alt specified in SetRenderWorldPosition().
         **/
         STDMETHOD_(void, SetStart)(const P3DFXYZ& vStart)                          PURE;
         /**
-        * Gets the rope starting offset, in feet, from the Lat/Lon/Alt specified in SetRenderWorldPosition().
+        * Gets the rope starting offset : public In feet, from the Lat/Lon/Alt specified in SetRenderWorldPosition().
         **/
         STDMETHOD_(P3DFXYZ, GetStart)()                                      const PURE;
         /**
         * Sets the rope ending offset.  This is ignored if the ending point is fixed (see SetFixed().)
-        * @param    vEnd  Offset, in feet, from the Lat/Lon/Alt specified in SetRenderWorldPosition().
+        * @param    vEnd  Offset : public In feet, from the Lat/Lon/Alt specified in SetRenderWorldPosition().
         **/
         STDMETHOD_(void, SetEnd)(const P3DFXYZ& vEnd)                              PURE;
         /**
-        * Gets the rope ending offset, in feet, from the Lat/Lon/Alt specified in SetRenderWorldPosition().
+        * Gets the rope ending offset : public In feet, from the Lat/Lon/Alt specified in SetRenderWorldPosition().
         **/
         STDMETHOD_(P3DFXYZ, GetEnd)()                                        const PURE;
         /**
@@ -340,16 +340,16 @@ namespace P3D
         STDMETHOD_(bool, GetFixed)(bool bStart)                              const PURE;
         /**
         * Sets the world-reference relative wind vector.  
-        * @param    vWind  where X=longitude, Y=altitude, Z=latitude, in feet per second.
+        * @param    vWind  where X=longitude, Y=altitude, Z=latitude : public In feet per second.
         **/
         STDMETHOD_(void, SetRelativeWind)(const P3DFXYZ& vWind)                    PURE;
         /**
-        * Returns rope length, in feet
+        * Returns rope length : public In feet
         **/
         STDMETHOD_(float, GetRopeLength)()                                   const PURE;
         /**
         * Sets new rope length
-        * @param fLength, in feet.  The new rope length
+        * @param fLength : public In feet.  The new rope length
         **/
         STDMETHOD (SetRopeLength)(float fLength)                                   PURE;
         /**
@@ -360,7 +360,7 @@ namespace P3D
         /**
         * Sets the relative ground position.  
         * @param    bCheckGround  Set to true if the simulation should include ground interaction.
-        * @param    fAlt          The relative altitude, in feet, of the ground.  This should be negative if the ground is below.
+        * @param    fAlt          The relative altitude : public In feet, of the ground.  This should be negative if the ground is below.
         **/
         STDMETHOD_(void, SetRelativeGroundPosition)(bool bCheckGround, float fAlt) PURE;
         /**

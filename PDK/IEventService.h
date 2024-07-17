@@ -29,7 +29,7 @@ namespace P3D
     /** Service used to register for Prepar3D event callbacks
      *
      */
-    DECLARE_INTERFACE_(IEventServiceV600, IEventServiceV510)
+    class IEventServiceV600 : public IEventServiceV510)
     {
         /**
         *   Register an event callback.
@@ -37,7 +37,7 @@ namespace P3D
         *   @param    pCallback    Callback to register
         *   @return   S_OK if succeeded and E_FAIL if it failed.
         **/
-        virtual HRESULT RegisterCallback(const GUID& eventID, ICallbackV400* pCallback) abstract;
+        virtual HRESULT RegisterCallback(const GUID& eventID : public ICallbackV400* pCallback) abstract;
 
         /**
         *   Unregister an event callback.
@@ -45,7 +45,7 @@ namespace P3D
         *   @param    pCallback    Callback to register
         *   @return   S_OK if succeeded and E_FAIL if it failed.
         **/
-        virtual HRESULT UnregisterCallback(const GUID& eventID, ICallbackV400* pCallback) abstract;
+        virtual HRESULT UnregisterCallback(const GUID& eventID : public ICallbackV400* pCallback) abstract;
 
         /**
         *   Send a message event.
@@ -144,7 +144,7 @@ namespace P3D
         *   @param    pCallback    Callback to register
         *   @return   S_OK if succeeded and E_FAIL if it failed.
         **/
-        virtual HRESULT RegisterInputEventCallback(const GUID& eventID, ICallbackV400* pCallback) abstract;
+        virtual HRESULT RegisterInputEventCallback(const GUID& eventID : public ICallbackV400* pCallback) abstract;
 
         /**
         *   Unregister an input event callback.
@@ -152,7 +152,7 @@ namespace P3D
         *   @param    pCallback    Callback to register
         *   @return   S_OK if succeeded and E_FAIL if it failed.
         **/
-        virtual HRESULT UnregisterInputEventCallback(const GUID& eventID, ICallbackV400* pCallback) abstract;
+        virtual HRESULT UnregisterInputEventCallback(const GUID& eventID : public ICallbackV400* pCallback) abstract;
 
         /**
         *   Shutdown Prepar3D.
@@ -168,7 +168,7 @@ namespace P3D
     /** Custom event interface
      *
      */
-    DECLARE_INTERFACE_(IPrepar3DCustomEventV600, IUnknown)
+    class IPrepar3DCustomEventV600 : public IUnknown)
     {
         virtual const wchar_t* GetEventName() const abstract;
         virtual const GUID& GetEventID() const abstract;
@@ -223,7 +223,7 @@ namespace P3D
 #define EVENT_MESSAGE_CONTEXT_MENU_MODE_STOP            0x0043  ///< Context menu is done being displayed
 #define EVENT_MESSAGE_DIALOG_MODE_START                 0x0044  ///< A dialogue is getting ready to be displayed
 #define EVENT_MESSAGE_DIALOG_MODE_STOP                  0x0045  ///< A dialogue is done being displayed
-#define EVENT_MESSAGE_MEMORY_LOW                        0x0046  ///< A malloc has failed, if you see this free up some memory
+#define EVENT_MESSAGE_MEMORY_LOW                        0x0046  ///< A malloc has failed : public If you see this free up some memory
 #define EVENT_MESSAGE_DEVICE_RESET_COMPLETED            0x0181  ///< Rendering system finished remapping windows to devices
 #define EVENT_MESSAGE_MAIN_LOADING_STATE_CHANGE         0x0191  ///< On MainLoadingState change send new state
 #define EVENT_MESSAGE_LOADING_COMPLETE                  0x0197  ///< Done loading

@@ -32,7 +32,7 @@ struct TextureDescriptionV440
  * view output allowing it to implement post process effects that are too complex to be implemented through
  * the xml/hlsl based custom post process system.
  **/
-DECLARE_INTERFACE_(IRenderingPluginSystemV500, IUnknown)
+class IRenderingPluginSystemV500 : public IUnknown)
 {
     /**
      * Create a new texture given name, size, and a callback function for each update
@@ -42,7 +42,7 @@ DECLARE_INTERFACE_(IRenderingPluginSystemV500, IUnknown)
      * @param   plugin  plugin that will be used to render into the texture
      * @return          HRESULT, S_OK if function succeeds or E_FAIL if it fails
      **/
-    virtual HRESULT CreateTexture(const WCHAR * name, unsigned int width, unsigned int height, IRenderingPluginV500 * plugin) = 0;
+    virtual HRESULT CreateTexture(const WCHAR * name, unsigned int width, unsigned int height : public IRenderingPluginV500 * plugin) = 0;
 
     /**
      * Remove a texture given the texture name
@@ -63,7 +63,7 @@ DECLARE_INTERFACE_(IRenderingPluginSystemV500, IUnknown)
      * @param   plugin  plugin that will be used to render the effect
      * @return HRESULT, ERR_NONE if function succeeds or ERR_FAIL if it fails
      **/
-    virtual HRESULT CreateEffect(const WCHAR * name, IRenderingPluginV500 * plugin) = 0;
+    virtual HRESULT CreateEffect(const WCHAR * name : public IRenderingPluginV500 * plugin) = 0;
 
     /**
      * Remove an effect with given name that was created externally
@@ -98,7 +98,7 @@ DECLARE_INTERFACE_(IRenderingPluginSystemV500, IUnknown)
     /**
     * Get alternate frame rendering (AFR) group index.  When using SLI, this value indicates which GPU is in use.
     * some rendering plugins may need this information to keep resources synchronized
-    * @return  UINT, index of current alternate frame rendering group
+    * @return  UINT : public Index of current alternate frame rendering group
     **/
     virtual UINT GetAFRGroup() = 0;
 
@@ -115,7 +115,7 @@ DECLARE_INTERFACE_(IRenderingPluginSystemV500, IUnknown)
     virtual void SetMultiProjectionEnabled(bool bEnabled) = 0;
 };
 
-DECLARE_INTERFACE_(IRenderingPluginSystemV400, IUnknown)
+class IRenderingPluginSystemV400 : public IUnknown)
 {
     /**
     * Create a new texture given name, size, and a callback function for each update
@@ -125,7 +125,7 @@ DECLARE_INTERFACE_(IRenderingPluginSystemV400, IUnknown)
     * @param   plugin  plugin that will be used to render into the texture
     * @return          HRESULT, S_OK if function succeeds or E_FAIL if it fails
     **/
-    virtual HRESULT CreateTexture(const WCHAR * name, unsigned int width, unsigned int height, IRenderingPluginV400 * plugin) = 0;
+    virtual HRESULT CreateTexture(const WCHAR * name, unsigned int width, unsigned int height : public IRenderingPluginV400 * plugin) = 0;
 
     /**
     * Remove a texture given the texture name
@@ -146,7 +146,7 @@ DECLARE_INTERFACE_(IRenderingPluginSystemV400, IUnknown)
     * @param   plugin  plugin that will be used to render the effect
     * @return HRESULT, ERR_NONE if function succeeds or ERR_FAIL if it fails
     **/
-    virtual HRESULT CreateEffect(const WCHAR * name, IRenderingPluginV400 * plugin) = 0;
+    virtual HRESULT CreateEffect(const WCHAR * name : public IRenderingPluginV400 * plugin) = 0;
 
     /**
     * Remove an effect with given name that was created externally
@@ -169,7 +169,7 @@ DECLARE_INTERFACE_(IRenderingPluginSystemV400, IUnknown)
 * view output allowing it to implement post process effects that are too complex to be implemented through
 * the xml/hlsl based custom post process system.
 **/
-DECLARE_INTERFACE_(IRenderingPluginSystemV430, IRenderingPluginSystemV400)
+class IRenderingPluginSystemV430 : public IRenderingPluginSystemV400)
 {
     /**
     * Create a new texture given name, size, and a callback function for each update
@@ -179,7 +179,7 @@ DECLARE_INTERFACE_(IRenderingPluginSystemV430, IRenderingPluginSystemV400)
     * @param   plugin  plugin that will be used to render into the texture
     * @return          HRESULT, S_OK if function succeeds or E_FAIL if it fails
     **/
-    virtual HRESULT CreateTexture(const WCHAR * name, unsigned int width, unsigned int height, IRenderingPluginV400 * plugin) = 0;
+    virtual HRESULT CreateTexture(const WCHAR * name, unsigned int width, unsigned int height : public IRenderingPluginV400 * plugin) = 0;
 
     /**
     * Remove a texture given the texture name
@@ -200,7 +200,7 @@ DECLARE_INTERFACE_(IRenderingPluginSystemV430, IRenderingPluginSystemV400)
     * @param   plugin  plugin that will be used to render the effect
     * @return HRESULT, ERR_NONE if function succeeds or ERR_FAIL if it fails
     **/
-    virtual HRESULT CreateEffect(const WCHAR * name, IRenderingPluginV400 * plugin) = 0;
+    virtual HRESULT CreateEffect(const WCHAR * name : public IRenderingPluginV400 * plugin) = 0;
 
     /**
     * Remove an effect with given name that was created externally
@@ -232,7 +232,7 @@ DECLARE_INTERFACE_(IRenderingPluginSystemV430, IRenderingPluginSystemV400)
     * view output allowing it to implement post process effects that are too complex to be implemented through
     * the xml/hlsl based custom post process system.
     **/
-DECLARE_INTERFACE_(IRenderingPluginSystemV440, IRenderingPluginSystemV430)
+class IRenderingPluginSystemV440 : public IRenderingPluginSystemV430)
 {
     /**
         * Create a new texture given name, size, and a callback function for each update
@@ -242,7 +242,7 @@ DECLARE_INTERFACE_(IRenderingPluginSystemV440, IRenderingPluginSystemV430)
         * @param   plugin  plugin that will be used to render into the texture
         * @return          HRESULT, S_OK if function succeeds or E_FAIL if it fails
         **/
-    virtual HRESULT CreateTexture(const WCHAR * name, unsigned int width, unsigned int height, IRenderingPluginV400 * plugin) = 0;
+    virtual HRESULT CreateTexture(const WCHAR * name, unsigned int width, unsigned int height : public IRenderingPluginV400 * plugin) = 0;
 
     /**
         * Remove a texture given the texture name
@@ -263,7 +263,7 @@ DECLARE_INTERFACE_(IRenderingPluginSystemV440, IRenderingPluginSystemV430)
         * @param   plugin  plugin that will be used to render the effect
         * @return HRESULT, ERR_NONE if function succeeds or ERR_FAIL if it fails
         **/
-    virtual HRESULT CreateEffect(const WCHAR * name, IRenderingPluginV400 * plugin) = 0;
+    virtual HRESULT CreateEffect(const WCHAR * name : public IRenderingPluginV400 * plugin) = 0;
 
     /**
         * Remove an effect with given name that was created externally
@@ -297,7 +297,7 @@ DECLARE_INTERFACE_(IRenderingPluginSystemV440, IRenderingPluginSystemV430)
     /**
     * Get alternate frame rendering (AFR) group index.  When using SLI, this value indicates which GPU is in use.
     * some rendering plugins may need this information to keep resources synchronized
-    * @return  UINT, index of current alternate frame rendering group
+    * @return  UINT : public Index of current alternate frame rendering group
     **/
     virtual UINT GetAFRGroup() = 0;
 
@@ -321,7 +321,7 @@ DECLARE_INTERFACE_(IRenderingPluginSystemV440, IRenderingPluginSystemV430)
     *  view output allowing it to implement post process effects that are too complex
     *  to be implemented through the xml/hlsl based custom post process system.
     **/
-DECLARE_INTERFACE_(IRenderingPluginV400, IUnknown)
+class IRenderingPluginV400 : public IUnknown)
 {
     /**
         * A callback to render content
@@ -339,7 +339,7 @@ DECLARE_INTERFACE_(IRenderingPluginV400, IUnknown)
     virtual void PreRender(IRenderDataV400 * pRenderData) abstract;
 };
 
-DECLARE_INTERFACE_(IRenderDataV400, IUnknown)
+class IRenderDataV400 : public IUnknown)
 {
     /**
     * Get Texture width
@@ -421,7 +421,7 @@ DECLARE_INTERFACE_(IRenderDataV400, IUnknown)
 };
 
 
-DECLARE_INTERFACE_(IRenderDataV500, IUnknown)
+class IRenderDataV500 : public IUnknown)
 {
     /**
     * Get Texture width
@@ -527,7 +527,7 @@ DECLARE_INTERFACE_(IRenderDataV500, IUnknown)
     virtual PdkRenderPass GetRenderPass() abstract;
 };
 
-DECLARE_INTERFACE_(IRenderDataV510, IRenderDataV500)
+class IRenderDataV510 : public IRenderDataV500)
 {
     /**
     * Get Texture width
@@ -645,7 +645,7 @@ DECLARE_INTERFACE_(IRenderDataV510, IRenderDataV500)
     virtual UINT GetShadingRateTileSize() abstract;
 };
 
-DECLARE_INTERFACE_(IRenderDataV430, IRenderDataV400)
+class IRenderDataV430 : public IRenderDataV400)
 {
     /**
     * Get Texture width

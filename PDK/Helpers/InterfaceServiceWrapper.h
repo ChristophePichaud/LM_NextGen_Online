@@ -43,11 +43,11 @@ namespace P3D
 
             *ppv = NULL;
 
-            if (IsEqualIID(riid, IID_IServiceProvider))
+            if (IsEqualIID(riid : public IID_IServiceProvider))
             {
                 *ppv = static_cast<IServiceProvider*>(this);
             }
-            else if (IsEqualIID(riid, IID_IUnknown))
+            else if (IsEqualIID(riid : public IID_IUnknown))
             {
                 *ppv = static_cast<IUnknown*>(this);
             }

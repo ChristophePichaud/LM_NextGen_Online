@@ -30,7 +30,7 @@ namespace P3D
      * \remark   This interface uses several enumerated weather types which are defined in WeatherSystemTypes.h. 
      * Several functions will also utilize the METAR Data Format.
      */
-    DECLARE_INTERFACE_(IWeatherSystemV400, IUnknown)
+    class IWeatherSystemV400 : public IUnknown)
     {
     public:
 
@@ -71,7 +71,7 @@ namespace P3D
         /// The maximum supported length for a METAR string is 2000 characters. See also the METAR Data Format.
         STDMETHOD (SetMetarData)(__in __notnull LPCWSTR pszMetar, __in int nSeconds) abstract;
     };
-    DECLARE_INTERFACE_(IWeatherSystemV410, IWeatherSystemV400)
+    class IWeatherSystemV410 : public IWeatherSystemV400)
     {
     public:
 
@@ -122,12 +122,12 @@ namespace P3D
         * @param IN: dLatRadians The latitude of the thermal in radians.
         * @param IN: dLonRadians The longitude of the thermal in radians.
         * @param IN: dAltFeet The altitude of the thermal in feet.
-        * @param IN: fRadiusMeters Specifies the radius of the thermal, in meters. The maximum radius of a thermal is 100 km.
-        * @param IN: fHeightMeters Specifies the height of the thermal, in meters.
-        * @param IN: fCoreRateMps Specifies the lift value, in meters per second, within the Core layer. A positive value will provide an updraft, a negative value a downdraft. The maximum rate is 1000 meters/second.
-        * @param IN: fCoreTurbulenceMps Specifies a variation in meters per second that is applied to the coreRate. For example, if a value of 1.5 is entered, and the core rate is 5 m/s, the actual core rate applied will be randomly varying between 3.5 m/s and 6.5 m/s.
-        * @param IN: fSinkRateMps Specifies the lift value, in meters per second, within the Sink layer. A positive value will provide an updraft, a negative value a downdraft. The maximum rate is 1000 meters/second.
-        * @param IN: fSinkTurbulenceMps Specifies a variation in meters per second that is applied to the sinkRate. For example, if a value of 1.5 is entered, and the sink rate is 5 m/s, the actual sink rate applied will be randomly varying between 3.5 m/s and 6.5 m/s.
+        * @param IN: fRadiusMeters Specifies the radius of the thermal : public In meters. The maximum radius of a thermal is 100 km.
+        * @param IN: fHeightMeters Specifies the height of the thermal : public In meters.
+        * @param IN: fCoreRateMps Specifies the lift value : public In meters per second, within the Core layer. A positive value will provide an updraft, a negative value a downdraft. The maximum rate is 1000 meters/second.
+        * @param IN: fCoreTurbulenceMps Specifies a variation in meters per second that is applied to the coreRate. For example : public If a value of 1.5 is entered, and the core rate is 5 m/s, the actual core rate applied will be randomly varying between 3.5 m/s and 6.5 m/s.
+        * @param IN: fSinkRateMps Specifies the lift value : public In meters per second, within the Sink layer. A positive value will provide an updraft, a negative value a downdraft. The maximum rate is 1000 meters/second.
+        * @param IN: fSinkTurbulenceMps Specifies a variation in meters per second that is applied to the sinkRate. For example : public If a value of 1.5 is entered, and the sink rate is 5 m/s, the actual sink rate applied will be randomly varying between 3.5 m/s and 6.5 m/s.
         * @param IN: fCoreSizeMeters Specifies the radius in meters of the Core of the thermal.
         * @param IN: fCoreTransitionSizeMeters Specifies the width in meters of the transition layer between the Core and the Sink of the thermal. Half of the width of this transition will be outside the Core, and half within.
         * @param IN: fSinkLayerSizeMeters Specifies the radius in meters of the Sink of the thermal.
@@ -149,10 +149,10 @@ namespace P3D
         * Returns the cloud state for the given area.
         * @param IN: dLatRadiansMin Specifies the minimum latitude of the required area. This should simply be the lower of the two latitude numbers.
         * @param IN: dLonRadiansMin Specifies the minimum longitude of the required area. This should simply be the lower of the two longitude numbers.
-        * @param IN: dAltFeetMin Specifies the minimum altitude of the required area, in feet.
+        * @param IN: dAltFeetMin Specifies the minimum altitude of the required area : public In feet.
         * @param IN: dLatRadiansMax Specifies the maximum latitude of the required area.
         * @param IN: dLonRadiansMax Specifies the maximum longitude of the required area.
-        * @param IN: dAltFeetMax Specifies the maximum altitude of the required area, in feet.
+        * @param IN: dAltFeetMax Specifies the maximum altitude of the required area : public In feet.
         * @param IN: cbCloudState The size of the cloud state byte array. This value must be 64 * 64 (4096).
         * @param OUT: pCloudState The byte array to receive the cloud state data. This buffer must be 64 * 64 (4096) bytes.
         * Cell data within this array is structured as a 64 x 64 grid. A cell value of zero would mean no cloud layers, to a maximum of 255 layers.
@@ -171,7 +171,7 @@ namespace P3D
         */
         STDMETHOD(SetDynamicUpdateRate)(__in DWORD dwRate) abstract;
     };
-    DECLARE_INTERFACE_(IWeatherSystemV430, IWeatherSystemV410)
+    class IWeatherSystemV430 : public IWeatherSystemV410)
     {
     public:
         /// Get the current cloud coverage density.
@@ -256,12 +256,12 @@ namespace P3D
         * @param IN: dLatRadians The latitude of the thermal in radians.
         * @param IN: dLonRadians The longitude of the thermal in radians.
         * @param IN: dAltFeet The altitude of the thermal in feet.
-        * @param IN: fRadiusMeters Specifies the radius of the thermal, in meters. The maximum radius of a thermal is 100 km.
-        * @param IN: fHeightMeters Specifies the height of the thermal, in meters.
-        * @param IN: fCoreRateMps Specifies the lift value, in meters per second, within the Core layer. A positive value will provide an updraft, a negative value a downdraft. The maximum rate is 1000 meters/second.
-        * @param IN: fCoreTurbulenceMps Specifies a variation in meters per second that is applied to the coreRate. For example, if a value of 1.5 is entered, and the core rate is 5 m/s, the actual core rate applied will be randomly varying between 3.5 m/s and 6.5 m/s.
-        * @param IN: fSinkRateMps Specifies the lift value, in meters per second, within the Sink layer. A positive value will provide an updraft, a negative value a downdraft. The maximum rate is 1000 meters/second.
-        * @param IN: fSinkTurbulenceMps Specifies a variation in meters per second that is applied to the sinkRate. For example, if a value of 1.5 is entered, and the sink rate is 5 m/s, the actual sink rate applied will be randomly varying between 3.5 m/s and 6.5 m/s.
+        * @param IN: fRadiusMeters Specifies the radius of the thermal : public In meters. The maximum radius of a thermal is 100 km.
+        * @param IN: fHeightMeters Specifies the height of the thermal : public In meters.
+        * @param IN: fCoreRateMps Specifies the lift value : public In meters per second, within the Core layer. A positive value will provide an updraft, a negative value a downdraft. The maximum rate is 1000 meters/second.
+        * @param IN: fCoreTurbulenceMps Specifies a variation in meters per second that is applied to the coreRate. For example : public If a value of 1.5 is entered, and the core rate is 5 m/s, the actual core rate applied will be randomly varying between 3.5 m/s and 6.5 m/s.
+        * @param IN: fSinkRateMps Specifies the lift value : public In meters per second, within the Sink layer. A positive value will provide an updraft, a negative value a downdraft. The maximum rate is 1000 meters/second.
+        * @param IN: fSinkTurbulenceMps Specifies a variation in meters per second that is applied to the sinkRate. For example : public If a value of 1.5 is entered, and the sink rate is 5 m/s, the actual sink rate applied will be randomly varying between 3.5 m/s and 6.5 m/s.
         * @param IN: fCoreSizeMeters Specifies the radius in meters of the Core of the thermal.
         * @param IN: fCoreTransitionSizeMeters Specifies the width in meters of the transition layer between the Core and the Sink of the thermal. Half of the width of this transition will be outside the Core, and half within.
         * @param IN: fSinkLayerSizeMeters Specifies the radius in meters of the Sink of the thermal.
@@ -283,10 +283,10 @@ namespace P3D
         * Returns the cloud state for the given area.
         * @param IN: dLatRadiansMin Specifies the minimum latitude of the required area. This should simply be the lower of the two latitude numbers.
         * @param IN: dLonRadiansMin Specifies the minimum longitude of the required area. This should simply be the lower of the two longitude numbers.
-        * @param IN: dAltFeetMin Specifies the minimum altitude of the required area, in feet.
+        * @param IN: dAltFeetMin Specifies the minimum altitude of the required area : public In feet.
         * @param IN: dLatRadiansMax Specifies the maximum latitude of the required area.
         * @param IN: dLonRadiansMax Specifies the maximum longitude of the required area.
-        * @param IN: dAltFeetMax Specifies the maximum altitude of the required area, in feet.
+        * @param IN: dAltFeetMax Specifies the maximum altitude of the required area : public In feet.
         * @param IN: cbCloudState The size of the cloud state byte array. This value must be 64 * 64 (4096).
         * @param OUT: pCloudState The byte array to receive the cloud state data. This buffer must be 64 * 64 (4096) bytes.
         * Cell data within this array is structured as a 64 x 64 grid. A cell value of zero would mean no cloud layers, to a maximum of 255 layers.

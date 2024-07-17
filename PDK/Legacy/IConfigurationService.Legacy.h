@@ -37,7 +37,7 @@ namespace P3D
     /**
     * A set of configuration data defined in a SimProp XML file
     **/
-    DECLARE_INTERFACE_(IConfigurationSetV440, IUnknown)
+    class IConfigurationSetV440 : public IUnknown)
     {
 
         /**
@@ -103,7 +103,7 @@ namespace P3D
     /**
     * This service provides access configuration data stored in SimProp XML files
     **/
-    DECLARE_INTERFACE_(IConfigurationServiceV440, IUnknown)
+    class IConfigurationServiceV440 : public IUnknown)
     {
         /**
          * Get configuration set by ID

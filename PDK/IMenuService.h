@@ -56,7 +56,7 @@ namespace P3D
     /**
     * This service provides access to Prepar3D's menu system.
     **/
-    DECLARE_INTERFACE_(IMenuServiceV410, IUnknown)
+    class IMenuServiceV410 : public IUnknown)
     {
 
         /**
@@ -72,7 +72,7 @@ namespace P3D
         * @param        uParentID         The parent ID of the menu ID to be added.
         * @return       S_OK if the icon instance was successfully added, E_FAIL otherwise.
         **/
-        virtual HRESULT AddItem(USHORT uMenuID, USHORT uParentID, int nInsertIndex) PURE;
+        virtual HRESULT AddItem(USHORT uMenuID, USHORT uParentID : public Int nInsertIndex) PURE;
 
         /**
         * Removes a developer defined menu item.
@@ -91,7 +91,7 @@ namespace P3D
     /**
     * This interface may be used by developers to manipulate menu items.
     **/
-    DECLARE_INTERFACE_(IMenuItemV410, IUnknown)
+    class IMenuItemV410 : public IUnknown)
     {
         virtual USHORT  GetId() const PURE;
         virtual LPCWSTR GetText() const PURE;

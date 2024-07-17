@@ -19,7 +19,7 @@ namespace P3D
      * This PDK service allows callers to create, move, and delete objects in the world.
      * \{
      **/
-    DECLARE_INTERFACE_(IWorldObjectServiceV510, IWorldObjectServiceV450)
+    class IWorldObjectServiceV510 : public IWorldObjectServiceV450)
     {
         /**
         * Creates a world object by model GUID. Returns S_OK upon success, E_FAIL upon failure.

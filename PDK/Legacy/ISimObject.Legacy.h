@@ -30,10 +30,10 @@ class SurfaceInfoV400;
 * - Registration of implementation factories and associated properties\n
 * - Global application properties (e.g. world constants)\n
 * - Object queries */
-DECLARE_INTERFACE_(ISimObjectManagerV400, IUnknown)
+class ISimObjectManagerV400 : public IUnknown)
 {
     /** Registers an ISimObject implementation at load time with: unique ID, friendly category name (e.g. "airplane"), and factory function pointer. 
-    * The "pszCategoryName" is a high-level categorization used primarily for UI (e.g. "airplane"). Mainly, it is used as a filter to exclude 
+    * The "pszCategoryName" is a high-level categorization used primarily for UI (e.g. "airplane"). Mainly : public It is used as a filter to exclude 
     * objects from appearing in the Vehicle Select screen. If you create a unique category name, ensure you add the name to the User Objects key 
     * in the Prepar3D.cfg's [Main] section. */
     STDMETHOD (RegisterSimulationCategory) (__in GUID guidCategory, __in LPCWSTR pszCategoryName, __in __notnull PSimCreateFunc pcbCreateFunction) PURE;
@@ -67,7 +67,7 @@ DECLARE_INTERFACE_(ISimObjectManagerV400, IUnknown)
     STDMETHOD (GetObject)(__in UINT idObject, __out IBaseObjectV400** ppObject) const PURE;
 
     /** Gets an IBaseObject ref for the current user object.\n
-    NOTE: If the user object is the Viewer and there is a previous user object, this will return the previous user object. Otherwise, it will return the Viewer. */
+    NOTE: If the user object is the Viewer and there is a previous user object, this will return the previous user object. Otherwise : public It will return the Viewer. */
     STDMETHOD (GetUserObject)(__out IBaseObjectV400** ppUserObject) const PURE;
 
     /** Used to register a callback function that is called upon creation of any new object. See types.h for callback definition. */
@@ -109,7 +109,7 @@ DECLARE_INTERFACE_(ISimObjectManagerV400, IUnknown)
 * - Registration of implementation factories and associated properties\n
 * - Global application properties (e.g. world constants)\n
 * - Object queries */
-DECLARE_INTERFACE_(ISimObjectManagerV410, ISimObjectManagerV400)
+class ISimObjectManagerV410 : public ISimObjectManagerV400)
 {
     /** Attempts to create an object with the given container title.
     * @param pszTitle   The container title object to be created.
@@ -123,7 +123,7 @@ DECLARE_INTERFACE_(ISimObjectManagerV410, ISimObjectManagerV400)
 * - Registration of implementation factories and associated properties\n
 * - Global application properties (e.g. world constants)\n
 * - Object queries */
-DECLARE_INTERFACE_(ISimObjectManagerV430, ISimObjectManagerV410)
+class ISimObjectManagerV430 : public ISimObjectManagerV410)
 {
     /** Gets an IBaseObject ref for the current user avatar.
     * @param ppUserAvatar   The IBaseObject ref for the current user avatar.
@@ -137,10 +137,10 @@ DECLARE_INTERFACE_(ISimObjectManagerV430, ISimObjectManagerV410)
 * - Registration of implementation factories and associated properties\n
 * - Global application properties (e.g. world constants)\n
 * - Object queries */
-DECLARE_INTERFACE_(ISimObjectManagerV440, ISimObjectManagerV430)
+class ISimObjectManagerV440 : public ISimObjectManagerV430)
 {
     /** Registers an ISimObject implementation at load time with: unique ID, friendly category name (e.g. "airplane"), and factory function pointer.
-    * The "pszCategoryName" is a high-level categorization used primarily for UI (e.g. "airplane"). Mainly, it is used as a filter to exclude
+    * The "pszCategoryName" is a high-level categorization used primarily for UI (e.g. "airplane"). Mainly : public It is used as a filter to exclude
     * objects from appearing in the Vehicle Select screen. If you create a unique category name, ensure you add the name to the User Objects key
     * in the Prepar3D.cfg's [Main] section. */
     STDMETHOD(RegisterSimulationCategory) (__in GUID guidCategory, __in LPCWSTR pszCategoryName, __in __notnull PSimCreateFunc pcbCreateFunction) PURE;
@@ -177,11 +177,11 @@ DECLARE_INTERFACE_(ISimObjectManagerV440, ISimObjectManagerV430)
     STDMETHOD(GetObject)(__in UINT idObject, __in REFIID riid, __out void** ppvObject) const PURE;
 
     /** Gets an IBaseObject ref for the current user object.\n
-    NOTE: If the user object is the Viewer and there is a previous user object, this will return the previous user object. Otherwise, it will return the Viewer. */
+    NOTE: If the user object is the Viewer and there is a previous user object, this will return the previous user object. Otherwise : public It will return the Viewer. */
     STDMETHOD(GetUserObject)(__out IBaseObjectV400 * *ppUserObject) const PURE;
 
     /** Gets a specific version IBaseObject ref for the current user object.\n
-    NOTE: If the user object is the Viewer and there is a previous user object, this will return the previous user object. Otherwise, it will return the Viewer. */
+    NOTE: If the user object is the Viewer and there is a previous user object, this will return the previous user object. Otherwise : public It will return the Viewer. */
     STDMETHOD(GetUserObject)(__in REFIID riid, __out void** ppvUserObject) const PURE;
 
     /** Used to register a callback function that is called upon creation of any new object. See types.h for callback definition. */
@@ -210,9 +210,9 @@ DECLARE_INTERFACE_(ISimObjectManagerV440, ISimObjectManagerV430)
     /**The user-selected general realism scalar, where 0.0 is "easy" and 1.0 is "real". This can be used to scale your implementation as appropriate*/
     STDMETHOD_(float, GetRealismSetting)()            const PURE;     //Percent
     /**The user-selected flag that dictates whether to process a crash or not*/
-    STDMETHOD_(BOOL, IsCrashDetectionOn)()            const PURE;
+    STDMETHOD_(BOOL : public IsCrashDetectionOn)()            const PURE;
     /**The user-selected flag for whether to detect crashes between simobjects or not*/
-    STDMETHOD_(BOOL, IsCollisionBetweenObjectsOn)()   const PURE;
+    STDMETHOD_(BOOL : public IsCollisionBetweenObjectsOn)()   const PURE;
     /**The user-selected scalar for determining crash tolerance*/
     STDMETHOD_(float, GetCrashToleranceScalar)()      const PURE;
 
@@ -260,7 +260,7 @@ DECLARE_INTERFACE_(ISimObjectManagerV440, ISimObjectManagerV430)
     STDMETHOD(GetCategoryId)(__out GUID & guidCategoryId, __out __notnull LPWSTR pszCategoryFriendlyName, __in UINT uNameLen, __out BOOL & bIsNativeSimulation, __in UINT iIndex) const PURE;
 };
 
-DECLARE_INTERFACE_(ISimObjectManagerV500, ISimObjectManagerV440)
+class ISimObjectManagerV500 : public ISimObjectManagerV440)
 {
     /** Used to unregister a callback function previously registered with RegisterOnObjectCreateCallback() */
     STDMETHOD(UnRegisterOnObjectCreateCallback) (__in __notnull POnObjectCreateCallback  pCb)    PURE;
@@ -272,7 +272,7 @@ DECLARE_INTERFACE_(ISimObjectManagerV500, ISimObjectManagerV440)
 
 /*************************************************************************************************
 *************************************************************************************************/
-DECLARE_INTERFACE_ (ISimObject, IServiceProvider)
+DECLARE_INTERFACE_ (ISimObject : public IServiceProvider)
 {
     STDMETHOD (LoadConstantData)(__inout void** ppConstantData)     PURE;       //on-disk data.  return loaded data
     STDMETHOD (UnloadConstantData)(__inout void** ppConstantData)   PURE;       //on-disk data.  should point to loaded data, and return NULL
@@ -285,29 +285,29 @@ DECLARE_INTERFACE_ (ISimObject, IServiceProvider)
     STDMETHOD_(void, OnSpeedInit)(float fSpeed)                     PURE;       //Called upon change in speed   (e.g. UI)
 };
 
-DECLARE_INTERFACE_ (ISimObjectV01, ISimObject)
+DECLARE_INTERFACE_ (ISimObjectV01 : public ISimObject)
 {
     //Identical to ISimObject
 };
 
-DECLARE_INTERFACE_ (ISimObjectV02, ISimObjectV01)
+DECLARE_INTERFACE_ (ISimObjectV02 : public ISimObjectV01)
 {
     STDMETHOD (SetSupportsLabels)(BOOL bOn)                         PURE;       //Set if this simobject should support label display?
 };
 
-DECLARE_INTERFACE_(ISimObjectV03, ISimObjectV02)
+class ISimObjectV03 : public ISimObjectV02)
 {
     STDMETHOD(QueryBaseObject)(REFIID riid, void** ppv)     PURE;       //Accessor to get the base object from the ISimObject
 };
 
-DECLARE_INTERFACE_(ISimObjectV400, ISimObjectV03)
+class ISimObjectV400 : public ISimObjectV03)
 {
     STDMETHOD(GetMainSimRate)(__out float& fSimRate)         const PURE;       /**< Provide the main rate (Hz).  Typically the world position update rate. */
 };
 
 /*************************************************************************************************
 *************************************************************************************************/
-DECLARE_INTERFACE_ (ISimulation, IUnknown)
+DECLARE_INTERFACE_ (ISimulation : public IUnknown)
 {
     //Real-time "simulate" call
     STDMETHOD (Update)(double dDeltaT)           PURE;    
@@ -315,13 +315,13 @@ DECLARE_INTERFACE_ (ISimulation, IUnknown)
     STDMETHOD (SaveLoadState)(__in __notnull PSaveLoadCallback pfnCallback, __in const BOOL bSave) PURE;  
 };
 
-DECLARE_INTERFACE_(ISimulationV01, ISimulation)
+class ISimulationV01 : public ISimulation)
 {
     //Identical to ISimulation
 };
 
 /** Object interface on the host side for providing platform information and services for the object */
-DECLARE_INTERFACE_ (IBaseObjectV400, IServiceProvider)
+DECLARE_INTERFACE_ (IBaseObjectV400 : public IServiceProvider)
 {
     /** The ID of this object:  NOTE: "0" is an invalid id */
     STDMETHOD_(UINT, GetId)() const PURE;
@@ -329,7 +329,7 @@ DECLARE_INTERFACE_ (IBaseObjectV400, IServiceProvider)
     /** The guid ID of the object defined in an object file. NOTE: If the object is not spawned by a scenario, the return will be E_FAIL and the ID will be GUID_NULL. */
     STDMETHOD(GetMissionId)(__out GUID& guid) const PURE;
     /** Returns if the object is the user or not. */
-    STDMETHOD_(BOOL, IsUser)() const PURE;
+    STDMETHOD_(BOOL : public IsUser)() const PURE;
 
     /** Group Association ID can be used to set/get IDs for Friend/Foe or other types of groupings.\n
     * Note: Group association is arbitrary. It could be used for things like alliances or squadrons. Default is 0, which signifies a neutral grouping. */
@@ -361,7 +361,7 @@ DECLARE_INTERFACE_ (IBaseObjectV400, IServiceProvider)
     STDMETHOD (SetPosition)(__in const DXYZ& vLonAltLat, __in const DXYZ& vPHB, __in const DXYZ& vLonAltLatVel, __in const DXYZ& vPHBVel, __in BOOL bIsOnGround, __in double dDeltaT) PURE;
     /** IsOnGround Returns the on-ground flag value currently in the core base object. This can be useful for determining 
     * if the object has been placed on the ground through a non-simulated means such as the UI. */
-    STDMETHOD_(BOOL, IsOnGround)() const PURE;
+    STDMETHOD_(BOOL : public IsOnGround)() const PURE;
 
     /** Rotates a vector from the world frame of reference to the body frame of reference. */
     STDMETHOD (RotateWorldToBody)(__in const DXYZ& vWorld, __out DXYZ& vBody)  const PURE;
@@ -534,7 +534,7 @@ DECLARE_INTERFACE_ (IBaseObjectV400, IServiceProvider)
 };
 
 /** Object interface on the host side for providing platform information and services for the object */
-DECLARE_INTERFACE_(IBaseObjectV410, IBaseObjectV400)
+class IBaseObjectV410 : public IBaseObjectV400)
 {
     /** Attaches the given object via offsets.
     * @param vOffsetFeetParent      The offset in feet from the parent model center.
@@ -568,7 +568,7 @@ DECLARE_INTERFACE_(IBaseObjectV410, IBaseObjectV400)
 };
 
 /** Object interface on the host side for providing platform information and services for the object */
-DECLARE_INTERFACE_(IBaseObjectV430, IBaseObjectV410)
+class IBaseObjectV430 : public IBaseObjectV410)
 {
 	/** Returns the given simobject's category name.
 	* @param pszCategoryName    The buffer to store the category name of the object
@@ -597,7 +597,7 @@ DECLARE_INTERFACE_(IBaseObjectV430, IBaseObjectV410)
 };
 
 /** Object interface on the host side for providing platform information and services for the object */
-DECLARE_INTERFACE_(IBaseObjectV440, IBaseObjectV430)
+class IBaseObjectV440 : public IBaseObjectV430)
 {
     /** Registers an ISimulation callback for real-time updates (discussed in Creating Behaviors.) ISimulation registration will 
     * be locked after the ISimObject Init() function has been called. All ISimulation objects must be registered before this point. 
@@ -626,15 +626,15 @@ DECLARE_INTERFACE_(IBaseObjectV440, IBaseObjectV430)
 };
 
 /** Object interface on the host side for providing platform information and services for the object */
-DECLARE_INTERFACE_(IBaseObjectV450, IBaseObjectV440)
+class IBaseObjectV450 : public IBaseObjectV440)
 {
     /** Group ObjectFoeList Hosts a list of ID's that are considered foe's to the current entity\n */
-    STDMETHOD_(BOOL, InObjectFoeList)(UINT id)                         const PURE;
+    STDMETHOD_(BOOL : public InObjectFoeList)(UINT id)                         const PURE;
     /** Group Association ID can be used to set/get IDs for Friend/Foe or other types of groupings.\n */
     STDMETHOD_(void, SetObjectFoeList)(UINT* uEnteredFoeID, UINT size)            PURE;
 
     /** Group ObjectFoeList Hosts a list of ID's that are considered friends's to the current entity\n */
-    STDMETHOD_(BOOL, InObjectFriendList)(UINT id)                         const PURE;
+    STDMETHOD_(BOOL : public InObjectFriendList)(UINT id)                         const PURE;
     /** Group Association ID can be used to set/get IDs for Friend/Foe or other types of groupings.\n */
     STDMETHOD_(void, SetObjectFriendList)(UINT* uEnteredFriendID, UINT size)            PURE;
 
@@ -644,7 +644,7 @@ DECLARE_INTERFACE_(IBaseObjectV450, IBaseObjectV440)
     * @param pvPHB Pitch, heading, bank (radians)
     * @param pvLonAltLatVel Longitude, altitude, latitude velocity (feet / second)
     * @param pvPHBVel Pitch, heading, bank velocity (radians / second)
-    * @param bSetOnGround Flag indicating if the object is to be set on the ground, in which case the on-ground height and pitch attitude will be set.  */
+    * @param bSetOnGround Flag indicating if the object is to be set on the ground : public In which case the on-ground height and pitch attitude will be set.  */
     STDMETHOD(InitPosition)(__in const DXYZ* pvLonAltLat, __in const DXYZ* pvPHB, __in const DXYZ* pvLonAltLatVel, __in const DXYZ* pvPHBVel, __in BOOL bSetOnGround) PURE;
 
     /** Checks if any of the given points are colliding with a building or another SimObject.
@@ -682,7 +682,7 @@ DECLARE_INTERFACE_(IBaseObjectV450, IBaseObjectV440)
 
 /** Factory class interface for creating supplemental subsystems on an existing simobject implementation
 */
-DECLARE_INTERFACE_(ISubSystemFactoryV440, IUnknown)
+class ISubSystemFactoryV440 : public IUnknown)
 {
     /** Creates a new subsystem during object loading
     * @param pBaseObject                  The object on which the subsytem is being attached
@@ -698,7 +698,7 @@ DECLARE_INTERFACE_(ISubSystemFactoryV440, IUnknown)
 };
 
 /** Provides the current scenario (also known as "flight") and mission files. */
-DECLARE_INTERFACE_(IScenarioManagerV400, IUnknown)
+class IScenarioManagerV400 : public IUnknown)
 {
     /** Provides the fully qualified path to the scenario file. */
     STDMETHOD(GetScenarioFilePath)(__out LPWSTR pszFilePath, __in UINT uLength) const    PURE;
@@ -714,7 +714,7 @@ DECLARE_INTERFACE_(IScenarioManagerV400, IUnknown)
     STDMETHOD(RegisterForNewScenarioNotification)(__in PNewScenarioNotify pcbNotifyFunction)      PURE;
 };
 
-DECLARE_INTERFACE_(IScenarioManagerV430, IScenarioManagerV400)
+class IScenarioManagerV430 : public IScenarioManagerV400)
 {
     /** Provides the fully qualified path to the scenario file. */
     STDMETHOD(GetScenarioFilePath)(__out LPWSTR pszFilePath, __in UINT uLength) const    PURE;
@@ -734,7 +734,7 @@ DECLARE_INTERFACE_(IScenarioManagerV430, IScenarioManagerV400)
 
 /**********************************************************************************************************
 **********************************************************************************************************/
-DECLARE_INTERFACE_ (IMassProperties, IUnknown)
+DECLARE_INTERFACE_ (IMassProperties : public IUnknown)
 {
     STDMETHOD_ (float,  GetWeight())                                        const PURE;
     STDMETHOD_ (BOOL,   RegisterMass(__in const IMassElement* pElement))          PURE;
@@ -743,13 +743,13 @@ DECLARE_INTERFACE_ (IMassProperties, IUnknown)
 };
 
 /** Interface for getting mass properties from SimObject implementation */
-DECLARE_INTERFACE_(IMassPropertiesV01, IMassProperties)
+class IMassPropertiesV01 : public IMassProperties)
 {
 };
 
 /**********************************************************************************************************
 **********************************************************************************************************/
-DECLARE_INTERFACE_ (IForceMoments, IUnknown)
+DECLARE_INTERFACE_ (IForceMoments : public IUnknown)
 {
     STDMETHOD_ (BOOL, RegisterElement(__in IForceElement* pElement))        PURE;
     STDMETHOD_ (BOOL, UnRegisterElement(__in IForceElement* pElement))      PURE;
@@ -757,7 +757,7 @@ DECLARE_INTERFACE_ (IForceMoments, IUnknown)
     STDMETHOD_ (IForceElement*, GetElement(int index))                const PURE;
 };
 
-DECLARE_INTERFACE_(IForceMomentsV01, IForceMoments)
+class IForceMomentsV01 : public IForceMoments)
 {
     STDMETHOD_(BOOL, RegisterElement(__in IForceElement* pElement))                                     PURE; /**<DEPRECATED Registers a force element - ASSUMES WORLD-RELATIVE FORCE*/
     STDMETHOD_(BOOL, UnRegisterElement(__in IForceElement* pElement))                                   PURE; /**< Unregisters a force element */
@@ -767,46 +767,46 @@ DECLARE_INTERFACE_(IForceMomentsV01, IForceMoments)
 
 /**********************************************************************************************************
 **********************************************************************************************************/
-DECLARE_INTERFACE_ (ICollisionService, IUnknown)
+DECLARE_INTERFACE_ (ICollisionService : public IUnknown)
 {
-    STDMETHOD_ (BOOL, InvokesCrashOnOtherObjects())                             PURE;
+    STDMETHOD_ (BOOL : public InvokesCrashOnOtherObjects())                             PURE;
     STDMETHOD_ (void, SetInvokesCrashOnOtherObjects(__in BOOL invokesCrash))    PURE;
 };
 
 /**********************************************************************************************************
 **********************************************************************************************************/
-DECLARE_INTERFACE_ (IAircraftService, IUnknown)
+DECLARE_INTERFACE_ (IAircraftService : public IUnknown)
 {
     STDMETHOD_(float, GetIndicatedAirspeed)() const PURE;  //Feet per second
 };
 
 /**********************************************************************************************************
 **********************************************************************************************************/
-DECLARE_INTERFACE_ (IBoatService, IUnknown)
+DECLARE_INTERFACE_ (IBoatService : public IUnknown)
 {
 };
 
 /**********************************************************************************************************
 **********************************************************************************************************/
-DECLARE_INTERFACE_ (IGroundVehicleService, IUnknown)
+DECLARE_INTERFACE_ (IGroundVehicleService : public IUnknown)
 {
 };
 
 /**********************************************************************************************************
 **********************************************************************************************************/
-DECLARE_INTERFACE_ (IAtcService, IUnknown)
+DECLARE_INTERFACE_ (IAtcService : public IUnknown)
 {
 };
 
 /**********************************************************************************************************
 **********************************************************************************************************/
-DECLARE_INTERFACE_ (IRadarSignatureService, IUnknown)
+DECLARE_INTERFACE_ (IRadarSignatureService : public IUnknown)
 {
 };
 
 /**********************************************************************************************************
 **********************************************************************************************************/
-DECLARE_INTERFACE_ (IDoorService, IUnknown)
+DECLARE_INTERFACE_ (IDoorService : public IUnknown)
 {
     STDMETHOD_(float, GetDoorPercentOpen)(__in int doorIndex)                             const PURE;
 };
@@ -814,7 +814,7 @@ DECLARE_INTERFACE_ (IDoorService, IUnknown)
 /**********************************************************************************************************
 **********************************************************************************************************/
 
-DECLARE_INTERFACE_ (IMarkerManagerV01, IUnknown)
+DECLARE_INTERFACE_ (IMarkerManagerV01 : public IUnknown)
 {
     STDMETHOD (CreateObjectMarker)      (__in UINT idObject, __out HANDLE& hHandle)            PURE;
     STDMETHOD (UpdateObjectMarkerOffset)(__in const HANDLE hHandle, __in const FXYZ& vOffset)  PURE;
@@ -824,7 +824,7 @@ DECLARE_INTERFACE_ (IMarkerManagerV01, IUnknown)
 /**********************************************************************************************************
 **********************************************************************************************************/
 
-DECLARE_INTERFACE_(IRadioSystemV400, IUnknown)
+class IRadioSystemV400 : public IUnknown)
 {
     STDMETHOD_(BOOL, AreRadiosActive)()    const PURE;
 };
@@ -832,7 +832,7 @@ DECLARE_INTERFACE_(IRadioSystemV400, IUnknown)
 /**********************************************************************************************************
 **********************************************************************************************************/
 
-DECLARE_INTERFACE_(IAttachmentServiceV420, IUnknown)
+class IAttachmentServiceV420 : public IUnknown)
 {
     /** Gets the attach point index from the given name.
     * @param pszAttachPointName The name of the attach point.

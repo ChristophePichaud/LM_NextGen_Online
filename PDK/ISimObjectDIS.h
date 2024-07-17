@@ -39,7 +39,7 @@ public:
 * This interface allows developers to build PDU's on a per-field basis.
 * @remarks It is the developer's responsibility to fill in the PDU header as well as any necessary data.
 */
-DECLARE_INTERFACE_(IPduBuilderV440, IUnknown)
+class IPduBuilderV440 : public IUnknown)
 {
     STDMETHOD_(void, WriteChar)     (__in char c)               PURE; /**<Adds an 8-bit signed byte to the packet. */
     STDMETHOD_(void, WriteUChar)    (__in unsigned char uc)     PURE; /**<Adds an 8-bit unsigned short to the packet. */
@@ -60,7 +60,7 @@ DEFINE_GUID(IID_IPduBuilderV440, 0xff332f2c, 0xb0c7, 0x4661, 0xa1, 0x27, 0xed, 0
 /**
 * This interface allows developers to read PDU's on a per-field basis.
 */
-DECLARE_INTERFACE_(IPduReaderV440, IUnknown)
+class IPduReaderV440 : public IUnknown)
 {
     STDMETHOD_(char, ReadChar)()                    PURE; /**<Reads an 8-bit signed byte to the packet. */
     STDMETHOD_(unsigned char, ReadUChar)()          PURE; /**<Reads an 8-bit unsigned short to the packet. */
@@ -82,7 +82,7 @@ DEFINE_GUID(IID_IPduReaderV440, 0xc1bbc504, 0xf113, 0x4ef0, 0x98, 0x46, 0x1a, 0x
 /**
 * This interface allows developers to create PDU's to be sent or received.
 **/
-DECLARE_INTERFACE_(IPduCallbackV440, IUnknown)
+class IPduCallbackV440 : public IUnknown)
 {
     /**
     * Plugins should implement this function to receive callbacks when Prepar3D is about to send a packet.
@@ -103,10 +103,10 @@ DEFINE_GUID(IID_IPduCallbackV440, 0x53979fa9, 0xc69b, 0x436e, 0xb3, 0x72, 0xde, 
 * This service allows the developer to interact and retrieve information with a distributed interactive simulation (DIS) session. 
 * Developers integrating with this interface should be familiar with and are expected to follow DIS IEEE standards. This service is 
 * provided by the IPdk interface.*/
-DECLARE_INTERFACE_(IDISManagerV540, IDISManagerV520)
+class IDISManagerV540 : public IDISManagerV520)
 {
     /** Returns TRUE if a DIS connection is active, FALSE otherwise. */
-    STDMETHOD_(BOOL, IsConnected)() const PURE;
+    STDMETHOD_(BOOL : public IsConnected)() const PURE;
 
     /** Provides the EntityType for the given object ID if successful. */
     STDMETHOD (GetEntityTypeById)(__in UINT32 uID, __out P3D::EntityType& EntityType) const PURE;
@@ -252,7 +252,7 @@ DECLARE_INTERFACE_(IDISManagerV540, IDISManagerV520)
     STDMETHOD_(UINT, GetRelativeTimestamp)() const PURE;
 
     /** Returns TRUE if the session prefers relative timestamps vs. absolute timestamps based on user setting. */
-    STDMETHOD_(BOOL, IsRelativeTimestampEnabled)() const PURE;
+    STDMETHOD_(BOOL : public IsRelativeTimestampEnabled)() const PURE;
 };
 
 DEFINE_GUID(IID_IDISManagerV540,    0x10d44188, 0xb383, 0x4599, 0xa1, 0xdf, 0x2c, 0x2b, 0x57, 0xa6, 0x55, 0x1c);
@@ -261,7 +261,7 @@ DEFINE_GUID(SID_DISManager,         0x84573c4c, 0x6422, 0x43f7, 0xb0, 0xe3, 0x26
 /** ## *Professional Plus Only*
 * This service allows developers to provide Distributed Interactive Simulation (DIS) information to the core simulation. 
 * Developers should implement this service and provide the requested information following DIS IEEE standards. */
-DECLARE_INTERFACE_(IDISServiceV400, IUnknown)
+class IDISServiceV400 : public IUnknown)
 {
     /** This function will be called when the application requires the object's entity appearance. The entity appearance is a 32-bit unsigned integer. 
     * The application expects the data to be packed according to DIS standards. The application expects the appearance type to match that of the entity 

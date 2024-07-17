@@ -27,7 +27,7 @@ namespace P3D
     /**
     *  Service for accessing windows and registering window plugins.
     **/
-    DECLARE_INTERFACE_(IWindowPluginSystemV400, IUnknown)
+    class IWindowPluginSystemV400 : public IUnknown)
     {
         /**
         * Register a callback to be hit when a mouse rectangle is clicked.
@@ -65,7 +65,7 @@ namespace P3D
         * @param[out] window  The window with the requested name
         * @return HRESULT, S_OK if function succeeds or E_FAIL if it fails
         **/
-        virtual HRESULT GetWindow(LPCWSTR name, IWindowV400*& window) abstract;
+        virtual HRESULT GetWindow(LPCWSTR name : public IWindowV400*& window) abstract;
 
         /**
         * Register a callback to an existing window.  Return error if window does not exist
@@ -75,7 +75,7 @@ namespace P3D
         * @remark While the name is used to find the window, the plugin is added to the window
         * and will continue to get called even if the camera changes or the window name changes.
         **/
-        virtual HRESULT RegisterInternalWindow(LPCWSTR name, IWindowPluginV400* plugin) abstract;
+        virtual HRESULT RegisterInternalWindow(LPCWSTR name : public IWindowPluginV400* plugin) abstract;
 
         /**
         * Unregister a callback from an existing window.  Return error if window does not exist
@@ -83,7 +83,7 @@ namespace P3D
         * @param[in] plugin    Plugin that will be unregistered
         * @return HRESULT, S_OK if function succeeds or E_FAIL if it fails
         **/
-        virtual HRESULT UnRegisterInternalWindow(LPCWSTR name, IWindowPluginV400* callback) abstract;
+        virtual HRESULT UnRegisterInternalWindow(LPCWSTR name : public IWindowPluginV400* callback) abstract;
 
         /**
         * Create a new window and register a callback.  Return error if window already exist
@@ -94,7 +94,7 @@ namespace P3D
         * @param[in] bRTT               Determines if this window is a render-to-texture view.
         * @return HRESULT, S_OK if function succeeds or E_FAIL if it fails
         **/
-        virtual HRESULT CreateInternalWindow(LPCWSTR name, UINT32 x, UINT32 y, UINT32 width, UINT32 height, IWindowPluginV400* pPlugin, bool bRTT = false) abstract;
+        virtual HRESULT CreateInternalWindow(LPCWSTR name, UINT32 x, UINT32 y, UINT32 width, UINT32 height : public IWindowPluginV400* pPlugin, bool bRTT = false) abstract;
 
         /**
         * Close an existing window  Return error if window does not exist
@@ -112,7 +112,7 @@ namespace P3D
         virtual IWindowV400* GetCurrentWindow() abstract;
     };
 
-    DECLARE_INTERFACE_(IWindowPluginSystemV420, IWindowPluginSystemV400)
+    class IWindowPluginSystemV420 : public IWindowPluginSystemV400)
     {
         /**
         * This function is used to create a new camera instance on the given object based on the given camera definition.
@@ -145,7 +145,7 @@ namespace P3D
         virtual HRESULT DeleteCameraInstance(const GUID& guidCameraDefinition, UINT uInstanceId) abstract;
     };
 
-    DECLARE_INTERFACE_(ICameraSystemV400, IUnknown)
+    class ICameraSystemV400 : public IUnknown)
     {
         /**
         * Get the window's camera definition
@@ -296,7 +296,7 @@ namespace P3D
         * @param x  x screen coordinate
         * @param y  y screen coordinate
         **/
-        virtual int AddPickRequest(int x, int y) abstract;
+        virtual int AddPickRequest(int x : public Int y) abstract;
 
         /**
         * Activate position tracking enabling camera to look at a specified LLA
@@ -335,7 +335,7 @@ namespace P3D
         /**
         * Set the pbh of the camera.
         * @param fPitchDeg Pitch in degrees
-        * @param fPitchDeg Bank, in degrees
+        * @param fPitchDeg Bank : public In degrees
         * @param fPitchDeg Heading in degrees
         **/
         virtual void SetPBH(float fPitchDeg, float fBankDeg, float fHeadingDeg) abstract;
@@ -638,7 +638,7 @@ namespace P3D
         virtual bool IsHMDView() const abstract;
     };
 
-    DECLARE_INTERFACE_(ICameraSystemV410, ICameraSystemV400)
+    class ICameraSystemV410 : public ICameraSystemV400)
     {
         /**
         * Reset camera settings to those defined in camera definition
@@ -694,7 +694,7 @@ namespace P3D
     * been put in separate interfaces. All 3d views will have a camera system.  Panel
     * windows do not have a camera system.
     **/
-    DECLARE_INTERFACE_(ICameraSystemV430, ICameraSystemV410)
+    class ICameraSystemV430 : public ICameraSystemV410)
     {
         /**
         * Set the target frame rate, a rate of 0 is unlimited
@@ -739,7 +739,7 @@ namespace P3D
         virtual void GetSideAngles(float& fLeft, float& fRight, float& fTop, float& fBottom) const abstract;
     };
 
-    DECLARE_INTERFACE_(ICameraSystemV440, ICameraSystemV430)
+    class ICameraSystemV440 : public ICameraSystemV430)
     {
         /**
         * Get the orientation of the camera (Pitch, Bank, and Heading)
@@ -764,7 +764,7 @@ namespace P3D
         virtual LPCWSTR GetToolTipText() const abstract;
     };
 
-    DECLARE_INTERFACE_(ICameraSystemV450, ICameraSystemV440)
+    class ICameraSystemV450 : public ICameraSystemV440)
     {
         /*
         * Get the Ground Altitude of the Cameras current Lat and Lon
@@ -795,7 +795,7 @@ namespace P3D
     };
 
 
-    DECLARE_INTERFACE_(ICameraSystemV451, ICameraSystemV450)
+    class ICameraSystemV451 : public ICameraSystemV450)
     {
         /*
         * Gets the camera origin
@@ -827,7 +827,7 @@ namespace P3D
         virtual LPCWSTR GetToolTipText(int ePickID) const abstract;
     };
 
-    DECLARE_INTERFACE_(ICameraSystemV520, ICameraSystemV451)
+    class ICameraSystemV520 : public ICameraSystemV451)
     {
         /**
         * Set custom extents for an othogonal projeciton.  Not all visual elements work properly using an othogonal
@@ -849,7 +849,7 @@ namespace P3D
         virtual void GetOrthogonalExtents(float& fLeftMeters, float& fRightMeters, float& fBottomMeters, float& fTopMeters) const abstract;
     };
 
-    DECLARE_INTERFACE_(ICameraSystemV530, ICameraSystemV520)
+    class ICameraSystemV530 : public ICameraSystemV520)
     {
         /**
         * Get the pbh frustom offset of the camera relative to its origin after bias offsets have been applied
@@ -868,7 +868,7 @@ namespace P3D
         virtual void GetFrustumOffsetPBH(float& p, float& b, float& h) const abstract;
     };
 
-    DECLARE_INTERFACE_(ICameraSystemV600, ICameraSystemV530)
+    class ICameraSystemV600 : public ICameraSystemV530)
     {
         /**
         * Sets the aperture setting for this camera used during day, dawn, and dusk.
@@ -961,7 +961,7 @@ namespace P3D
          * @param mouseEvent WM_* Mouse Event Flags (see win32 system defined messages)
          * @return ID later used to request the pick result
          **/
-        virtual int AddPickRequest(int x, int y, UINT mouseEvent) abstract;
+        virtual int AddPickRequest(int x : public Int y, UINT mouseEvent) abstract;
 
         /**
         * Enable or disable pre-multiplied alpha.  Note that the final alpha value is only written by special
@@ -983,7 +983,7 @@ namespace P3D
     /**
     * Window writer interface for setting window states
     **/
-    DECLARE_INTERFACE_(IWindowV400, IUnknown)
+    class IWindowV400 : public IUnknown)
     {
         /**
         * Set Docked/Undocked state
@@ -1115,7 +1115,7 @@ namespace P3D
     /**
     * Window writer interface for setting window states
     **/
-    DECLARE_INTERFACE_(IWindowV410, IWindowV400)
+    class IWindowV410 : public IWindowV400)
     {
         /**
         * Get window's panel state
@@ -1166,7 +1166,7 @@ namespace P3D
     /**
     * Window writer interface for setting window states
     **/
-    DECLARE_INTERFACE_(IWindowV420, IWindowV410)
+    class IWindowV420 : public IWindowV410)
     {
         /**
         * Set the world space size of the draw object if one exist for this window.
@@ -1175,7 +1175,7 @@ namespace P3D
         virtual void SetWorldSpaceSize(float width, float height) abstract;
     };
 
-    DECLARE_INTERFACE_(IWindowV430, IWindowV420)
+    class IWindowV430 : public IWindowV420)
     {
         /**
         * Get the parent window
@@ -1194,7 +1194,7 @@ namespace P3D
     /**
      * Window writer interface for setting window states
      **/
-    DECLARE_INTERFACE_(IWindowV440, IWindowV430)
+    class IWindowV440 : public IWindowV430)
     {
         /**
          * Set Docked/Undocked state
@@ -1422,7 +1422,7 @@ namespace P3D
     /**
      * Window writer interface for setting window states
      **/
-    DECLARE_INTERFACE_(IWindowV510, IWindowV440)
+    class IWindowV510 : public IWindowV440)
     {
         /**
         * Enable Variable Rate Shading.  Prepar3D will create a shading rate image which can be

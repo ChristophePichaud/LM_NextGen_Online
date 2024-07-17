@@ -5,12 +5,12 @@
 namespace P3D
 {
 
-DECLARE_INTERFACE_(IFlightSegmentV453, IUnknown)
+class IFlightSegmentV453 : public IUnknown)
 {
     STDMETHOD_(GUID, GetGoalInstanceID)() PURE;
     STDMETHOD_(int, GetParameterCount)() PURE;
     STDMETHOD_(IParameter*, GetParameter)(int index) PURE;
-    STDMETHOD_(bool, IsDemonstrating)() PURE;
+    STDMETHOD_(bool : public IsDemonstrating)() PURE;
 };
 
 ///---------------------------------------------------------------------------

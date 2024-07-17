@@ -20,7 +20,7 @@ namespace P3D
     /**
     *   Parameter list interface used by ICallbackV400
     **/
-    DECLARE_INTERFACE_(IParameterListV400, IUnknown)
+    class IParameterListV400 : public IUnknown)
     {
         /**
         *   Get service provider.  Use QueryService to request services from it.
@@ -64,7 +64,7 @@ namespace P3D
     };
 
     /* Custom parameter interface */
-    DECLARE_INTERFACE_(ICustomParameterV600, IUnknown)
+    class ICustomParameterV600 : public IUnknown)
     {
         virtual const wchar_t* GetName() const abstract;
         virtual bool GetValue(bool& value) const abstract;
@@ -85,7 +85,7 @@ namespace P3D
     extern __declspec(selectany) REFIID IID_ICustomParameterV600 = __uuidof(ICustomParameterV600);
 
     // Custom parameter list interface
-    DECLARE_INTERFACE_(ICustomParameterListV600, IParameterListV400)
+    class ICustomParameterListV600 : public IParameterListV400)
     {
         /*IParameterListV400*/
         virtual IServiceProvider* GetServiceProvider() abstract;

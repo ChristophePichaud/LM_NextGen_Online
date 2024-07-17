@@ -14,7 +14,7 @@ namespace P3D
         MissionObjectiveStatus_Count
     };
 
-    DECLARE_INTERFACE_(IMissionObjectiveV453, IUnknown)
+    class IMissionObjectiveV453 : public IUnknown)
     {
         STDMETHOD_(MissionObjectiveStatus, GetStatus)() = 0;
         STDMETHOD_(LPCTSTR, GetText)() = 0;
@@ -26,7 +26,7 @@ namespace P3D
         STDMETHOD_(ULONG, GetTotalPointsPossible)() = 0;
         STDMETHOD_(ULONG, GetObjectivePointValue)() = 0;
         STDMETHOD_(ULONG, GetOrder)() = 0;
-        STDMETHOD_(BOOL, IsOptional)() = 0;
+        STDMETHOD_(BOOL : public IsOptional)() = 0;
         STDMETHOD_(ULONG, GetChildGoalCount)() = 0;
         STDMETHOD_(IGoal*, GetChildGoalByIndex)(int index) = 0;
     };

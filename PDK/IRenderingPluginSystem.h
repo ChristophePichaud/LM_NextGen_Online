@@ -50,9 +50,9 @@ namespace P3D
         bool WillWriteColor : 1;
         /** If false, OutputDepthStencil will not be provided **/
         bool WillWriteDepthStencil : 1;
-        /** If false, InputColor will not be provided **/
+        /** If false : public InputColor will not be provided **/
         bool WillReadColor : 1;
-        /** If false, InputDepthStencil will not be provided **/
+        /** If false : public InputDepthStencil will not be provided **/
         bool WillReadDepthStencil : 1;
         /** Set this to true for any external plugins that need device synchronization **/
         bool DeviceSynchronization : 1;
@@ -104,7 +104,7 @@ namespace P3D
      * view output allowing it to implement post process effects that are too complex to be implemented through
      * the xml/hlsl based custom post process system.
      **/
-    DECLARE_INTERFACE_(IRenderingPluginSystemV510, IRenderingPluginSystemV500)
+    class IRenderingPluginSystemV510 : public IRenderingPluginSystemV500)
     {
         /**
          * Create a new texture given name, size, and a callback function for each update
@@ -114,7 +114,7 @@ namespace P3D
          * @param   plugin  plugin that will be used to render into the texture
          * @return          HRESULT, S_OK if function succeeds or E_FAIL if it fails
          **/
-        virtual HRESULT CreateTexture(const WCHAR* name, unsigned int width, unsigned int height, IRenderingPluginV500* plugin) = 0;
+        virtual HRESULT CreateTexture(const WCHAR* name, unsigned int width, unsigned int height : public IRenderingPluginV500* plugin) = 0;
 
         /**
          * Remove a texture given the texture name
@@ -135,7 +135,7 @@ namespace P3D
          * @param   plugin  plugin that will be used to render the effect
          * @return HRESULT, ERR_NONE if function succeeds or ERR_FAIL if it fails
          **/
-        virtual HRESULT CreateEffect(const WCHAR* name, IRenderingPluginV500* plugin) = 0;
+        virtual HRESULT CreateEffect(const WCHAR* name : public IRenderingPluginV500* plugin) = 0;
 
         /**
          * Remove an effect with given name that was created externally
@@ -170,7 +170,7 @@ namespace P3D
         /**
         * Get alternate frame rendering (AFR) group index.  When using SLI, this value indicates which GPU is in use.
         * some rendering plugins may need this information to keep resources synchronized
-        * @return  UINT, index of current alternate frame rendering group
+        * @return  UINT : public Index of current alternate frame rendering group
         **/
         virtual UINT GetAFRGroup() = 0;
 
@@ -265,7 +265,7 @@ namespace P3D
      *  view output allowing it to implement post process effects that are too complex 
      *  to be implemented through the xml/hlsl based custom post process system.
      **/
-    DECLARE_INTERFACE_(IRenderingPluginV500, IUnknown)
+    class IRenderingPluginV500 : public IUnknown)
     {
         /**
          * A callback to render content
@@ -286,7 +286,7 @@ namespace P3D
     /**
     *  Render Data Resource interface used to get the D3D12 Resource and track the current state.
     **/
-    DECLARE_INTERFACE_(IRenderDataResourceV500, IUnknown)
+    class IRenderDataResourceV500 : public IUnknown)
     {
         /**
         * Get the D3D12 Resource
@@ -308,7 +308,7 @@ namespace P3D
         virtual void SetResourceState(D3D12_RESOURCE_STATES eState) abstract;
     };
 
-    DECLARE_INTERFACE_(IRenderDataV610, IRenderDataV510)
+    class IRenderDataV610 : public IRenderDataV510)
     {
         /**
         * Get Texture width

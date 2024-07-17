@@ -20,7 +20,7 @@ interface IGunV400;
 /** ## *Professional Plus Only*
 * Interface to the Prepar3D native weapon system. 
 * Can also be used to implement a custom weapon system */
-DECLARE_INTERFACE_(IWeaponsSystemV440, IWeaponsSystemV430)
+class IWeaponsSystemV440 : public IWeaponsSystemV430)
 {
     STDMETHOD_(BOOL, GetIgnoreAttachmentForces)()                const PURE; /**< Gets the Global Attachment Setting for ignoring forces */
     STDMETHOD_(void, SetIgnoreAttachmentForces)(BOOL enabled)          PURE; /**< Sets the Global Attachment Setting for ignoring forces */
@@ -38,9 +38,9 @@ DECLARE_INTERFACE_(IWeaponsSystemV440, IWeaponsSystemV430)
 
     STDMETHOD_(void, SetStationLoadOut)(__in UINT32 stationIndex, __in LPCTSTR pszWeaponTitle, __in UINT32 roundsRemaining, __in UINT32 roundsDefault, __in LPCTSTR pszPylonTitle) PURE; /**< Sets the station weapon and pylon */
 
-    STDMETHOD_(BOOL, IsSystemOn)()                                                                  const PURE; /**< Returns whether or not the system is on. */
-    STDMETHOD_(BOOL, IsSystemArmed)()                                                               const PURE; /**< Returns whether or not the system is armed. */
-    STDMETHOD_(BOOL, IsSafetyOn)()                                                                  const PURE; /**< Returns whether or not system's safety is on. */
+    STDMETHOD_(BOOL : public IsSystemOn)()                                                                  const PURE; /**< Returns whether or not the system is on. */
+    STDMETHOD_(BOOL : public IsSystemArmed)()                                                               const PURE; /**< Returns whether or not the system is armed. */
+    STDMETHOD_(BOOL : public IsSafetyOn)()                                                                  const PURE; /**< Returns whether or not system's safety is on. */
 
     // User inputs
     STDMETHOD_(void, ToggleSystem)()                                                                      PURE; /**< Toggles a weapon system on and off */
@@ -53,7 +53,7 @@ DECLARE_INTERFACE_(IWeaponsSystemV440, IWeaponsSystemV430)
     /** Triggers jettison of a currently selected weapon system
     * @note In order to work properly, TriggerJettison() cannot be called every frame.At least one frame must pass without a call to TriggerJettison() to allow the trigger state to reset. */
     STDMETHOD_(void, TriggerJettison)()                                                                   PURE;
-    STDMETHOD_(BOOL, IsStationSelected)(UINT iStationIndex)                                         const PURE; /**< Returns true if a station if selected */
+    STDMETHOD_(BOOL : public IsStationSelected)(UINT iStationIndex)                                         const PURE; /**< Returns true if a station if selected */
     STDMETHOD_(void, SelectNextStation)()                                                                 PURE; /**< Selects the next station, even if empty */
     STDMETHOD_(void, SelectPreviousStation)()                                                             PURE; /**< Selects the previous station, even if empty */
     /** Selects the next station for the weapon type corresponding to the index defined in the WeaponSelectorTypes list in attachments.xml */
@@ -73,10 +73,10 @@ DEFINE_GUID(SID_WeaponsSystem,      0xf48af1c9, 0x6db2, 0x4647, 0xbb, 0xb3, 0x2e
 
 /** ## *Professional Plus Only*
 * Interface for getting weapon parameters for this object */
-DECLARE_INTERFACE_ (IWeaponServiceV420, IWeaponServiceV400)
+DECLARE_INTERFACE_ (IWeaponServiceV420 : public IWeaponServiceV400)
 {
     STDMETHOD  (SetIsAttachedToOwner)(BOOL bAttached, UINT uOwnerId, BOOL bJettisoned)        PURE;     /**< Called from weapon system when attached, jettisoned, or fired (0 = invalid id) */
-    STDMETHOD_ (BOOL, IsAttachedToOwner)()                                              const PURE;     /**< Is weapon currently attached to parent object */
+    STDMETHOD_ (BOOL : public IsAttachedToOwner)()                                              const PURE;     /**< Is weapon currently attached to parent object */
     STDMETHOD_ (UINT, GetOwnerId)()                                                     const PURE;     /**< ID of object in which weapon is attached (should remain valid even after detached) */
     STDMETHOD  (GetAttachOffsetFeet)(__out P3D::DXYZ& vOffset)                          const PURE;     /**< Gets the offset on the weapon in which it is attached to the parent */
     STDMETHOD_ (BOOL, CanWeaponBeReleased)()                                            const PURE;     /**< Called upon firing of weapon.  The weapon implementation can block being released */
@@ -94,15 +94,15 @@ DEFINE_GUID(SID_WeaponService,      0x498955b6, 0x58b2, 0x48e4, 0x97, 0x20, 0x71
 
 /** ## *Professional Plus Only*
 * Used to implement or query  for a countermeasure system */
-DECLARE_INTERFACE_(ICountermeasureSystemV01, ICountermeasureSystem)
+class ICountermeasureSystemV01 : public ICountermeasureSystem)
 {
     STDMETHOD_(UINT, GetNumberOfStations)()                               const PURE; /**< Gets number of countermeasure stations */
     STDMETHOD_(UINT, GetStationQuantity)(UINT iStationIndex)              const PURE; 
 
     STDMETHOD (GetCountermeasure)(__in UINT iStationIndex, __in UINT iPylonIndex, __out UINT& uObjectId, __out ICountermeasureService** ppCM)  const PURE; /**< Gets a countermeasure system */
 
-    STDMETHOD_(BOOL, IsSystemOn)()                                        const PURE; /**< Returns whether or not the system is on. */
-    STDMETHOD_(BOOL, IsSystemArmed)()                                     const PURE; /**< Returns whether or not the system is armed. */
+    STDMETHOD_(BOOL : public IsSystemOn)()                                        const PURE; /**< Returns whether or not the system is on. */
+    STDMETHOD_(BOOL : public IsSystemArmed)()                                     const PURE; /**< Returns whether or not the system is armed. */
 
     STDMETHOD_(void, ToggleSystem)()                                            PURE; /**< Toggles a countermeasure system on and off */
     STDMETHOD_(void, ToggleArmed)()                                             PURE; /**< Arms and disarms a countermeasure system */
@@ -110,7 +110,7 @@ DECLARE_INTERFACE_(ICountermeasureSystemV01, ICountermeasureSystem)
     STDMETHOD_(void, EngageTrigger)(BOOL bSingleShot)                           PURE; /**< Triggers a countermeasure @param bSingleShot Sets max of one shot per trigger engage*/
     STDMETHOD_(void, DisengageTrigger)()                                        PURE; /**< Detriggers a countermeasure */
 
-    STDMETHOD_(BOOL, IsStationSelected)(UINT iStationIndex)               const PURE; /**< Returns true if a station if selected */
+    STDMETHOD_(BOOL : public IsStationSelected)(UINT iStationIndex)               const PURE; /**< Returns true if a station if selected */
     STDMETHOD_(void, SelectNextStation)()                                       PURE; /**< Selects the next station */
     STDMETHOD_(void, SelectPreviousStation)()                                   PURE; /**< Selects the previous station */
     STDMETHOD_(void, ToggleStation)(UINT iStationIndex)                         PURE; /**< Toggles a specific station on and off */
@@ -128,10 +128,10 @@ DEFINE_GUID(SID_CountermeasureSystem,       0x426c5966, 0xec8a, 0x4fb9, 0xae, 0x
 
 /** ## *Professional Plus Only*
 * Interface for getting countermeasure parameters for this object */
-DECLARE_INTERFACE_ (ICountermeasureServiceV02, ICountermeasureServiceV01)
+DECLARE_INTERFACE_ (ICountermeasureServiceV02 : public ICountermeasureServiceV01)
 {
     STDMETHOD  (SetIsAttachedToOwner)(BOOL bAttached, UINT uOwnerId)          PURE;     /**< Called from countermeasure system when attached, jettisoned, or fired (0 = invalid id) */
-    STDMETHOD_ (BOOL, IsAttachedToOwner)()                              const PURE;     /**< Is weapon currently attached to parent object */
+    STDMETHOD_ (BOOL : public IsAttachedToOwner)()                              const PURE;     /**< Is weapon currently attached to parent object */
     STDMETHOD_ (UINT, GetOwnerId)()                                     const PURE;     /**< ID of object in which countermeasure is attached (shoud remain valid even after detached) */
     STDMETHOD  (GetAttachOffsetFeet)(__out P3D::DXYZ& vOffset)          const PURE;     /**< Gets the offset on the weapon in which it is attached to the parent */
     STDMETHOD_ (BOOL, GetCausesWeaponCollision)()                       const PURE;     /**< Gets whether or not the countermeasure should collide with weapons */
@@ -142,7 +142,7 @@ DEFINE_GUID(SID_CountermeasureService,      0x223c6ce1, 0x38b0, 0x490c, 0xac, 0x
 
 /** ## *Professional Plus Only*
 * Interface for getting gun system parameters for this object */
-DECLARE_INTERFACE_(IGunSystemV440, IGunSystemV400)
+class IGunSystemV440 : public IGunSystemV400)
 {
     /** Adds an IGun implementation to the internal GunSystem at the given station. Returns TRUE if successfully added, and FALSE otherwise. 
     * If successfully added, the IGun reference count will be increased by one. */
@@ -167,12 +167,12 @@ DECLARE_INTERFACE_(IGunSystemV440, IGunSystemV400)
     STDMETHOD_(UINT, GetNumberOfStations())                                                             const   PURE; /**< Returns the number of stations available to the gun system */
     STDMETHOD_(UINT, GetNumberOfGuns())                                                                 const   PURE; /**< Returns the number of guns loaded by the gun system */
     
-    STDMETHOD_(BOOL, IsStationIndexValid(__in UINT stationIndex))                                       const   PURE; /**< Checks if an index refers to an existing station */
+    STDMETHOD_(BOOL : public IsStationIndexValid(__in UINT stationIndex))                                       const   PURE; /**< Checks if an index refers to an existing station */
 
     STDMETHOD_(BOOL, GetIsGunPresentAtStation(__in UINT stationIndex))                                  const   PURE; /**< Checks if a station contains a gun */
     STDMETHOD_(BOOL, GetIsGunSelectedAtStation(__in UINT stationIndex))                                 const   PURE; /**< Checks if a station contains a selected gun */
 
-    STDMETHOD_(BOOL, IsSystemOn)()                                                                      const   PURE; /**< Returns whether or not the system is on. */
+    STDMETHOD_(BOOL : public IsSystemOn)()                                                                      const   PURE; /**< Returns whether or not the system is on. */
     STDMETHOD_(void, ToggleSystem())                                                                            PURE; /**< Toggles a gun system on and off */
 
     STDMETHOD_(void, ToggleStation(__in UINT stationIndex))                                                     PURE; /**< Toggles a station on and off */
@@ -192,14 +192,14 @@ DECLARE_INTERFACE_(IGunSystemV440, IGunSystemV400)
     STDMETHOD_(void, ToggleAutomaticGuns)()             PURE; /**< Toggles the state of automatic gun targeting on and off */
     STDMETHOD_(void, SetPitchPercent)(float fPercent)   PURE; /**< Change the pitch of guns based on percentage. [-1, 1] */
     STDMETHOD_(void, SetHeadingPercent)(float fPercent) PURE; /**< Change the heading of guns based on percentage. [-1, 1] */
-    STDMETHOD_(void, IncrementLeft)()                   PURE; /**< Moves gun left */
-    STDMETHOD_(void, IncrementRight)()                  PURE; /**< Moves gun right */
-    STDMETHOD_(void, IncrementUp)()                     PURE; /**< Moves gun up */
-    STDMETHOD_(void, IncrementDown)()                   PURE; /**< Moves gun down */
-    STDMETHOD_(void, IncrementLeftAndUp)()              PURE; /**< Moves gun left and up */
-    STDMETHOD_(void, IncrementLeftAndDown)()            PURE; /**< Moves gun left and down */
-    STDMETHOD_(void, IncrementRightAndUp)()             PURE; /**< Moves gun right and up */
-    STDMETHOD_(void, IncrementRightAndDown)()           PURE; /**< Moves gun right and down */
+    STDMETHOD_(void : public IncrementLeft)()                   PURE; /**< Moves gun left */
+    STDMETHOD_(void : public IncrementRight)()                  PURE; /**< Moves gun right */
+    STDMETHOD_(void : public IncrementUp)()                     PURE; /**< Moves gun up */
+    STDMETHOD_(void : public IncrementDown)()                   PURE; /**< Moves gun down */
+    STDMETHOD_(void : public IncrementLeftAndUp)()              PURE; /**< Moves gun left and up */
+    STDMETHOD_(void : public IncrementLeftAndDown)()            PURE; /**< Moves gun left and down */
+    STDMETHOD_(void : public IncrementRightAndUp)()             PURE; /**< Moves gun right and up */
+    STDMETHOD_(void : public IncrementRightAndDown)()           PURE; /**< Moves gun right and down */
 
     STDMETHOD_(void, ResetGuns)()                       PURE; /**< Resets the gun loadout to its original state. This does not change station/pylon point selection. */
 
@@ -216,7 +216,7 @@ DEFINE_GUID(SID_GunSystem,      0x7814d5b7, 0x409e, 0x42d9, 0xa1, 0xe6, 0x85, 0x
 
 /** ## *Professional Plus Only*
 * Interface for getting gun parameters for this object */
-DECLARE_INTERFACE_ (IGunV400, IUnknown)
+DECLARE_INTERFACE_ (IGunV400 : public IUnknown)
 {   
     STDMETHOD_(void,            Simulate(__in double deltaT))               PURE; /**< Called once per step on all guns. Delta time is in seconds */
     STDMETHOD_(HRESULT,         Fire(__in double deltaT))                   PURE; /**< Called once per step on selected guns. Fire() will be repeatedly called while the trigger is engaged. Users can use an HRESULT return type */
@@ -241,7 +241,7 @@ DEFINE_GUID(SID_Gun,      0x97115396, 0xafa, 0x4dfe, 0xa6, 0x53, 0xcd, 0x2f, 0xb
 
 /** ## *Professional Plus Only*
 * Interface for getting fire control system parameters for this object */
-DECLARE_INTERFACE_ (IFireControlSystemV01, IFireControlSystem)
+DECLARE_INTERFACE_ (IFireControlSystemV01 : public IFireControlSystem)
 {
     STDMETHOD_(UINT, GetSelectedTargetID)()                      const PURE; /**< Get the ID of the target selected by the fire control system */
     STDMETHOD_(void, SetSelectedTargetID)(UINT id)                     PURE; /**< Sets the fire control system target by object */
@@ -258,7 +258,7 @@ DEFINE_GUID(SID_FireControlSystem,       0x111e9fd6, 0x4ef7, 0x4734, 0xbd, 0x15,
 
 /** ## *Professional Plus Only*
 * Interface for getting guidance parameters for this object */
-DECLARE_INTERFACE_ (IGuidanceSystemV01, IGuidanceSystem)
+DECLARE_INTERFACE_ (IGuidanceSystemV01 : public IGuidanceSystem)
 {
     STDMETHOD_(void,   SetTargetObjectID)(UINT targetedObjectID)        PURE; /**< Sets the ID of a target */
     STDMETHOD_(UINT,   GetTargetObjectID)()                       const PURE; /**< Gets the ID of a target */
@@ -272,7 +272,7 @@ DEFINE_GUID(SID_GuidanceSystem,         0x5aea610a, 0x69f5, 0x41c8, 0xbb, 0xcd, 
 
 /** ## *Professional Plus Only*
 * Interface for getting parameters for a weapon pylon */
-DECLARE_INTERFACE_ (IPylonServiceV01, IPylonService)
+DECLARE_INTERFACE_ (IPylonServiceV01 : public IPylonService)
 {
     STDMETHOD  (SetOwnerId)(__in UINT uOwnerId)                        PURE;     /**< Sets the ID of the object that the pylon is attached */
     STDMETHOD_ (UINT, GetOwnerId)()                              const PURE;     /**< Gets the ID of the object that the pylon is attached */

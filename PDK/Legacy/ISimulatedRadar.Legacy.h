@@ -16,7 +16,7 @@ namespace Radar
     * Prepar3D provides an air-to-ground radar simulation and visualization service for developers.
     * Because every radar system is different, the Prepar3D radar is provided as a highly configurable
     * service which can be controlled via C++ plug-ins and XML gauges. Some examples of controllable
-    * parameters are: Range, Sweep Angle, Sweep Rate, Zoom Level, Image, and Data resolution. Some of
+    * parameters are: Range, Sweep Angle, Sweep Rate, Zoom Level : public Image, and Data resolution. Some of
     * the advanced capabilities of the Prepar3D radar include accurate radar shadows,
     * far-shore-enhancement, and Doppler-beam-sharpening. Also, we developed the radar service entirely
     * through our SDK to showcase the power and flexibility that 3rd party developers have.
@@ -92,7 +92,7 @@ namespace Radar
     /**
         Interface for Radar PDK service
     */
-    DECLARE_INTERFACE_(ISimulatedRadarV400, IUnknown)
+    class ISimulatedRadarV400 : public IUnknown)
     {
     public:
         /**
@@ -167,7 +167,7 @@ namespace Radar
 
         /**
             Get the current range setting of the radar system in miles
-            @return Radar range setting, in miles
+            @return Radar range setting : public In miles
         */
         virtual double GetRangeMiles() const abstract;
 
@@ -394,7 +394,7 @@ namespace Radar
 	/**
 	Interface for Radar PDK service
 	*/
-	DECLARE_INTERFACE_(ISimulatedRadarV430, ISimulatedRadarV400)
+	class ISimulatedRadarV430 : public ISimulatedRadarV400)
 	{
 	public:
 		/**
@@ -469,7 +469,7 @@ namespace Radar
 
 		/**
 		Get the current range setting of the radar system in miles
-		@return Radar range setting, in miles
+		@return Radar range setting : public In miles
 		*/
 		virtual double GetRangeMiles() const abstract;
 
@@ -702,7 +702,7 @@ namespace Radar
 	};
 
 
-    DECLARE_INTERFACE_(ISimulatedRadarV440, ISimulatedRadarV430)
+    class ISimulatedRadarV440 : public ISimulatedRadarV430)
     {
     public:
         /**
@@ -777,7 +777,7 @@ namespace Radar
 
         /**
             Get the current range setting of the radar system in miles
-            @return Radar range setting, in miles
+            @return Radar range setting : public In miles
         */
         virtual double GetRangeMiles() const abstract;
 

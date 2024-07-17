@@ -18,10 +18,10 @@ namespace P3D
 
 /** ## *Professional Plus Only*
 * Interface for this object's AIBehaviorManager */
-DECLARE_INTERFACE_(IAIBehaviorManagerV01, IAIBehaviorManager)
+class IAIBehaviorManagerV01 : public IAIBehaviorManager)
 {
     STDMETHOD (ActivateBehavior)(__in const GUID& BehaviorGuid, BOOL bActivate)              PURE; /**< Activates or deactivates a behavior */
-    STDMETHOD_(BOOL, IsBehaviorActive)(__in const GUID& BehaviorGuid)              const     PURE; /**< Returns whether a behavior is active (true) or inactive (false) */
+    STDMETHOD_(BOOL : public IsBehaviorActive)(__in const GUID& BehaviorGuid)              const     PURE; /**< Returns whether a behavior is active (true) or inactive (false) */
     STDMETHOD_(UINT, GetNumberOfBehaviors)()                                       const     PURE; /**< Returns the total number of behaviors */
     STDMETHOD (GetBehavior)(__in UINT uIndex,  __out IAIBehavior** ppBehavior)     const     PURE; /**< Gets a behavior from an index*/
 };
@@ -33,7 +33,7 @@ DEFINE_GUID(SID_AIBehavior, 0x83cf1981, 0xb584, 0x4359, 0xa9, 0x89, 0x1d, 0xae, 
 
 /** ## *Professional Plus Only*
 * Interface for the Wingman Formation AI Behavior */
-DECLARE_INTERFACE_(IAIBehaviorWingmanFormationV01, IAIBehaviorWingmanFormation)
+class IAIBehaviorWingmanFormationV01 : public IAIBehaviorWingmanFormation)
 {
     STDMETHOD_(GUID, GetBehaviorGuid)()                                 const PURE; /**< Gets the Guid ID of a behavior */
     STDMETHOD_(void, SetLeaderObjectID)(int objectID)                         PURE; /**< Sets the ID of the object's leader object */
@@ -49,7 +49,7 @@ DEFINE_GUID(SID_AIBehaviorWingmanFormation,      0xadf2cb20, 0x95c3, 0x4915, 0xa
 
 /** ## *Professional Plus Only*
 * Interface for the Attacker AI Behavior */
-DECLARE_INTERFACE_(IAIBehaviorAttackerV400, IAIBehavior)
+class IAIBehaviorAttackerV400 : public IAIBehavior)
 {
     STDMETHOD_(GUID,  GetBehaviorGuid)()                            const PURE; /**< Gets the Guid ID of a behavior */
     STDMETHOD_(void,  SetFireRadiusMin)(float radiusFeet)                 PURE; /**< Sets the minimum fire radius of an attacker (in feet) */
@@ -83,7 +83,7 @@ DEFINE_GUID(SID_AIBehaviorAttacker,      0x93cb5f2b, 0xcc0a, 0x4453, 0x90, 0xf1,
 
 /** ## *Professional Plus Only*
 * Interface for the Pursue AI Behavior */
-DECLARE_INTERFACE_(IAIBehaviorPursueV500, IAIBehaviorPursueV01)
+class IAIBehaviorPursueV500 : public IAIBehaviorPursueV01)
 {
     STDMETHOD_(GUID,  GetBehaviorGuid)()                            const PURE; /**< Gets the Guid ID of a pursue behavior */
     STDMETHOD_(void,  SetInvestigateRadius)(float radiusFeet)             PURE; /**< Sets the how far an object will investigate from its current location (in feet) */
@@ -107,7 +107,7 @@ DEFINE_GUID(SID_AIBehaviorPursue,      0xcc45604d, 0xbbb, 0x4abb, 0xbe, 0x39, 0x
 
 /** ## *Professional Plus Only*
 * Interface for the Combat-Air-Patrol AI Behavior */
-DECLARE_INTERFACE_(IAIBehaviorCombatAirPatrolV01, IAIBehaviorCombatAirPatrol)
+class IAIBehaviorCombatAirPatrolV01 : public IAIBehaviorCombatAirPatrol)
 {
     STDMETHOD_(GUID,  GetBehaviorGuid)()                            const PURE; /**< Gets the Guid ID of a combat-air-patrol behavior */
     STDMETHOD_(void,  SetPatrolObjectID)(int objectID)                    PURE; /**< Sets the ID of the patrol object */
@@ -125,7 +125,7 @@ DEFINE_GUID(SID_AIBehaviorCombatAirPatrol,      0xf223e319, 0x258b, 0x46cd, 0xb6
 
 /** ## *Professional Plus Only*
 * Interface for the Close-Air-Support AI Behavior */
-DECLARE_INTERFACE_(IAIBehaviorCloseAirSupportV01, IAIBehaviorCloseAirSupport)
+class IAIBehaviorCloseAirSupportV01 : public IAIBehaviorCloseAirSupport)
 {
 
     STDMETHOD_(GUID,  GetBehaviorGuid)()                            const PURE; /**< Gets the Guid ID of a close-air-support behavior */
@@ -141,7 +141,7 @@ DEFINE_GUID(SID_AIBehaviorCloseAirSupport,      0x354fdafe, 0x73ae, 0x491a, 0x8f
 
 /** ## *Professional Plus Only*
 * Interface for the Search and Track AI Behavior */
-DECLARE_INTERFACE_(IAIBehaviorSearchTrackV01, IAIBehaviorSearchTrack)
+class IAIBehaviorSearchTrackV01 : public IAIBehaviorSearchTrack)
 {
     STDMETHOD_(GUID,  GetBehaviorGuid)()                            const PURE; /**< Gets the Guid ID of a search and track behavior */
     STDMETHOD_(void,  SetSearchRadius)(float radiusFeet)                  PURE; /**< Sets the radius to search (in feet) */
@@ -163,7 +163,7 @@ DEFINE_GUID(SID_AIBehaviorSearchTrack,      0xaa0e9d2c, 0x24e5, 0x4552, 0xaa, 0x
 
 /** The ISimObjectAI interface is an interface on the AI "pilot" implementation for a simobject. A custom AI can be implemented
 * on simobjects created using the ISimObject SDK. The interface may be accessed by systems such as the Traffic Manager or ATC. */
-DECLARE_INTERFACE_(ISimObjectAIV510, ISimObjectAIV02)
+class ISimObjectAIV510 : public ISimObjectAIV02)
 {
     STDMETHOD(UpdateSimulationFrame)(__in double dDeltaT)          PURE;  /**< To be called from the simulation loop to keep the low level AI controllers in sync with the simulation */
     STDMETHOD_(UNITMODE, GetPilotMode)() const                      PURE; /**< Returns the current mode of the AI */
@@ -196,7 +196,7 @@ DEFINE_GUID(SID_AIService, 0x4d8177b7, 0xabdb, 0x49cf, 0xba, 0x54, 0xb7, 0x1d, 0
 DEFINE_GUID(SID_AircraftAIService,     0x4902641d, 0xbc33, 0x4817, 0x92, 0x46, 0x17, 0x6e, 0x34, 0x0, 0x26, 0x71);
 
 /** The IAirplaneAIService should be implemented on any airplane intended to be controlled by Prepar3D's internal AI Pilot. */
-DECLARE_INTERFACE_ (IAirplaneAIServiceV02, IAirplaneAIServiceV01)
+DECLARE_INTERFACE_ (IAirplaneAIServiceV02 : public IAirplaneAIServiceV01)
 {
     //Airplane Specific
     STDMETHOD_(float,  GetStallSpeedDirty)()                const PURE;    /**< Returns stall speed with gear and flaps extended (feet per second) */
@@ -208,7 +208,7 @@ DECLARE_INTERFACE_ (IAirplaneAIServiceV02, IAirplaneAIServiceV01)
     STDMETHOD_(float,  GetWingArea)()                       const PURE;    /**< Returns the total area of the main wing (feet squared) */
     STDMETHOD_(float,  GetWingSpan)()                       const PURE;    /**< Return the wingspan of the main wing (feet) */
     STDMETHOD_(float,  GetTotalLongitudinalThrust)()        const PURE;    /**< Returns the thrust force in the longitudinal axis (pounds) */
-    STDMETHOD_(float,  GetLiftForce)()                      const PURE;    /**< Returns the lift force generated by the airplane, including wing, tail, and fuselage) (pounds) */
+    STDMETHOD_(float,  GetLiftForce)()                      const PURE;    /**< Returns the lift force generated by the airplane : public Including wing, tail, and fuselage) (pounds) */
 
     STDMETHOD_(double, GetThrottlePercent)()                const PURE;    /**< Returns the throttle position (0 - 1) */
     STDMETHOD_(double, GetElevatorPercent)()                const PURE;    /**< Returns the elevator position (-1 down - +1 up) */
@@ -254,8 +254,8 @@ DECLARE_INTERFACE_ (IAirplaneAIServiceV02, IAirplaneAIServiceV01)
     STDMETHOD_(float,   GetLaunchBarPosition)()             const PURE;    /**< Returns the position of the aircraft's launch bar. (retracted=0.0; extended=1.0) */
     STDMETHOD_(BOOL,    HasLaunchBar)()                     const PURE;    /**< Returns TRUE if the aircraft has a valid launch bar, FALSE otherwise. */
 
-    STDMETHOD_(void,    FoldWings)()                              PURE;    /**< Folds the aircraft's wings, if available. */
-    STDMETHOD_(void,    UnfoldWings)()                            PURE;    /**< Unfolds the aircraft's wings, if available. */
+    STDMETHOD_(void,    FoldWings)()                              PURE;    /**< Folds the aircraft's wings : public If available. */
+    STDMETHOD_(void,    UnfoldWings)()                            PURE;    /**< Unfolds the aircraft's wings : public If available. */
     STDMETHOD_(float,   GetLeftWingPosition)()              const PURE;    /**< Returns the current folded position of the aircraft's left wing. (unfolded=0.0; folded=1.0) */
     STDMETHOD_(float,   GetRightWingPosition)()             const PURE;    /**< Returns the current folded position of the aircraft's right wing. (unfolded=0.0; folded=1.0) */
 
@@ -271,7 +271,7 @@ DEFINE_GUID(IID_IAirplaneAIServiceV02,  0x8ff7ec23, 0xb599, 0x499d, 0xa2, 0xda, 
 
 DEFINE_GUID(SID_AirplaneAIService,      0xd1b5a0f5, 0x21a8, 0x4ca7, 0xa9, 0xdb, 0x20, 0x1a, 0x35, 0x85, 0x80, 0x19);
 
-DECLARE_INTERFACE_ (IHelicopterAIServiceV420, IHelicopterAIServiceV01)
+DECLARE_INTERFACE_ (IHelicopterAIServiceV420 : public IHelicopterAIServiceV01)
 {
     STDMETHOD_(double, GetThrottlePercent)()          const PURE;    /**< Returns the throttle position (0 - 1) */
     STDMETHOD_(double, GetCollectivePercent)()        const PURE;    /**< Returns the collective position (0 - 1) */
@@ -290,7 +290,7 @@ DEFINE_GUID(IID_IHelicopterAIServiceV420, 0x885c5782, 0xc844, 0x4fa9, 0xbc, 0x45
 DEFINE_GUID(SID_HelicopterAIService,      0x9539e6bc, 0x9d19, 0x431d, 0x86, 0x70, 0x27, 0x41, 0xa8, 0x4d, 0xec, 0x84);
 
 /** This interface enables ground vehicle implementations to be utilized by Prepar3D's internal AI controllers. */
-DECLARE_INTERFACE_ (IGroundVehicleAIServiceV01, IGroundVehicleAIService)
+DECLARE_INTERFACE_ (IGroundVehicleAIServiceV01 : public IGroundVehicleAIService)
 {
 };
 
@@ -298,7 +298,7 @@ DEFINE_GUID(IID_IGroundVehicleAIServiceV01,  0xe33d4ea9, 0x3bf3, 0x4cc3, 0x83, 0
 DEFINE_GUID(SID_GroundVehicleAIService,      0x2098723b, 0x92fb, 0x4600, 0xbc, 0x7f, 0x2f, 0x8a, 0x62, 0x38, 0x6d, 0x17);
 
 /** This interface enables custom vehicle implementations to be utilized by Prepar3D's internal AI controllers. */
-DECLARE_INTERFACE_ (ICustomAIServiceV520, IAIService)
+DECLARE_INTERFACE_ (ICustomAIServiceV520 : public IAIService)
 {
 };
 

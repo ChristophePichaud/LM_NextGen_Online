@@ -44,7 +44,7 @@ namespace P3D
     /** Service used to report information to the user
      *
      */
-    DECLARE_INTERFACE_(IReportingServiceV400, IUnknown)
+    class IReportingServiceV400 : public IUnknown)
     {
         /**
         *   Send message to content error reporting system

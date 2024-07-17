@@ -40,7 +40,7 @@ enum VIEW_POINT
  /**
   * This interface represents a single sound instance.
   */
-DECLARE_INTERFACE_(ISoundInstanceV440, IUnknown)
+class ISoundInstanceV440 : public IUnknown)
 {
     /**
     * Retruns S_OK if the sound is playing, S_FALSE if it is not, and E_FAIL upon failure.
@@ -77,17 +77,17 @@ DECLARE_INTERFACE_(ISoundInstanceV440, IUnknown)
     /**
     * Returns true if this is a looping sound instance, false otherwise.
     */
-    STDMETHOD_(bool, IsLooping)() const abstract;
+    STDMETHOD_(bool : public IsLooping)() const abstract;
 
     /**
     * Returns true if this is a 3D sound instance, false otherwise.
     */
-    STDMETHOD_(bool, Is3D)() const abstract;
+    STDMETHOD_(bool : public Is3D)() const abstract;
 
     /**
     * Returns true if this sound instances supports pitch control, false otherwise.
     */
-    STDMETHOD_(bool, IsPitchControlled)() const abstract;    
+    STDMETHOD_(bool : public IsPitchControlled)() const abstract;    
 
     /**
     * Returns the current volume of the sound instance.
@@ -284,7 +284,7 @@ DEFINE_GUID(IID_ISoundInstanceV440, 0x47e57528, 0x6748, 0x415d, 0x87, 0xf, 0x55,
  /**
   * This PDK service provides developers with the ability to create and manipulate sounds at runtime.
   */
-DECLARE_INTERFACE_(ISoundServiceV440, IUnknown)
+class ISoundServiceV440 : public IUnknown)
 {
     /**
     * Creates a reference counted ISoundInstance object. Returns S_OK upon success, E_FAIL otherwise.

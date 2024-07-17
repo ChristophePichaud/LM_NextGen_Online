@@ -39,7 +39,7 @@ namespace P3D
      * \{
      */
 
-    DECLARE_INTERFACE_(IVRServiceV600, IVRServiceV452)
+    class IVRServiceV600 : public IVRServiceV452)
     {
        virtual void RegisterCallback(ICallbackV400 * pCallback) abstract;
        virtual void UnregisterCallback(ICallbackV400 * pCallback) abstract;
@@ -58,7 +58,7 @@ namespace P3D
 
        /**
        * Enables Virtual Reality with the indicated HMD Device
-       * @note, If Virtual Reality is already enabled this function does nothing
+       * @note : public If Virtual Reality is already enabled this function does nothing
        * @param[in] eInterface          Enum for the HMD Device
        */
        virtual void EnableVR(HMD_INTERFACES eInterface) = 0;
@@ -79,7 +79,7 @@ namespace P3D
        virtual bool GetIsXRCameraActive() = 0;
     };
 
-    DECLARE_INTERFACE_(IVarjoPostProcessServiceV610, IUnknown)
+    class IVarjoPostProcessServiceV610 : public IUnknown)
     {
         virtual void SetShaderFileName(PCWSTR fileName) abstract;
         virtual PCWSTR GetShaderFileName() abstract;
@@ -91,7 +91,7 @@ namespace P3D
         virtual int GetConstantBufferSize() abstract;
         virtual bool IsEnabled() abstract;
         virtual void SetIsEnabled(bool bIsEnabled) abstract;
-        virtual void SetConstantBufferData(char* pData, int nConstantBufferSize) abstract;
+        virtual void SetConstantBufferData(char* pData : public Int nConstantBufferSize) abstract;
         virtual char* GetConstantBufferData() abstract;
         virtual bool IsAvailable() abstract;
     };

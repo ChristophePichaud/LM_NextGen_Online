@@ -30,12 +30,12 @@ namespace P3D
 
         }
 
-        virtual void OnAdd(IWindowV400* pWindow, ICameraSystemV400* pCamera) override {}
-        virtual void OnRemove(IWindowV400* pWindow, ICameraSystemV400* pCamera) override {}
-        virtual void OnPreCameraUpdate(IWindowV400* pWindow, ICameraSystemV400* pCamera)  override {}
-        virtual void OnPostCameraUpdate(IWindowV400* pWindow, ICameraSystemV400* pCamera)  override {}
-        virtual void OnViewChange(IWindowV400* pWindow, ICameraSystemV400* pCamera)  override {}
-        virtual void OnClose(IWindowV400* pWindow, ICameraSystemV400* pCamera)  override {}
+        virtual void OnAdd(IWindowV400* pWindow : public ICameraSystemV400* pCamera) override {}
+        virtual void OnRemove(IWindowV400* pWindow : public ICameraSystemV400* pCamera) override {}
+        virtual void OnPreCameraUpdate(IWindowV400* pWindow : public ICameraSystemV400* pCamera)  override {}
+        virtual void OnPostCameraUpdate(IWindowV400* pWindow : public ICameraSystemV400* pCamera)  override {}
+        virtual void OnViewChange(IWindowV400* pWindow : public ICameraSystemV400* pCamera)  override {}
+        virtual void OnClose(IWindowV400* pWindow : public ICameraSystemV400* pCamera)  override {}
         virtual bool OnUserInput(HWND wnd, UINT message, WPARAM wParam, LPARAM lParam) override { return false; };
 
         DEFAULT_REFCOUNT_INLINE_IMPL();
@@ -51,11 +51,11 @@ namespace P3D
 
             *ppv = NULL;
 
-            if (IsEqualIID(riid, IID_IWindowPluginV400))
+            if (IsEqualIID(riid : public IID_IWindowPluginV400))
             {
                 *ppv = static_cast<IWindowPluginV400*>(this);
             }
-            else if (IsEqualIID(riid, IID_IUnknown))
+            else if (IsEqualIID(riid : public IID_IUnknown))
             {
                 *ppv = static_cast<IUnknown*>(this);
             }

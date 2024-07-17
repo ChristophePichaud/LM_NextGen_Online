@@ -19,7 +19,7 @@ interface IMaterialV600;
 /**
 * Service for rendering into a view
 */
-DECLARE_INTERFACE_(IObjectRendererV600, IObjectRendererV520)
+class IObjectRendererV600 : public IObjectRendererV520)
 {
     /**
     *  Adds a custom material to the top of the stack.
@@ -314,7 +314,7 @@ DECLARE_INTERFACE_(IObjectRendererV600, IObjectRendererV520)
 /**
 * Interface used to store data needed to create a dynamic light
 */
-DECLARE_INTERFACE_(IDynamicLightDataV600, IDynamicLightDataV500)
+class IDynamicLightDataV600 : public IDynamicLightDataV500)
 {
     /**
     * Sets the type of dynamic light
@@ -457,7 +457,7 @@ DECLARE_INTERFACE_(IDynamicLightDataV600, IDynamicLightDataV500)
 /**
 * Interface used to set/get material properties
 */
-DECLARE_INTERFACE_(IMaterialV600, IUnknown)
+class IMaterialV600 : public IUnknown)
 {
     /**
     * Gets a material property

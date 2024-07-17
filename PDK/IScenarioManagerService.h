@@ -32,7 +32,7 @@ using IFlightSegmentList = IListBuilder<IFlightSegment>;
 using FlightSegmentList = CComPtrVecBuilder<IFlightSegment>;
 
 /** Provides the current scenario (also known as "flight") and mission files. */
-DECLARE_INTERFACE_(IScenarioManagerV453, IScenarioManagerV430)
+class IScenarioManagerV453 : public IScenarioManagerV430)
 {
     /**
      * Provides the fully qualified path to the scenario file.

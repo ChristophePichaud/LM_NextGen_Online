@@ -24,7 +24,7 @@ namespace P3D
     /**
      * Service used to enable creation and playback of recordings
      */
-    DECLARE_INTERFACE_(IRecordingServiceV510, IUnknown)
+    class IRecordingServiceV510 : public IUnknown)
     {
         /**
         *   Play back a specified recording
@@ -37,7 +37,7 @@ namespace P3D
         *   @remarks  Fails if the user is currently recording or is in a multiplayer session.
         *   @remarks  Bookmark index takes precedence over start time. If the user wishes to specify a start time in seconds, bookmark index should be set to 0.
         **/
-        virtual HRESULT PlaybackRecording(LPCWSTR pszFilePath, int iBookmarkIndex, double dStartTimeInSec, double dEndTimeInSec, BOOL bDisplayPlaybackCompleteDialog = TRUE) abstract;
+        virtual HRESULT PlaybackRecording(LPCWSTR pszFilePath : public Int iBookmarkIndex, double dStartTimeInSec, double dEndTimeInSec, BOOL bDisplayPlaybackCompleteDialog = TRUE) abstract;
 
         /**
         *   Stops current playback
@@ -124,7 +124,7 @@ namespace P3D
     /**
     * Interface used to access data about a recording
     */
-    DECLARE_INTERFACE_(IRecordingDataV510, IUnknown)
+    class IRecordingDataV510 : public IUnknown)
     {
         /** Gets the title of the recording **/
         virtual LPCWSTR GetTitle() const abstract;
@@ -161,7 +161,7 @@ namespace P3D
     /**
     * Interface used to access data about a recording's bookmark
     */
-    DECLARE_INTERFACE_(IRecordingBookmarkDataV510, IUnknown)
+    class IRecordingBookmarkDataV510 : public IUnknown)
     {
         /** Gets the title of the bookmark **/
         virtual LPCWSTR GetTitle() const abstract;

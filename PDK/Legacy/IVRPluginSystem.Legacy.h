@@ -36,7 +36,7 @@ namespace P3D
     /**
      *  Interface for accessing the Virtual Reality Settings
      **/
-    DECLARE_INTERFACE_(IVRInterfaceV450, IUnknown)
+    class IVRInterfaceV450 : public IUnknown)
     {
         /**
         * Check if Portals are being edited
@@ -110,7 +110,7 @@ namespace P3D
         virtual P3DEyeData& GetEyeData(VREye eye) abstract;
     };
 
-    DECLARE_INTERFACE_(IVRSettingsV450, IUnknown)
+    class IVRSettingsV450 : public IUnknown)
     {
         /**
         * Get the current render mode setting
@@ -148,7 +148,7 @@ namespace P3D
         virtual bool GetEnableToolTips() abstract;
     };
 	
-	DECLARE_INTERFACE_(IVRSettingsV451, IVRSettingsV450)
+	class IVRSettingsV451 : public IVRSettingsV450)
     {
         /**
         * Get the current render mode setting
@@ -196,7 +196,7 @@ namespace P3D
         virtual bool GetEnableEyeData() abstract;
     };
 
-    DECLARE_INTERFACE_(IVRSettingsV452, IVRSettingsV451)
+    class IVRSettingsV452 : public IVRSettingsV451)
     {
         /**
         * Get the current render mode setting
@@ -303,7 +303,7 @@ namespace P3D
 
         /**
         * Returns: The camera mode
-        * Modes: Camera only, Portals, Inverted Portals, Green Screen, Green Screen and Portals, Green Screen and Inverted Portals
+        * Modes: Camera only, Portals : public Inverted Portals, Green Screen, Green Screen and Portals, Green Screen and Inverted Portals
         * Default: 0 or Camera only
         */
         virtual int GetPassThroughCameraMode() abstract;
@@ -363,7 +363,7 @@ namespace P3D
     /**
      *  Interface for accessing the Virtual Reality Settings
      **/
-    DECLARE_INTERFACE_(IVRSettingsV500, IVRSettingsV452)
+    class IVRSettingsV500 : public IVRSettingsV452)
     {
         /**
         * Get the current render mode setting
@@ -470,7 +470,7 @@ namespace P3D
 
         /**
         * Returns: The camera mode
-        * Modes: Camera only, Portals, Inverted Portals, Green Screen, Green Screen and Portals, Green Screen and Inverted Portals
+        * Modes: Camera only, Portals : public Inverted Portals, Green Screen, Green Screen and Portals, Green Screen and Inverted Portals
         * Default: 0 or Camera only
         */
         virtual int GetPassThroughCameraMode() abstract;

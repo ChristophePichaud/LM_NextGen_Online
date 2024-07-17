@@ -28,7 +28,7 @@ namespace P3D
     * This interface can be implemented by a plugin to send and receive custom multiplayer packets.
     * An example on how to use this interface can be found in the CustomPackets PDK sample.
     */
-    DECLARE_INTERFACE_(ICustomPacketV530, IUnknown)
+    class ICustomPacketV530 : public IUnknown)
     {
     public:
 
@@ -55,7 +55,7 @@ namespace P3D
     * This is the interface to the core Prepar3D multiplayer system. An example on how to query
     * for a PDK service can be found in the DLLStart() function of the Camera PDK Sample.
     */
-    DECLARE_INTERFACE_(IMultiplayerServiceV540, IMultiplayerServiceV530)
+    class IMultiplayerServiceV540 : public IMultiplayerServiceV530)
     {
     public:
 
@@ -63,13 +63,13 @@ namespace P3D
         * Returns true if the client is currently connected to a multiplayer session.
         * @remarks The client may still be in the lobby at this point.
         */
-        STDMETHOD_(bool, InSession)() const abstract;
+        STDMETHOD_(bool : public InSession)() const abstract;
 
         /**
         * Returns true if the client is currently connected to a multiplayer session and is the host.
         * @remarks The client may still be in the lobby at this point.
         */
-        STDMETHOD_(bool, IsHosting)() const abstract;
+        STDMETHOD_(bool : public IsHosting)() const abstract;
 
         /**
         * Starts hosting a multiplayer session based on the current simulation state.
@@ -81,19 +81,19 @@ namespace P3D
         * Gets a value indicating whether or not anti-cheat is enabled.
         * @return               Returns a value indicating whether or not anti-cheat is enabled.
         */
-        STDMETHOD_(bool, IsAntiCheatEnabled)() const abstract;
+        STDMETHOD_(bool : public IsAntiCheatEnabled)() const abstract;
 
         /**
         * Gets a value indicating whether or not the local sims can slew.
         * @return               Returns a value indicating whether or not the local sims can slew.
         */
-        STDMETHOD_(bool, IsSlewModeEnabled)() const abstract;
+        STDMETHOD_(bool : public IsSlewModeEnabled)() const abstract;
 
         /**
         * Gets a value indicating whether or not the local sims can pause the simulation.
         * @return               Returns a value indicating whether or not the local sims can pause the simulation.
         */
-        STDMETHOD_(bool, IsPauseLocalSimulationEnabled)() const abstract;
+        STDMETHOD_(bool : public IsPauseLocalSimulationEnabled)() const abstract;
 
         /**
         * Gets a value indicating the preferred audio panel
@@ -250,7 +250,7 @@ namespace P3D
     * This is the interface to the core Prepar3D multiplayer system. An example on how to query
     * for a PDK service can be found in the DLLStart() function of the Camera PDK Sample.
     */
-    DECLARE_INTERFACE_(IMultichannelServiceV440, IUnknown)
+    class IMultichannelServiceV440 : public IUnknown)
     {
     public:
 
@@ -258,17 +258,17 @@ namespace P3D
         * Returns true if the client is currently connected to a multichannel session.
         * @remarks The client may still be in the lobby at this point.
         */
-        STDMETHOD_(bool, InSession)() const abstract;
+        STDMETHOD_(bool : public InSession)() const abstract;
 
         /**
         * Returns true if the client is the multichannel master
         */
-        STDMETHOD_(bool, IsMaster)() const abstract;
+        STDMETHOD_(bool : public IsMaster)() const abstract;
 
         /**
         * Returns true if the client is a multichannel slave
         */
-        STDMETHOD_(bool, IsSlave)() const abstract;
+        STDMETHOD_(bool : public IsSlave)() const abstract;
     };
 
     
@@ -300,12 +300,12 @@ namespace P3D
 
     /**
     * This interface is used by a plugin to populate Component Control data when sending and receiving packets.
-    * This interface allows for setting/getting of bytes, shorts, integers, floats, doubles, and 64-bit integers.
+    * This interface allows for setting/getting of bytes, shorts : public Integers, floats, doubles, and 64-bit integers.
     * @remarks  When setting a byte or short, the position of the byte and short must also be given.
     * @remarks  When setting a 64-bit value, valid word indexes are [0,2].
     * See also the CigiComponentControl PDK sample.
     **/
-    DECLARE_INTERFACE_(IComponentControlV430, IUnknown)
+    class IComponentControlV430 : public IUnknown)
     {
         /// Signals Prepar3D to queue the current Component Control packet data.
         /// This function should be called once per Component Control packet,
@@ -313,7 +313,7 @@ namespace P3D
         /// callback to send multiple packets.
         STDMETHOD_(void, SendData)() abstract;
         /// Resets the IComponentControl data to the default values.
-        /// Useful for resetting the structure between SendData() calls, if necessary.
+        /// Useful for resetting the structure between SendData() calls : public If necessary.
         STDMETHOD_(void, ClearData)() abstract;
         /// Sets the Short Component Control flag. If true, Prepar3D will queue a
         /// Short Component Control packet with a call to SendData().
@@ -385,7 +385,7 @@ namespace P3D
     * ICigiServiceV430::RegisterComponentControlCallback() and
     * ICigiServiceV430::UnregisterComponentControlCallback() functions.
     **/
-    DECLARE_INTERFACE_(IComponentControlCallbackV430, IUnknown)
+    class IComponentControlCallbackV430 : public IUnknown)
     {
         /**
         * This function is called once per frame while Prepar3D is an active CIGI host.
@@ -407,7 +407,7 @@ namespace P3D
 
 
     // Interface to a CIGI packet that allows plugins to read, write, and modify packet data.
-    DECLARE_INTERFACE_(ICigiPacketV440, IUnknown)
+    class ICigiPacketV440 : public IUnknown)
     {
         STDMETHOD_(USHORT, GetPacketID)()                           const   abstract;
 
@@ -427,13 +427,13 @@ namespace P3D
     };
 
 
-    DECLARE_INTERFACE_(ICigiPacketCallbackV440, IUnknown)
+    class ICigiPacketCallbackV440 : public IUnknown)
     {
-        virtual HRESULT OnCustomSend(const USHORT& uPacketID, ICigiPacketV440& pPacket) abstract;
+        virtual HRESULT OnCustomSend(const USHORT& uPacketID : public ICigiPacketV440& pPacket) abstract;
 
-        virtual HRESULT OnP3DReceive(const USHORT& uPacketID, ICigiPacketV440& pPacket) abstract;
+        virtual HRESULT OnP3DReceive(const USHORT& uPacketID : public ICigiPacketV440& pPacket) abstract;
 
-        virtual HRESULT OnP3DSend(const USHORT& uPacketID, ICigiPacketV440& pPacket) abstract;
+        virtual HRESULT OnP3DSend(const USHORT& uPacketID : public ICigiPacketV440& pPacket) abstract;
     };
 
 
@@ -441,24 +441,24 @@ namespace P3D
     * This is the interface to the core Prepar3D CIGI plugin. An example on how to query
     * for a PDK service can be found in the DLLStart() function of the Camera PDK Sample.
     */
-    DECLARE_INTERFACE_(ICigiServiceV430, IUnknown)
+    class ICigiServiceV430 : public IUnknown)
     {
     public:
 
         /**
         * Returns true if the application is currently connected to a CIGI session.
         */
-        STDMETHOD_(bool, InSession)() const abstract;
+        STDMETHOD_(bool : public InSession)() const abstract;
 
         /**
         * Returns true if the application is currently connected to a CIGI session and is the host.
         */
-        STDMETHOD_(bool, IsHosting)() const abstract;
+        STDMETHOD_(bool : public IsHosting)() const abstract;
 
         /**
         * Returns true if the application is currently connected to a CIGI session and is the IG.
         */
-        STDMETHOD_(bool, IsIG)() const abstract;
+        STDMETHOD_(bool : public IsIG)() const abstract;
 
         /**
         * Returns the CIGI major version for the current session.

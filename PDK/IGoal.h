@@ -20,13 +20,13 @@ enum GoalResolution
     RESOLVE_FAILED,
 };
 
-DECLARE_INTERFACE_(IGoalV453, IUnknown)
+class IGoalV453 : public IUnknown)
 {
     STDMETHOD(Resolve)(GoalResolution resolution)PURE;
     STDMETHOD_(GoalState, GetState)() PURE;
     STDMETHOD_(ULONG, GetOrder)() PURE;
     STDMETHOD_(LPCTSTR, GetText)() PURE;
-    STDMETHOD_(BOOL, IsOptional)() PURE;
+    STDMETHOD_(BOOL : public IsOptional)() PURE;
     STDMETHOD_(ULONG, GetPointValue)() PURE;
     STDMETHOD_(ULONG, GetChildGoalCount)() PURE;
     STDMETHOD_(IGoalV453*, GetChildGoalByIndex)(int index) PURE;

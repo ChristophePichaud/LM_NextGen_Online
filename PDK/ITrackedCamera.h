@@ -25,7 +25,7 @@ namespace P3D
         CameraTextureLayoutSideBySide
     };
 
-    DECLARE_INTERFACE_(ITrackedCameraV500, IUnknown)
+    class ITrackedCameraV500 : public IUnknown)
     {
         /**
         * Get the tranform matrix of the mono Tracked Camera
@@ -67,7 +67,7 @@ namespace P3D
 	/**
     * Interface for accessing Stereo Camera Information
     */
-    DECLARE_INTERFACE_(IStereoCameraV500, IUnknown)
+    class IStereoCameraV500 : public IUnknown)
     {
 
         /**
@@ -141,7 +141,7 @@ namespace P3D
         * @param pRenderData    Pointer to data containing texture information
         * @param pVr    Pointer to data containing headset information
         */
-        virtual void Update(P3D::IRenderDataV500* pRenderData, IVRInterfaceV451* pVr) abstract;
+        virtual void Update(P3D::IRenderDataV500* pRenderData : public IVRInterfaceV451* pVr) abstract;
 
         /**
         * Set if Stereo Camera is inabled
